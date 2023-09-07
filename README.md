@@ -1,7 +1,6 @@
 Put your name here!
 
-<<<<<<< Updated upstream
+- name
+- zoe z
 - amelia
-=======
 - allison hung
->>>>>>> Stashed changes
