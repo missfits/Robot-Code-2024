@@ -4,8 +4,8 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants.DrivetrainConstants;
 
 import frc.robot.OI;
@@ -15,7 +15,7 @@ import com.revrobotics.SparkMaxRelativeEncoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class Drivetrain extends SubsystemBase {
+public class Drivetrain extends Subsystem {
 
     // instance variables
 
