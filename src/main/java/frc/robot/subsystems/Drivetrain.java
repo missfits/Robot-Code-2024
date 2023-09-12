@@ -8,13 +8,20 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DrivetrainConstants;
 
+import frc.robot.OI;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxRelativeEncoder;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
 public class Drivetrain extends SubsystemBase {
 
     // instance variables
 
     private final OI m_humanControl;
 
-    // motors
+    // motors - TO DO: explain what these things do!
     public final CANSparkMax m_leftPrimary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_1_PORT,
         MotorType.kBrushless);
     private final CANSparkMax m_leftSecondary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_2_PORT,
@@ -34,6 +41,7 @@ public class Drivetrain extends SubsystemBase {
     public final SparkMaxRelativeEncoder m_rightSecondaryEncoder = (SparkMaxRelativeEncoder) m_rightSecondary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
+    // groups - TO DO: explain what these things do!
     private final MotorControllerGroup m_leftGroup = new MotorControllerGroup(m_leftPrimary, m_leftSecondary);
     private final MotorControllerGroup m_rightGroup = new MotorControllerGroup(m_rightPrimary, m_rightSecondary);
 
@@ -62,6 +70,7 @@ public class Drivetrain extends SubsystemBase {
     @Override
     public void simulationPeriodic() {}
 
+    // TO DO: explain what this does and why it's important!
     public double clamp(double val, double min, double max) {
       if (val > max) {
           System.out.println("out of range");
