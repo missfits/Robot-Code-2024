@@ -14,20 +14,22 @@ package frc.robot;
  */
 public final class Constants {
 
-  public static class OIConstants {
+  public static class OperatorConstants {
     public static final int DRIVER_XBOX_PORT = 0;
-    public static final int COPILOT_XBOX_PORT = 0;
+    public static final int COPILOT_XBOX_PORT = 1;
   }
 
-  public static class ClimberConstants {}
+  public static class DrivetrainConstants {
+    public static final int LEFT_MOTOR_1_PORT = 0; // fix
+    public static final int LEFT_MOTOR_2_PORT = 1; // fix
+    public static final int RIGHT_MOTOR_1_PORT = 2; // fix
+    public static final int RIGHT_MOTOR_2_PORT = 3; // fix
 
-  public static class ConveyerConstants {}
+    public static final int COUNTS_PER_REV = 42;
+  }
 
-  public static class DrivetrainConstants {}
-
-  public static class HoodConstants {}
-
-  public static class IntakeConstants {}
-
-  public static class ShooterConstants {}
+  public static class IntakeConstants {
+    public static final int INTAKE_MOTOR_PORT = 4; //fix
+    public static final int PIVOT_MOTOR_PORT = 5; //fix
+  }
 }
