@@ -71,7 +71,7 @@ public class Drivetrain extends Subsystem {
     @Override
     public void simulationPeriodic() {}
 
-    // TO DO: explain what this does and why it's important!
+    // ensures given value is within a specified range
     public double clamp(double val, double min, double max) {
       if (val > max) {
           System.out.println("out of range");
