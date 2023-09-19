@@ -58,9 +58,10 @@ public class Drivetrain extends Subsystem {
     public void periodic() {}
 
     public void configDrivetrainMotors() {
-      // TO DO: check inversions
+      // makes the secondary motors follow the primary ones
       m_leftSecondary.follow(m_leftPrimary);
       m_rightSecondary.follow(m_rightPrimary);
+      // inverts the left side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
       m_leftGroup.setInverted(true);
       m_rightGroup.setInverted(false);
     }
