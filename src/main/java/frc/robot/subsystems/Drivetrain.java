@@ -41,7 +41,7 @@ public class Drivetrain extends Subsystem {
     public final SparkMaxRelativeEncoder m_rightSecondaryEncoder = (SparkMaxRelativeEncoder) m_rightSecondary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
-    // groups - TO DO: explain what these things do!
+    // groups - to control multiple motors at once (for multiple motors per side of the drivetrain)
     private final MotorControllerGroup m_leftGroup = new MotorControllerGroup(m_leftPrimary, m_leftSecondary);
     private final MotorControllerGroup m_rightGroup = new MotorControllerGroup(m_rightPrimary, m_rightSecondary);
 
