@@ -20,10 +20,10 @@ public final class Constants {
   }
 
   public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 0; // fix
-    public static final int LEFT_MOTOR_2_PORT = 1; // fix
-    public static final int RIGHT_MOTOR_1_PORT = 2; // fix
-    public static final int RIGHT_MOTOR_2_PORT = 3; // fix
+    public static final int LEFT_MOTOR_1_PORT = 1; // pulled from 2023 robot code
+    public static final int LEFT_MOTOR_2_PORT = 2; // same as above
+    public static final int RIGHT_MOTOR_1_PORT = 3; // ^^
+    public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
 
     public static final int COUNTS_PER_REV = 42;
   }
