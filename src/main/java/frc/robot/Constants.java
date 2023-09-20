@@ -29,7 +29,7 @@ public final class Constants {
   }
 
   public static class IntakeConstants {
-    public static final int INTAKE_MOTOR_PORT = 4; //fix
-    public static final int PIVOT_MOTOR_PORT = 5; //fix
+    public static final int INTAKE_MOTOR_PORT = 6; // pulled from 2023 robot code
+    public static final int PIVOT_MOTOR_PORT = 8; // same as above
   }
 }
