@@ -66,7 +66,25 @@ public class Drivetrain extends Subsystem {
       m_rightGroup.setInverted(false);
     }
 
-    // TO DO: write getters
+    // returns position in "rotations"
+    public double getLeftEncoderPosition() {
+        return m_leftPrimaryEncoder.getPosition();
+    }
+    
+    // returns position in "rotations"
+    public double getRightEncoderPosition() {
+        return m_rightPrimaryEncoder.getPosition();
+    }
+
+    // returns velocity in RPM 
+    public double getLeftEncoderVelocity() {
+        return m_leftPrimaryEncoder.getVelocity();
+    }
+
+    // returns velocity in RPM 
+    public double getRightEncoderVelocityn() {
+        return m_rightPrimaryEncoder.getVelocity();
+    }
 
     @Override
     public void simulationPeriodic() {}
