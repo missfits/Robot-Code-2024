@@ -6,12 +6,11 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.Subsystem;
 import frc.robot.Constants.IntakeConstants;
 
-// Helper class to set speed of intake and pivot intake motors
 public class Intake extends Subsystem{
     public final CANSparkMax m_intakeMotor = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_PORT, MotorType.kBrushless);
     public final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
     
-    // Initializes the Intake class
+    // Constructor for the Intake class
     public Intake(){
 
     }
