@@ -24,13 +24,10 @@ public class ArcadeDriveCommand extends Command {
     // NEEDS TESTING
     @Override
     public void execute() {
-        double x_val = 0.0;
-        double y_val = 0.0;
-        if (Math.abs(m_humanControl.getDriverXBoxLeftJoyY()) > 0.1) {
-            x_val = 0.7 * m_humanControl.getDriverXBoxLeftJoyY();
-        }
-        if (Math.abs(m_humanControl.getDriverXBoxRightJoyX()) > 0.1) {
-            y_val = 0.7 * m_humanControl.getDriverXBoxRightJoyX();
+        double xJoy = m_humanControl.getDriverXBoxLeftJoyY();
+        double yJoy = m_humanControl.getDriverXBoxRightJoyX();
+        double x_val = Math.abs(xJoy) > 0.1 ? xJoy : 0.0;
+        double y_val = Math.abs(yJoy) > 0.1 ? yJoy : 0.0;
         }
 
         m_drivetrain.arcadeDrive(x_val, y_val);
