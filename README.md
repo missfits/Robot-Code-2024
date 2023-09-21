@@ -5,5 +5,6 @@ Put your name here!
 - amelia
 - Mihir
 - elizabeth
-- allison hung
+- allison
 - riley
+- tori
