@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.Timer;
+import frc.robot.Constants.IntakeConstants;
 
 public class IntakeForwardCommand extends Command {
     private Intake m_intake;
@@ -23,7 +24,7 @@ public class IntakeForwardCommand extends Command {
 
     @Override
     public void execute() {
-        m_intake.runIntakeMotorForward(0.4); // default value 0.6, lower to prevent cubes from breaking
+        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_FORWARD);
     }
 
     @Override

@@ -14,11 +14,7 @@ public class Intake extends Subsystem{
 
     }
 
-    public void runIntakeMotorForward(double speed){
-        m_intakeMotor.set(speed);
-    }
-
-    public void runIntakeMotorBackward(double speed){
+    public void runIntakeMotor(double speed){
         m_intakeMotor.set(speed);
     }
 
