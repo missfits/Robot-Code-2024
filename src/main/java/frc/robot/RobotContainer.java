@@ -55,8 +55,8 @@ public class RobotContainer {
    */
   private void configureBindings() {
 
-    OI.m_coPilotXbox.b().whileTrue(new IntakeForwardCommand(m_intake,0));
-    OI.m_coPilotXbox.a().whileTrue(new IntakeBackwardCommand(m_intake,0));
+    OI.m_coPilotXbox.b().whileTrue(new IntakeForwardCommand(m_intake));
+    OI.m_coPilotXbox.a().whileTrue(new IntakeBackwardCommand(m_intake));
     OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_intake));
     OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_intake));
   }
