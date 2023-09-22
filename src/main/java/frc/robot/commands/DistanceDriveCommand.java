@@ -10,7 +10,7 @@ import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
 
 
-/** An example command that uses an example subsystem. */
+/** An taxi command that uses the drivetrain subsystem. */
 public class DistanceDriveCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain m_drivetrain;
@@ -41,6 +41,7 @@ public class DistanceDriveCommand extends Command {
 
   @Override
   public boolean isFinished() {
+    // calculates if either encoder has moved enough to reach the target distance
     return (Math.abs(m_drivetrain.getRightEncoderPosition() - m_rightEncoderStart) >  Math.abs(m_targetDistance)
     || Math.abs(m_drivetrain.getLeftEncoderPosition() - m_leftEncoderStart) >  Math.abs(m_targetDistance)); 
   }
