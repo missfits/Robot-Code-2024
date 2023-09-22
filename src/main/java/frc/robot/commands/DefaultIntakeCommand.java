@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
+import frc.robot.Constants.IntakeConstants;
 
 public class DefaultIntakeCommand extends Command{
     private Intake m_intake;
@@ -16,7 +17,7 @@ public class DefaultIntakeCommand extends Command{
 
     @Override
     public void execute() {
-        m_intake.runIntakeMotorForward(0.05); // default value 0.6, lower to prevent cubes from breaking
+        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_DEFAULT); // default value 0.6, lower to prevent cubes from breaking
     }
 
     @Override

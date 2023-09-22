@@ -3,6 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.Timer;
+import frc.robot.Constants.IntakeConstants;
 
 
 public class IntakeBackwardCommand extends Command {
@@ -25,7 +26,7 @@ public class IntakeBackwardCommand extends Command {
 
     @Override
     public void execute() {
-        m_intake.runIntakeMotorBackward(-0.6);
+        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_BACKWARD);
     }
 
     @Override
