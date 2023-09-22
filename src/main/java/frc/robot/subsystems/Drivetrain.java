@@ -58,9 +58,11 @@ public class Drivetrain extends Subsystem {
     public void periodic() {}
 
     public void configDrivetrainMotors() {
+
       // makes the secondary motors follow the primary ones
       m_leftSecondary.follow(m_leftPrimary);
       m_rightSecondary.follow(m_rightPrimary);
+
       // inverts the left side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
       m_leftGroup.setInverted(true);
       m_rightGroup.setInverted(false);
@@ -82,7 +84,7 @@ public class Drivetrain extends Subsystem {
     }
 
     // returns velocity in RPM 
-    public double getRightEncoderVelocityn() {
+    public double getRightEncoderVelocity() {
         return m_rightPrimaryEncoder.getVelocity();
     }
 
@@ -99,5 +101,10 @@ public class Drivetrain extends Subsystem {
           return min;
       }
       return val;
+    }
+
+    // arcade drive
+    public void arcadeDrive(double forwardSpeed, double rotationSpeed) {
+        m_robotDrive.arcadeDrive(forwardSpeed, rotationSpeed);
     }
 }

@@ -17,19 +17,31 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int DRIVER_XBOX_PORT = 0;
     public static final int COPILOT_XBOX_PORT = 1;
+
+    public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
   }
 
   public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 0; // fix
-    public static final int LEFT_MOTOR_2_PORT = 1; // fix
-    public static final int RIGHT_MOTOR_1_PORT = 2; // fix
-    public static final int RIGHT_MOTOR_2_PORT = 3; // fix
+    public static final int LEFT_MOTOR_1_PORT = 1; // pulled from 2023 robot code
+    public static final int LEFT_MOTOR_2_PORT = 2; // same as above
+    public static final int RIGHT_MOTOR_1_PORT = 3; // ^^
+    public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
 
     public static final int COUNTS_PER_REV = 42;
   }
 
   public static class IntakeConstants {
-    public static final int INTAKE_MOTOR_PORT = 4; //fix
-    public static final int PIVOT_MOTOR_PORT = 5; //fix
+    public static final int INTAKE_MOTOR_PORT = 6; // pulled from 2023 robot code
+    public static final int PIVOT_MOTOR_PORT = 8; // same as above
+
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
+    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.5; // default value 0.6, lower to prevent cubes from breaking
+
+  }
+
+  public static class AutoConstants {
+    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // (temp) distance (in rotations of encoder) to travel (can be both neg + pos)
+    public static final double TAXI_AUTO_SPEED = 0.25; // (temp) speed of robot during taxi auto 
   }
 }
