@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.OI;
 
-import java.lang.Math.*;
+// import java.lang.Math.*;
 
 public class ArcadeDriveCommand extends Command {
     private final Drivetrain m_drivetrain;
@@ -28,7 +28,6 @@ public class ArcadeDriveCommand extends Command {
         double yJoy = m_humanControl.getDriverXBoxRightJoyX();
         double x_val = Math.abs(xJoy) > 0.1 ? xJoy : 0.0;
         double y_val = Math.abs(yJoy) > 0.1 ? yJoy : 0.0;
-        }
 
         m_drivetrain.arcadeDrive(x_val, y_val);
     }
