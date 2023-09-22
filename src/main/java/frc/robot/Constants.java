@@ -39,4 +39,9 @@ public final class Constants {
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.5; // default value 0.6, lower to prevent cubes from breaking
 
   }
+
+  public static class AutoConstants {
+    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // (temp) distance (in rotations of encoder) to travel (can be both neg + pos)
+    public static final double TAXI_AUTO_SPEED = 0.25; // (temp) speed of robot during taxi auto 
+  }
 }

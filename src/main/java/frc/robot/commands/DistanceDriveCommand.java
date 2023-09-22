@@ -4,6 +4,8 @@
 
 package frc.robot.commands;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.Constants.AutoConstants;
+
 
 //import java.lang.Math.*;
 
@@ -21,7 +23,7 @@ public class DistanceDriveCommand extends Command {
 
   public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance) {
     m_drivetrain = drivetrain;
-    m_targetDistance = targetDistance;
+    m_targetDistance = targetDistance; // supports both neg + pos targetDistance
     addRequirements(drivetrain);
   }
 
@@ -33,7 +35,7 @@ public class DistanceDriveCommand extends Command {
 
   @Override
   public void execute() {
-    m_drivetrain.arcadeDrive(0.25*Math.signum(m_targetDistance), 0); // drives in the direction of targetDistance 
+    m_drivetrain.arcadeDrive(AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance), 0); // drives in the direction of targetDistance 
   }
 
   @Override
