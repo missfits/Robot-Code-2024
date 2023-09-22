@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.OI;
+import frc.robot.Constants.OperatorConstants;
 
 // import java.lang.Math.*;
 
@@ -26,15 +27,15 @@ public class ArcadeDriveCommand extends Command {
     public void execute() {
         double xJoy = m_humanControl.getDriverXBoxLeftJoyY();
         double yJoy = m_humanControl.getDriverXBoxRightJoyX();
-        double x_val = Math.abs(xJoy) > 0.1 ? xJoy : 0.0;
-        double y_val = Math.abs(yJoy) > 0.1 ? yJoy : 0.0;
+        double x_val = Math.abs(xJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? xJoy : 0.0;
+        double y_val = Math.abs(yJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? yJoy : 0.0;
 
         m_drivetrain.arcadeDrive(x_val, y_val);
     }
 
     // Called once the command ends or is interrupted.
     @Override
-    public void end(boolean interrupted) { }
+    public void end(boolean interrupted) {}
 
     // Returns true when the command should end.
     @Override

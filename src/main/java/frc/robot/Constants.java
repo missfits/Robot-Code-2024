@@ -17,6 +17,8 @@ public final class Constants {
   public static class OperatorConstants {
     public static final int DRIVER_XBOX_PORT = 0;
     public static final int COPILOT_XBOX_PORT = 1;
+
+    public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
   }
 
   public static class DrivetrainConstants {
@@ -35,7 +37,6 @@ public final class Constants {
     public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
     public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.5; // default value 0.6, lower to prevent cubes from breaking
-
 
   }
 }
