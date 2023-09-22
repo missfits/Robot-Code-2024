@@ -10,9 +10,6 @@ public class OI {
         OperatorConstants.DRIVER_XBOX_PORT);
     public static CommandXboxController m_coPilotXbox = new CommandXboxController(
         OperatorConstants.COPILOT_XBOX_PORT);
-    
-    
-    // TO DO: write getter functions
 
     // driver xbox inputs
     public double getDriverXBoxLeftJoyY() {
@@ -23,6 +20,7 @@ public class OI {
         return m_driverXbox.getLeftX();
     }
 
+    // TO DO: check if this inversion is needed
     public double getDriverXBoxRightJoyY() {
         return -m_driverXbox.getRightY();
     }
