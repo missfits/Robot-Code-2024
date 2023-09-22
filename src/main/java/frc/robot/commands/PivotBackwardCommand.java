@@ -15,7 +15,7 @@ public class PivotBackwardCommand extends Command {
 
     @Override
     public void execute() {
-        m_intake.runPivotIntakeMotorBackward(-0.2);
+        m_intake.runPivotIntakeMotor(-0.2);
     }
 
     @Override
