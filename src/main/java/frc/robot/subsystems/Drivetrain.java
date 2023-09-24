@@ -21,7 +21,8 @@ public class Drivetrain extends Subsystem {
 
     private final OI m_humanControl;
 
-    // motors - TO DO: explain what these things do!
+    // motors
+    // sets up a CAN-enabled SPARK MAX motor controller for each motor (left primary, left secondary, right primary, and right secondary)
     public final CANSparkMax m_leftPrimary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_1_PORT,
         MotorType.kBrushless);
     private final CANSparkMax m_leftSecondary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_2_PORT,
