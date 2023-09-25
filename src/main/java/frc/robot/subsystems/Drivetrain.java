@@ -64,9 +64,9 @@ public class Drivetrain extends Subsystem {
       m_leftSecondary.follow(m_leftPrimary);
       m_rightSecondary.follow(m_rightPrimary);
 
-      // inverts the left side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
-      m_leftGroup.setInverted(true);
-      m_rightGroup.setInverted(false);
+      // inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
+      m_leftGroup.setInverted(false);
+      m_rightGroup.setInverted(true);
     }
 
     // returns position in "rotations"
