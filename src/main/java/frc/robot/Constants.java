@@ -39,6 +39,9 @@ public final class Constants {
     public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
 
+    public static final double PIVOT_UP_POSITION = 0; // TO DO: fix this
+    public static final double PIVOT_DOWN_POSITION = 13; //TO DO: fix this
+
   }
 
   public static class AutoConstants {

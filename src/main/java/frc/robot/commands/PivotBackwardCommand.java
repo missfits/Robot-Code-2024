@@ -3,15 +3,18 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 
+import frc.robot.Constants.IntakeConstants;
+
 public class PivotBackwardCommand extends Command {
     private Intake m_intake;
+
     public PivotBackwardCommand(Intake intake){
         m_intake = intake;
     }
 
     @Override
     public void initialize() {
-    }  
+    }
 
     @Override
     public void execute() {
@@ -25,6 +28,6 @@ public class PivotBackwardCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return false;
+        return Math.abs(m_intake.getEncoderPosition()) <= IntakeConstants.PIVOT_UP_POSITION;
     }
 }

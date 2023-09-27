@@ -12,7 +12,11 @@ public class Intake extends Subsystem{
     
     // Constructor for the Intake class
     public Intake(){
+    }
 
+    // initializes encoder position to 0 - MAKE SURE INTAKE IS ALWAYS FULLY UP WHENEVER THIS METHOD IS CALLED
+    public void initializeEncoderPosition() {
+        setEncoderPosition(0); // TO DO: WRITE THE SET FUNCTION
     }
 
     // Sets intake motor speed (forward if positive, backward if negative)
