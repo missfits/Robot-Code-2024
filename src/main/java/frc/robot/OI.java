@@ -12,17 +12,18 @@ public class OI {
         OperatorConstants.COPILOT_XBOX_PORT);
 
     // driver xbox inputs
+
+    // needs to be negative to make motors run straight as of 9/26/23
     public double getDriverXBoxLeftJoyY() {
-        return m_driverXbox.getLeftY();
+        return -m_driverXbox.getLeftY();
     }
 
     public double getDriverXBoxLeftJoyX() {
         return m_driverXbox.getLeftX();
     }
 
-    // TO DO: check if this inversion is needed
     public double getDriverXBoxRightJoyY() {
-        return -m_driverXbox.getRightY();
+        return m_driverXbox.getRightY();
     }
 
     public double getDriverXBoxRightJoyX() {
