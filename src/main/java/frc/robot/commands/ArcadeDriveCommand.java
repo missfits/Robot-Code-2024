@@ -22,7 +22,7 @@ public class ArcadeDriveCommand extends Command {
     public void initialize() { }
 
     // Called every time the scheduler runs while the command is scheduled.
-    // NEEDS TESTING
+    // NEEDS TESTINGx
     @Override
     public void execute() {
         double xJoy = m_humanControl.getDriverXBoxLeftJoyY();
@@ -30,7 +30,7 @@ public class ArcadeDriveCommand extends Command {
         double x_val = Math.abs(xJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? xJoy : 0.0;
         double y_val = Math.abs(yJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? yJoy : 0.0;
 
-        m_drivetrain.arcadeDrive(x_val, y_val);
+        m_drivetrain.arcadeDrive(OperatorConstants.DRIVE_SPEED_ADJUSTMENT * x_val, OperatorConstants.DRIVE_SPEED_ADJUSTMENT * y_val);
     }
 
     // Called once the command ends or is interrupted.
