@@ -36,7 +36,7 @@ public final class Constants {
 
     public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
     public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
-    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.5; // default value 0.6, lower to prevent cubes from breaking
+    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
 
   }
 
