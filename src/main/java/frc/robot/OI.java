@@ -26,8 +26,9 @@ public class OI {
         return m_driverXbox.getRightY();
     }
 
+    // needs to be negative to make the turning correct as of 9/26/23
     public double getDriverXBoxRightJoyX() {
-        return m_driverXbox.getRightX();
+        return -m_driverXbox.getRightX();
     }
 
     // copilot xbox inputs
