@@ -29,6 +29,7 @@ public class DistanceDriveCommand extends Command {
 
   @Override
   public void initialize() {
+    // gets start positions of encoders
     m_rightEncoderStart = m_drivetrain.getRightEncoderPosition();
     m_leftEncoderStart = m_drivetrain.getLeftEncoderPosition();
   }

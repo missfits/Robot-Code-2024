@@ -18,7 +18,7 @@ public class PivotForwardCommand extends Command{
 
     @Override
     public void execute() {
-        m_intake.runPivotIntakeMotor(0.2);
+        m_intake.runPivotIntakeMotor(IntakeConstants.PIVOT_MOTOR_SPEED);
     }
 
     @Override
@@ -28,6 +28,6 @@ public class PivotForwardCommand extends Command{
 
     @Override
     public boolean isFinished() {
-        return Math.abs(m_intake.getEncoderPosition()) >= IntakeConstants.PIVOT_DOWN_POSITION;
+        return m_intake.getPivotEncoderPosition() >= IntakeConstants.PIVOT_DOWN_POSITION;
     }
 }

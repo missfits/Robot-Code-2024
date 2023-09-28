@@ -42,6 +42,10 @@ public final class Constants {
     public static final double PIVOT_UP_POSITION = 0; // TO DO: fix this
     public static final double PIVOT_DOWN_POSITION = 13; //TO DO: fix this
 
+    public static final double PIVOT_MOTOR_SPEED = 0.2;
+
+    public static final int COUNTS_PER_REV = 42;
+
   }
 
   public static class AutoConstants {

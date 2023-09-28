@@ -2,21 +2,36 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.SparkMaxRelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
+import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.IntakeConstants;
 
 public class Intake extends Subsystem{
-    public final CANSparkMax m_intakeMotor = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_PORT, MotorType.kBrushless);
-    public final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
+    private final CANSparkMax m_intakeMotor = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_PORT, MotorType.kBrushless);
+    private final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
+
+    private final SparkMaxRelativeEncoder m_pivotEncoder = (SparkMaxRelativeEncoder) m_pivotIntakeMotor
+        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, IntakeConstants.COUNTS_PER_REV);
     
     // Constructor for the Intake class
     public Intake(){
     }
 
+    // returns encoder position
+    public double getPivotEncoderPosition() {
+        return m_pivotEncoder.getPosition();
+    }
+
+    // sets encoder to desired position
+    public void setPivotEncoderPosition(double position) {
+        m_pivotEncoder.setPosition(position);
+    }
+
     // initializes encoder position to 0 - MAKE SURE INTAKE IS ALWAYS FULLY UP WHENEVER THIS METHOD IS CALLED
-    public void initializeEncoderPosition() {
-        setEncoderPosition(0); // TO DO: WRITE THE SET FUNCTION
+    public void initializePivotEncoderPosition() {
+        setPivotEncoderPosition(0); // TO DO: WRITE THE SET FUNCTION
     }
 
     // Sets intake motor speed (forward if positive, backward if negative)
