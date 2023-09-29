@@ -6,6 +6,7 @@ import frc.robot.subsystems.Intake;
 import frc.robot.Constants.IntakeConstants;
 
 public class PivotBackwardCommand extends Command {
+    private double m_encoderStart;
     private Intake m_intake;
 
     public PivotBackwardCommand(Intake intake){
@@ -14,6 +15,7 @@ public class PivotBackwardCommand extends Command {
 
     @Override
     public void initialize() {
+        m_encoderStart = m_intake.getPivotEncoderPosition();
     }
 
     @Override
@@ -28,7 +30,6 @@ public class PivotBackwardCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return false;
-        // return m_intake.getPivotEncoderPosition() <= IntakeConstants.PIVOT_UP_POSITION;
+        return m_intake.getPivotEncoderPosition() <= m_encoderStart - IntakeConstants.PIVOT_DELTA;
     }
 }
