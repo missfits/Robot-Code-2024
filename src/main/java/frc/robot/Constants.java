@@ -20,7 +20,6 @@ public final class Constants {
 
     public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
     public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
-    public static final double DRIVE_TURN_ADJUSTMENT = 1;
   }
 
   public static class DrivetrainConstants {
@@ -40,11 +39,15 @@ public final class Constants {
     public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
 
-    public static final double PIVOT_DELTA = 8; //TO DO: fix this
-
     public static final double PIVOT_MOTOR_SPEED = 0.2;
 
     public static final int COUNTS_PER_REV = 42;
+
+    public static final double PIVOT_DELTA = 8; // for if we want to run a relative encoder thing
+
+    // for if we want to fix encoder values for up and down
+    public static final double PIVOT_DOWN_POSITION = 8.5;
+    public static final double PIVOT_UP_POSITION = 0.5;
 
   }
 
