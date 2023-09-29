@@ -28,6 +28,7 @@ public class PivotBackwardCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return m_intake.getPivotEncoderPosition() <= IntakeConstants.PIVOT_UP_POSITION;
+        return false;
+        // return m_intake.getPivotEncoderPosition() <= IntakeConstants.PIVOT_UP_POSITION;
     }
 }

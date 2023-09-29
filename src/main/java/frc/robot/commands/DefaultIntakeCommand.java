@@ -17,6 +17,7 @@ public class DefaultIntakeCommand extends Command{
 
     @Override
     public void execute() {
+        System.out.println(m_intake.getPivotEncoderPosition());
         m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_DEFAULT); // default value 0.6, lower to prevent cubes from breaking
     }
 
