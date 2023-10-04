@@ -23,7 +23,7 @@ public class Drivetrain extends Subsystem {
 
     // motors
     // sets up a CAN-enabled SPARK MAX motor controller for each motor (left primary, left secondary, right primary, and right secondary)
-    private final CANSparkMax m_leftPrimary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_1_PORT,
+    public final CANSparkMax m_leftPrimary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_1_PORT,
         MotorType.kBrushless);
     private final CANSparkMax m_leftSecondary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_2_PORT,
         MotorType.kBrushless);
@@ -33,13 +33,13 @@ public class Drivetrain extends Subsystem {
         MotorType.kBrushless);
 
     // encoders
-    private final SparkMaxRelativeEncoder m_leftPrimaryEncoder = (SparkMaxRelativeEncoder) m_leftPrimary
+    public final SparkMaxRelativeEncoder m_leftPrimaryEncoder = (SparkMaxRelativeEncoder) m_leftPrimary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-    private final SparkMaxRelativeEncoder m_leftSecondaryEncoder = (SparkMaxRelativeEncoder) m_leftSecondary
+    public final SparkMaxRelativeEncoder m_leftSecondaryEncoder = (SparkMaxRelativeEncoder) m_leftSecondary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-    private final SparkMaxRelativeEncoder m_rightPrimaryEncoder = (SparkMaxRelativeEncoder) m_rightPrimary
+    public final SparkMaxRelativeEncoder m_rightPrimaryEncoder = (SparkMaxRelativeEncoder) m_rightPrimary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-    private final SparkMaxRelativeEncoder m_rightSecondaryEncoder = (SparkMaxRelativeEncoder) m_rightSecondary
+    public final SparkMaxRelativeEncoder m_rightSecondaryEncoder = (SparkMaxRelativeEncoder) m_rightSecondary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
     // groups - to control multiple motors at once (for multiple motors per side of the drivetrain)

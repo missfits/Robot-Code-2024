@@ -20,6 +20,10 @@ public final class Autos {
     return new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_AUTO_TARGET_DISTANCE);
   }
 
+  // public static Command scoreTaxiAuto(Intake intake, Drivetrain drivetrain) {
+  //   return new 
+  // }
+
   private Autos() {
     throw new UnsupportedOperationException("This is a utility class!");
   }
