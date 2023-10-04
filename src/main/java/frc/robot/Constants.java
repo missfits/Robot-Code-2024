@@ -45,7 +45,7 @@ public final class Constants {
 
     public static final double PIVOT_DELTA = 8; // for if we want to run a relative encoder thing
 
-    // for if we want to fix encoder values for up and down
+    // for if we want to fix encoder values for up and down (these are untested!)
     public static final double PIVOT_DOWN_POSITION = 8.5;
     public static final double PIVOT_UP_POSITION = 0.5;
 
