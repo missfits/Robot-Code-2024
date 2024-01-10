@@ -22,7 +22,6 @@ public class ArcadeDriveCommand extends Command {
     public void initialize() { }
 
     // Called every time the scheduler runs while the command is scheduled.
-    // NEEDS TESTINGx
     @Override
     public void execute() {
         double xJoy = m_humanControl.getDriverXBoxLeftJoyY();

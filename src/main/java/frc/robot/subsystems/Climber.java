@@ -5,7 +5,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.ClimberConstants;
 
 /* THIS CODE IS PLACEHOLDER CODE AND NEEDS TO BE REPLACED WHEN CLIMBER DESIGN IS FINALIZED */

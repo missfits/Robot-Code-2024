@@ -5,7 +5,6 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.IntakeConstants;
 
 /* THIS CODE IS FOR THE OFFSEASON INTAKE; MUST BE UPDATED WHEN INTAKE DEISGN IS FINALIZED */
