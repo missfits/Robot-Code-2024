@@ -14,7 +14,7 @@ public class IntakeForwardCommand extends Command {
 
     @Override
     public void initialize() {
-        System.out.println("INTAKE SUCK COMMAND STARTED");
+        // System.out.println("INTAKE SUCK COMMAND STARTED");
     }  
 
     @Override

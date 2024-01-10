@@ -5,11 +5,13 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxRelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.Constants.IntakeConstants;
+
+/* THIS CODE IS FOR THE OFFSEASON INTAKE; MUST BE UPDATED WHEN INTAKE DEISGN IS FINALIZED */
 
 public class Intake extends Subsystem{
     private final CANSparkMax m_intakeMotor = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_PORT, MotorType.kBrushless);
+    // pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
     private final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
 
     private final SparkMaxRelativeEncoder m_pivotEncoder = (SparkMaxRelativeEncoder) m_pivotIntakeMotor

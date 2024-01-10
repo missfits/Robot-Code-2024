@@ -15,7 +15,7 @@ public class IntakeBackwardCommand extends Command {
 
     @Override
     public void initialize() {
-        System.out.println("INTAKE SPIT COMMAND STARTED");
+        // System.out.println("INTAKE SPIT COMMAND STARTED");
     }  
 
     @Override
