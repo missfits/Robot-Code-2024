@@ -1,8 +1,8 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxRelativeEncoder;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.SparkRelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
@@ -14,8 +14,8 @@ public class Intake extends SubsystemBase {
     // pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
     private final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
 
-    private final SparkMaxRelativeEncoder m_pivotEncoder = (SparkMaxRelativeEncoder) m_pivotIntakeMotor
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, IntakeConstants.COUNTS_PER_REV);
+    private final SparkRelativeEncoder m_pivotEncoder = (SparkRelativeEncoder) m_pivotIntakeMotor
+        .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IntakeConstants.COUNTS_PER_REV);
     
     // Constructor for the Intake class
     public Intake(){

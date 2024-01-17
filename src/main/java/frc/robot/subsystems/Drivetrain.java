@@ -10,9 +10,8 @@ import frc.robot.Constants.DrivetrainConstants;
 
 import frc.robot.OI;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxRelativeEncoder;
-import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Drivetrain extends SubsystemBase {
@@ -33,23 +32,19 @@ public class Drivetrain extends SubsystemBase {
         MotorType.kBrushless);
 
     // encoders
-    public final SparkMaxRelativeEncoder m_leftPrimaryEncoder = (SparkMaxRelativeEncoder) m_leftPrimary
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-    public final SparkMaxRelativeEncoder m_leftSecondaryEncoder = (SparkMaxRelativeEncoder) m_leftSecondary
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-    public final SparkMaxRelativeEncoder m_rightPrimaryEncoder = (SparkMaxRelativeEncoder) m_rightPrimary
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-    public final SparkMaxRelativeEncoder m_rightSecondaryEncoder = (SparkMaxRelativeEncoder) m_rightSecondary
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
-
-    // groups - to control multiple motors at once (for multiple motors per side of the drivetrain)
-    private final MotorControllerGroup m_leftGroup = new MotorControllerGroup(m_leftPrimary, m_leftSecondary);
-    private final MotorControllerGroup m_rightGroup = new MotorControllerGroup(m_rightPrimary, m_rightSecondary);
+    public final SparkRelativeEncoder m_leftPrimaryEncoder = (SparkRelativeEncoder) m_leftPrimary
+        .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
+    public final SparkRelativeEncoder m_leftSecondaryEncoder = (SparkRelativeEncoder) m_leftSecondary
+        .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
+    public final SparkRelativeEncoder m_rightPrimaryEncoder = (SparkRelativeEncoder) m_rightPrimary
+        .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
+    public final SparkRelativeEncoder m_rightSecondaryEncoder = (SparkRelativeEncoder) m_rightSecondary
+        .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
     public static DifferentialDrive m_robotDrive;
     
     public Drivetrain(OI humanControl) {
-      m_robotDrive = new DifferentialDrive(m_leftGroup, m_rightGroup);
+      m_robotDrive = new DifferentialDrive(m_leftPrimary, m_rightPrimary);
       m_humanControl = humanControl;
 
       configDrivetrainMotors();
@@ -65,8 +60,12 @@ public class Drivetrain extends SubsystemBase {
       m_rightSecondary.follow(m_rightPrimary);
 
       // inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
-      m_leftGroup.setInverted(false);
-      m_rightGroup.setInverted(true);
+      m_leftPrimary.setInverted(false);
+      m_leftSecondary.setInverted(false);
+
+      m_rightPrimary.setInverted(true);
+      m_rightSecondary.setInverted(true);
+
     }
 
     // returns position in "rotations"

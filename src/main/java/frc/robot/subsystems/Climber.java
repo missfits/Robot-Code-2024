@@ -1,8 +1,8 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxRelativeEncoder;
+import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.SparkRelativeEncoder;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ClimberConstants;
@@ -12,8 +12,8 @@ import frc.robot.Constants.ClimberConstants;
 public class Climber extends SubsystemBase {
     private final CANSparkMax m_climberMotor = new CANSparkMax(ClimberConstants.CLIMBER_MOTOR_PORT, MotorType.kBrushless);
 
-    private final SparkMaxRelativeEncoder m_climberEncoder = (SparkMaxRelativeEncoder) m_climberMotor
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, ClimberConstants.COUNTS_PER_REV);
+    private final SparkRelativeEncoder m_climberEncoder = (SparkRelativeEncoder) m_climberMotor
+        .getEncoder(SparkRelativeEncoder.Type.kHallSensor, ClimberConstants.COUNTS_PER_REV);
     
     // Constructor for the Intake class
     public Climber(){
