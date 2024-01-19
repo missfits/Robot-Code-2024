@@ -7,17 +7,9 @@ package frc.robot;
 // import frc.robot.Constants.OperatorConstants;
 
 import frc.robot.commands.Autos;
-// import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.IntakeBackwardCommand;
-import frc.robot.commands.IntakeForwardCommand;
-import frc.robot.commands.PivotBackwardCommand;
-import frc.robot.commands.PivotForwardCommand;
-import frc.robot.commands.DefaultIntakeCommand;
+import frc.robot.commands.ExampleCommand;
 
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -33,15 +25,12 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
-  public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
-  private static final Intake m_intake = new Intake();
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    m_intake.setDefaultCommand(new DefaultIntakeCommand(m_intake));
   }
 
   /**
@@ -54,11 +43,6 @@ public class RobotContainer {
    * joysticks}.
    */
   private void configureBindings() {
-
-    OI.m_coPilotXbox.b().whileTrue(new IntakeForwardCommand(m_intake));
-    OI.m_coPilotXbox.a().whileTrue(new IntakeBackwardCommand(m_intake));
-    OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_intake));
-    OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_intake));
   }
 
   /**
@@ -68,6 +52,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // the taxi command that will be run in autonomous
-    return Autos.taxiAuto(m_drivetrain);
+    return Autos.exampleAuto(m_exampleSubsystem);
   }
 }

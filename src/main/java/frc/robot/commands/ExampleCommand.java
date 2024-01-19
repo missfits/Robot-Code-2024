@@ -22,7 +22,9 @@ public class ExampleCommand extends Command {
   public void initialize() {}
 
   @Override
-  public void execute() {}
+  public void execute() {
+    m_subsystem.run();
+  }
 
   @Override
   public void end(boolean interrupted) {}

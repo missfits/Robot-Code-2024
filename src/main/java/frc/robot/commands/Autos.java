@@ -16,11 +16,9 @@ public final class Autos {
     return Commands.sequence(subsystem.exampleMethodCommand(), new ExampleCommand(subsystem));
   }
 
-  public static Command taxiAuto(Drivetrain drivetrain) {
-    return new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_AUTO_TARGET_DISTANCE);
-  }
-
   private Autos() {
     throw new UnsupportedOperationException("This is a utility class!");
   }
+
+  
 }
