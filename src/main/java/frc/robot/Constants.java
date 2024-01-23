@@ -33,14 +33,29 @@ public final class Constants {
 
   public static class IntakeConstants {
 
+    public static final int INTAKE_MOTOR_PORT = 6; // TO DO: update
+
+    public static final int COUNTS_PER_REV = 42;
+  }
+
+  public static class ShooterConstants {
+
+    public static final int SHOOTER_MOTOR_PORT = 6; // TO DO: update
+
+    public static final int COUNTS_PER_REV = 42;
+
+  }
+
+  public static class HoodConstants {
+
     // CONSTANTS FROM OFFSEASON; may need changing
 
-    public static final int INTAKE_MOTOR_PORT = 6; // TO DO: update
+    public static final int HOOD_MOTOR_PORT = 6; // TO DO: update
     public static final int PIVOT_MOTOR_PORT = 8; // TO DO: update
 
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
-    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
-    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
+    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6;
+    public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05;
 
     public static final double PIVOT_MOTOR_SPEED = 0.2;
 

@@ -1,14 +1,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Hood;
 import frc.robot.Constants.IntakeConstants;
 
 
 public class IntakeBackwardCommand extends Command {
-    private Intake m_intake;
+    private Hood m_intake;
 
-    public IntakeBackwardCommand(Intake intake){
+    public IntakeBackwardCommand(Hood intake){
         m_intake = intake;
         addRequirements(intake);
     }

@@ -1,15 +1,15 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Hood;
 
 import frc.robot.Constants.IntakeConstants;
 
 public class PivotBackwardCommand extends Command {
     private double m_encoderStart;
-    private Intake m_intake;
+    private Hood m_intake;
 
-    public PivotBackwardCommand(Intake intake){
+    public PivotBackwardCommand(Hood intake){
         m_intake = intake;
     }
 
