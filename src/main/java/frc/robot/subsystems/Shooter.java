@@ -14,7 +14,7 @@ import frc.robot.Constants.ShooterConstants;
 
 public class Shooter extends SubsystemBase {
   private final CANSparkMax m_shooterMotor = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_PORT, MotorType.kBrushless);
-  private final SparkRelativeEncoder m_intakeEncoder = (SparkRelativeEncoder) m_shooterMotor
+  private final SparkRelativeEncoder m_shooterEncoder = (SparkRelativeEncoder) m_shooterMotor
       .getEncoder(SparkRelativeEncoder.Type.kHallSensor, ShooterConstants.COUNTS_PER_REV);
 
   public Shooter() {}
