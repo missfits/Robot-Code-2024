@@ -12,15 +12,26 @@ public class Hood extends SubsystemBase {
     // instance variables
     private final CANSparkMax m_hoodMotor = new CANSparkMax(HoodConstants.HOOD_MOTOR_PORT, MotorType.kBrushless);
     // pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
-    private final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(HoodConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
+    private final CANSparkMax m_pivotHoodMotor = new CANSparkMax(HoodConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
 
-    private final SparkRelativeEncoder m_pivotEncoder = (SparkRelativeEncoder) m_pivotIntakeMotor
+    private final SparkRelativeEncoder m_pivotEncoder = (SparkRelativeEncoder) m_pivotHoodMotor
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, HoodConstants.COUNTS_PER_REV);
     private final SparkRelativeEncoder m_hoodEncoder = (SparkRelativeEncoder) m_hoodMotor
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, HoodConstants.COUNTS_PER_REV);
     
     // constructor
     public Hood() {}
+
+    // Sets intake motor speed (forward if positive, backward if negative)
+    public void runHoodMotor(double speed) {
+        m_hoodMotor.set(speed);
+    }
+
+    // Sets intake motor speed to zero and stops motor
+    public void hoodOff() {
+      m_hoodMotor.set(0);
+      m_hoodMotor.stopMotor();
+    }
 
     // returns encoder position
     public double getPivotEncoderPosition() {
@@ -37,25 +48,14 @@ public class Hood extends SubsystemBase {
         setPivotEncoderPosition(0); // TO DO: WRITE THE SET FUNCTION
     }
 
-    // Sets intake motor speed (forward if positive, backward if negative)
-    public void runIntakeMotor(double speed) {
-        m_hoodMotor.set(speed);
-    }
-
-    // Sets intake motor speed to zero and stops motor
-    public void intakeOff() {
-      m_hoodMotor.set(0);
-      m_hoodMotor.stopMotor();
-    }
-
     // Sets pivot intake motor speed (forward if positive, backward if negative)
-    public void runPivotIntakeMotor(double speed) {
-        m_pivotIntakeMotor.set(speed);
+    public void runPivotHoodMotor(double speed) {
+        m_pivotHoodMotor.set(speed);
     }
 
     // Sets pivot intake motor speed to zero and stops motor
     public void pivotMotorOff() {
-      m_pivotIntakeMotor.set(0);
-      m_pivotIntakeMotor.stopMotor();
+      m_pivotHoodMotor.set(0);
+      m_pivotHoodMotor.stopMotor();
     }
 }
