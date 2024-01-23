@@ -24,6 +24,7 @@ public class ExampleCommand extends Command {
   @Override
   public void execute() {
     m_subsystem.run();
+    System.out.println("command run :D");
   }
 
   @Override
