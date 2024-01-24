@@ -29,6 +29,8 @@ public final class Constants {
     public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
 
     public static final int COUNTS_PER_REV = 42;
+
+    public static final int TRACK_WIDTH = 0; // TO DO: update to distance in meters from the center of left wheel to center of right wheel
   }
 
   public static class IntakeConstants {
