@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants. This class should not be used for any other purpose. All constants should be declared
@@ -35,6 +37,10 @@ public final class Constants {
 
     public static final int INTAKE_MOTOR_PORT = 6; // TO DO: update
 
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
+    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
+
     public static final int COUNTS_PER_REV = 42;
   }
 
@@ -42,8 +48,9 @@ public final class Constants {
 
     public static final int SHOOTER_MOTOR_PORT = 6; // TO DO: update
 
-    public static final int COUNTS_PER_REV = 42;
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
 
+    public static final int COUNTS_PER_REV = 42;
   }
 
   public static class HoodConstants {

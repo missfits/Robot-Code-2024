@@ -8,7 +8,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
@@ -22,20 +21,14 @@ public class Intake extends SubsystemBase {
   // constructor
   public Intake() {}
 
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(()
-                       -> {
-                           /* one-time action goes here */
-                       });
+  // Sets intake motor speed (forward if positive, backward if negative)
+  public void runIntakeMotor(double speed) {
+    m_intakeMotor.set(speed);
   }
 
-  public boolean exampleCondition() { return false; }
-
-  @Override
-  public void periodic() {}
-
-  @Override
-  public void simulationPeriodic() {}
+  // Sets intake motor speed to zero and stops motor
+  public void intakeOff() {
+    m_intakeMotor.set(0);
+    m_intakeMotor.stopMotor();
+  }
 }

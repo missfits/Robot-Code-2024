@@ -8,7 +8,6 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
@@ -19,20 +18,14 @@ public class Shooter extends SubsystemBase {
 
   public Shooter() {}
 
-  public Command exampleMethodCommand() {
-    // Inline construction of command goes here.
-    // Subsystem::RunOnce implicitly requires `this` subsystem.
-    return runOnce(()
-                       -> {
-                           /* one-time action goes here */
-                       });
+  // Sets intake motor speed (forward if positive, backward if negative)
+  public void runShooterMotor(double speed) {
+    m_shooterMotor.set(speed);
   }
 
-  public boolean exampleCondition() { return false; }
-
-  @Override
-  public void periodic() {}
-
-  @Override
-  public void simulationPeriodic() {}
+  // Sets intake motor speed to zero and stops motor
+  public void shooterOff() {
+    m_shooterMotor.set(0);
+    m_shooterMotor.stopMotor();
+  }
 }
