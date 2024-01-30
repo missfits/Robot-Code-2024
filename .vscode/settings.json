@@ -25,5 +25,10 @@
       }
     },
   ],
-  "java.test.defaultConfig": "WPIlibUnitTests"
+  "java.test.defaultConfig": "WPIlibUnitTests",
+  "java.format.settings.url": ".vscode/eclipse-java-google-style.xml",
+  "[java]": {
+    "editor.detectIndentation": false
+  },
+  "java.checkstyle.configuration": "${workspaceFolder}/.vscode/eclipse-java-google-style.xml"
 }

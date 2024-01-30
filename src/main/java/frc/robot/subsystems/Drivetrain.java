@@ -1,28 +1,27 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Subsystem;
-import frc.robot.Constants.DrivetrainConstants;
-
-import frc.robot.OI;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.revrobotics.SparkMaxRelativeEncoder;
+
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-public class Drivetrain extends Subsystem {
+import frc.robot.Constants.DrivetrainConstants;
+import frc.robot.OI;
 
-    // instance variables
-
+/**
+ * Subsystem to control the drivetrain.
+ */
+public class Drivetrain extends SubsystemBase {
+    // Instance variables
     private final OI m_humanControl;
+    public static DifferentialDrive m_robotDrive;
 
-    // motors
-    // sets up a CAN-enabled SPARK MAX motor controller for each motor (left primary, left secondary, right primary, and right secondary)
+    // Motors
+    // Sets up a CAN-enabled SPARK MAX motor controller for each motor (left primary, left secondary, right primary, and right secondary)
     public final CANSparkMax m_leftPrimary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_1_PORT,
         MotorType.kBrushless);
     private final CANSparkMax m_leftSecondary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_2_PORT,
@@ -32,7 +31,7 @@ public class Drivetrain extends Subsystem {
     private final CANSparkMax m_rightSecondary = new CANSparkMax(DrivetrainConstants.RIGHT_MOTOR_2_PORT,
         MotorType.kBrushless);
 
-    // encoders
+    // Encoders
     public final SparkMaxRelativeEncoder m_leftPrimaryEncoder = (SparkMaxRelativeEncoder) m_leftPrimary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
     public final SparkMaxRelativeEncoder m_leftSecondaryEncoder = (SparkMaxRelativeEncoder) m_leftSecondary
@@ -42,12 +41,14 @@ public class Drivetrain extends Subsystem {
     public final SparkMaxRelativeEncoder m_rightSecondaryEncoder = (SparkMaxRelativeEncoder) m_rightSecondary
         .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
-    // groups - to control multiple motors at once (for multiple motors per side of the drivetrain)
+    // Groups
+    // Controls multiple motors at once (for multiple motors per side of the drivetrain)
     private final MotorControllerGroup m_leftGroup = new MotorControllerGroup(m_leftPrimary, m_leftSecondary);
     private final MotorControllerGroup m_rightGroup = new MotorControllerGroup(m_rightPrimary, m_rightSecondary);
-
-    public static DifferentialDrive m_robotDrive;
     
+    /**
+     * Constructs a Drivetrain subsystem.
+     */
     public Drivetrain(OI humanControl) {
       m_robotDrive = new DifferentialDrive(m_leftGroup, m_rightGroup);
       m_humanControl = humanControl;
@@ -55,44 +56,73 @@ public class Drivetrain extends Subsystem {
       configDrivetrainMotors();
     }
 
+    /**
+     * Method called once every scheduler run (not being used right now).
+     */
     @Override
-    public void periodic() {}
+    public void periodic() {
+        // Typically used for telemetry and other periodic actions that do not interfere with commands
+    }
 
+    /**
+     * Method called once every scheduler run during simulation (not being used right now).
+     */
+    @Override
+    public void simulationPeriodic() {
+        // Can be used to update state of robot
+    }
+
+    /**
+     * Sets up motors during construction.
+     */
+    //
     public void configDrivetrainMotors() {
-
-      // makes the secondary motors follow the primary ones
+      // Makes the secondary motors follow the primary ones
       m_leftSecondary.follow(m_leftPrimary);
       m_rightSecondary.follow(m_rightPrimary);
 
-      // inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
+      // Inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
       m_leftGroup.setInverted(false);
       m_rightGroup.setInverted(true);
     }
 
-    // returns position in "rotations"
+    /**
+     * Gets left primary encoder position.
+     * 
+     * @return  current encoder position (in "rotations")
+     */
     public double getLeftEncoderPosition() {
         return m_leftPrimaryEncoder.getPosition();
     }
     
-    // returns position in "rotations"
+    /**
+     * Gets right primary encoder position.
+     * 
+     * @return  current encoder position (in "rotations")
+     */
     public double getRightEncoderPosition() {
         return m_rightPrimaryEncoder.getPosition();
     }
 
-    // returns velocity in RPM 
+    /**
+     * Gets left primary encoder velocity.
+     * 
+     * @return  current encoder velocity (in RPM)
+     */
     public double getLeftEncoderVelocity() {
         return m_leftPrimaryEncoder.getVelocity();
     }
 
-    // returns velocity in RPM 
+    /**
+     * Gets right primary encoder velocity.
+     * 
+     * @return  current encoder velocity (in RPM)
+     */
     public double getRightEncoderVelocity() {
         return m_rightPrimaryEncoder.getVelocity();
     }
 
-    @Override
-    public void simulationPeriodic() {}
-
-    // ensures given value is within a specified range
+    // Ensures given value is within a specified range
     public double clamp(double val, double min, double max) {
       if (val > max) {
           System.out.println("out of range");
@@ -104,7 +134,7 @@ public class Drivetrain extends Subsystem {
       return val;
     }
 
-    // arcade drive
+    // Arcade drive
     public void arcadeDrive(double forwardSpeed, double rotationSpeed) {
         m_robotDrive.arcadeDrive(forwardSpeed, rotationSpeed);
     }

@@ -1,51 +1,102 @@
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
+import frc.robot.Constants.OperatorConstants;
+
+/**
+ * Operator Interface class to handle communication between controllers and driver station.
+ */
 public class OI {
-    
-    // Replace with CommandPS4Controller or CommandJoystick if needed
+    // Instance variables
     public static CommandXboxController m_driverXbox = new CommandXboxController(
         OperatorConstants.DRIVER_XBOX_PORT);
     public static CommandXboxController m_coPilotXbox = new CommandXboxController(
         OperatorConstants.COPILOT_XBOX_PORT);
+    
+    /**
+     * Constructs OI object.
+     */
+    public OI() {}
 
-    // driver xbox inputs
+    // Driver XBox joystick values
 
-    // needs to be negative to make motors run straight as of 9/26/23
-    public double getDriverXBoxLeftJoyY() {
-        return -m_driverXbox.getLeftY();
-    }
-
+    /**
+     * Gets XBox left joystick x-axis value.
+     *
+     * @return  current left side x-axis value
+     */
     public double getDriverXBoxLeftJoyX() {
         return m_driverXbox.getLeftX();
     }
 
+    /**
+     * Gets XBox left joystick y-axis value.
+     *
+     * @return  current left side y-axis value
+     */
+    public double getDriverXBoxLeftJoyY() {
+        // Needs to be negative to make motors run straight (as of 9/26/23)
+        return -m_driverXbox.getLeftY();
+    }
+
+    /**
+     * Gets XBox right joystick x-axis value.
+     *
+     * @return  current right side x-axis value
+     */
+    public double getDriverXBoxRightJoyX() {
+        // Needs to be negative to make the turning correct (as of 9/26/23)
+        return -m_driverXbox.getRightX();
+    }
+
+    /**
+     * Gets XBox right joystick y-axis value.
+     *
+     * @return  current right side y-axis value
+     */
     public double getDriverXBoxRightJoyY() {
         return m_driverXbox.getRightY();
     }
 
-    // needs to be negative to make the turning correct as of 9/26/23
-    public double getDriverXBoxRightJoyX() {
-        return -m_driverXbox.getRightX();
-    }
+    // Copilot XBox joystick values (not being used right now)
+    
+    // /**
+    //  * Gets XBox left joystick x-axis value.
+    //  *
+    //  * @return  current left side x-axis value
+    //  */
+    // public double getCoXBoxLeftJoyX() {
+    //     return m_coPilotXbox.getLeftX();
+    // }
 
-    // copilot xbox inputs
-    public double getCoXBoxLeftJoyY() {
-        return m_coPilotXbox.getLeftY();
-    }
+    // /**
+    //  * Gets XBox left joystick y-axis value.
+    //  *
+    //  * @return  current left side y-axis value
+    //  */
+    // public double getCoXBoxLeftJoyY() {
+    //     // Needs to be negative to make motors run straight (as of 9/26/23)
+    //     return -m_driverXbox.getLeftY();
+    // }
 
-    public double getCoXBoxLeftJoyX() {
-        return m_coPilotXbox.getLeftX();
-    }
+    // /**
+    //  * Gets XBox right joystick x-axis value.
+    //  *
+    //  * @return  current right side x-axis value
+    //  */
+    // public double getCoXBoxRightJoyX() {
+    //     // Needs to be negative to make the turning correct (as of 9/26/23)
+    //     return -m_driverXbox.getRightX();
+    // }
 
-    public double getCoXBoxRightJoyY() {
-        return m_coPilotXbox.getRightY();
-    }
-
-    public double getCoXBoxRightJoyX() {
-        return m_coPilotXbox.getRightX();
-    }
+    // /**
+    //  * Gets XBox right joystick y-axis value.
+    //  *
+    //  * @return  current right side y-axis value
+    //  */
+    // public double getCoXBoxRightJoyY() {
+    //     return m_coPilotXbox.getRightY();
+    // }
 
 }

@@ -6,22 +6,32 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.OI;
 import frc.robot.Constants.OperatorConstants;
 
-// import java.lang.Math.*;
-
+/**
+ * Command to arcade drive. Uses Drivetrain and OI subsystems.
+ */
 public class ArcadeDriveCommand extends Command {
+    // Instance variables
     private final Drivetrain m_drivetrain;
     private final OI m_humanControl;
 
+    /**
+     * Constructs an ArcadeDriveCommand command.
+     */
     public ArcadeDriveCommand(Drivetrain drivetrain, OI humanControl) {
         m_drivetrain = drivetrain;
         m_humanControl = humanControl;
         addRequirements(drivetrain);
     }
 
+    /**
+     * Method called once per time the command is scheduled.
+     */
     @Override
-    public void initialize() { }
+    public void initialize() {}
 
-    // Called every time the scheduler runs while the command is scheduled.
+    /**
+     * Method called repeatedly while the command is scheduled (every time the scheduler runs).
+     */
     @Override
     public void execute() {
         double xJoy = m_humanControl.getDriverXBoxLeftJoyY();
@@ -32,13 +42,21 @@ public class ArcadeDriveCommand extends Command {
         m_drivetrain.arcadeDrive(OperatorConstants.DRIVE_SPEED_ADJUSTMENT * x_val, OperatorConstants.DRIVE_SPEED_ADJUSTMENT * y_val);
     }
 
-    // Called once the command ends or is interrupted.
+    /**
+     * Method called once when the command ends (whether it finishes normally or is interrupted).
+     */
     @Override
     public void end(boolean interrupted) {}
 
-    // Returns true when the command should end.
+    /**
+     * Method called repeatedly while the command is scheduled (returns false while the command is
+     * scheduled, true when the command should end).
+     * 
+     * @return  whether command is finished
+     */
     @Override
     public boolean isFinished() {
+        
         return false;
     }
 }
