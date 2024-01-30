@@ -65,8 +65,8 @@ public class Climber extends SubsystemBase {
      * Sets climber motor speed to 0 and stops motor.
      */
     public void climberOff() {
-      m_climberMotor.set(0);
-      m_climberMotor.stopMotor();
+        m_climberMotor.set(0);
+        m_climberMotor.stopMotor();
     }
 
 }

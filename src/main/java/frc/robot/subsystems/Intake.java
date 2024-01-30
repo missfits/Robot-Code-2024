@@ -14,13 +14,16 @@ import frc.robot.Constants.IntakeConstants;
  */
 public class Intake extends SubsystemBase {
     // Motors
-    private final CANSparkMax m_intakeMotor = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_PORT, MotorType.kBrushless);
-    // pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
-    private final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
+    private final CANSparkMax m_intakeMotor = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_PORT,
+        MotorType.kBrushless);
+    // Pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
+    private final CANSparkMax m_pivotIntakeMotor = new CANSparkMax(
+        IntakeConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
 
     // Encoder
-    private final SparkMaxRelativeEncoder m_pivotEncoder = (SparkMaxRelativeEncoder) m_pivotIntakeMotor
-        .getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor, IntakeConstants.COUNTS_PER_REV);
+    private final SparkMaxRelativeEncoder m_pivotEncoder = (SparkMaxRelativeEncoder)
+        m_pivotIntakeMotor.getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor,
+        IntakeConstants.COUNTS_PER_REV);
     
     /**
      * Constructs an Intake subsystem.
@@ -63,9 +66,10 @@ public class Intake extends SubsystemBase {
     }
 
     /**
-     * Initializes pivot intake encoder position to 0. MAKE SURE INTAKE IS ALWAYS FULLY UP WHENEVER THIS METHOD IS CALLED.
+     * Initializes pivot intake encoder position to 0.
      */
     public void initializePivotEncoderPosition() {
+        // MAKE SURE INTAKE IS ALWAYS FULLY UP WHENEVER THIS METHOD IS CALLED.
         setPivotEncoderPosition(0);
     }
 
@@ -82,7 +86,7 @@ public class Intake extends SubsystemBase {
      * Sets pivot intake motor speed to 0 and stops motor.
      */
     public void pivotMotorOff() {
-      m_pivotIntakeMotor.set(0);
-      m_pivotIntakeMotor.stopMotor();
+        m_pivotIntakeMotor.set(0);
+        m_pivotIntakeMotor.stopMotor();
     }
 }

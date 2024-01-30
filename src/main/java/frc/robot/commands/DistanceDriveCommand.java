@@ -40,7 +40,8 @@ public class DistanceDriveCommand extends Command {
      */
     @Override
     public void execute() {
-        m_drivetrain.arcadeDrive(AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance), 0); // drives in the direction of targetDistance 
+        // Drives in the direction of targetDistance 
+        m_drivetrain.arcadeDrive(AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance), 0);
     }
 
     /**
@@ -59,7 +60,7 @@ public class DistanceDriveCommand extends Command {
     public boolean isFinished() {
         // Calculates if either encoder has moved enough to reach the target distance
         return (Math.abs(m_drivetrain.getRightEncoderPosition() - m_rightEncoderStart) > 
-                        Math.abs(m_targetDistance) || Math.abs(m_drivetrain.getLeftEncoderPosition() -
-                        m_leftEncoderStart) >  Math.abs(m_targetDistance)); 
+            Math.abs(m_targetDistance) || Math.abs(m_drivetrain.getLeftEncoderPosition() -
+            m_leftEncoderStart) >  Math.abs(m_targetDistance)); 
     }
 }

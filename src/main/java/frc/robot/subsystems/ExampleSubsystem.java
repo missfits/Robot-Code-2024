@@ -42,7 +42,8 @@ public class ExampleSubsystem extends SubsystemBase {
      */
     @Override
     public void periodic() {
-        // Typically used for telemetry and other periodic actions that do not interfere with commands
+        // Typically used for telemetry and other periodic actions that do not interfere with
+        // commands
     }
 
     /**
