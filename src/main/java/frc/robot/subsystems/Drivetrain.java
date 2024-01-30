@@ -17,6 +17,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
@@ -59,6 +60,12 @@ public class Drivetrain extends SubsystemBase {
     private double m_leftDistanceMeters  = 0;
     private double m_rightDistanceMeters  = 0;
     private Pose2d m_initialPoseMeters = new Pose2d(0, 0, new Rotation2d(0));
+    private final DifferentialDrivePoseEstimator m_poseEstimator = new DifferentialDrivePoseEstimator(
+        m_kinematics,
+        m_gyro.getRotation2d(),
+        getLeftEncoderPosition(),
+        getRightEncoderPosition(),
+        new Pose2d());
 
     public static AHRS m_gyro = new AHRS(Port.kMXP);
 
@@ -75,7 +82,15 @@ public class Drivetrain extends SubsystemBase {
     }
 
     @Override
-    public void periodic() {}
+    public void periodic() {
+        // Get the rotation of the robot from the gyro.
+        var gyroAngle = m_gyro.getRotation2d();
+
+        // Update the pose
+        m_odometry.update(gyroAngle,
+            getLeftEncoderPosition(),
+            getRightEncoderPosition());
+    }
 
     public void configDrivetrainMotors() {
 
