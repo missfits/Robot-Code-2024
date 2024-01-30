@@ -15,12 +15,12 @@ public class Climber extends SubsystemBase {
     // Instance variables
     // Motor
     private final CANSparkMax m_climberMotor = new CANSparkMax(ClimberConstants.CLIMBER_MOTOR_PORT,
-            MotorType.kBrushless);
+        MotorType.kBrushless);
 
     // Encoder
     private final SparkMaxRelativeEncoder m_climberEncoder = (SparkMaxRelativeEncoder)
-            m_climberMotor.getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor,
-            ClimberConstants.COUNTS_PER_REV);
+        m_climberMotor.getEncoder(SparkMaxRelativeEncoder.Type.kHallSensor,
+        ClimberConstants.COUNTS_PER_REV);
     
     /**
      * Constructs a Climber subsystem.
