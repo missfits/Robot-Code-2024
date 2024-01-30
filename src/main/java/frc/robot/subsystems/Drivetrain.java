@@ -17,14 +17,15 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
 
 import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.I2C.Port;
 
 public class Drivetrain extends SubsystemBase {
 
@@ -53,26 +54,20 @@ public class Drivetrain extends SubsystemBase {
     public final SparkRelativeEncoder m_rightSecondaryEncoder = (SparkRelativeEncoder) m_rightSecondary
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
-    public static DifferentialDrive m_robotDrive;
+        
+    // odometry
 
-    private final DifferentialDriveKinematics m_kinematics  = new DifferentialDriveKinematics(DrivetrainConstants.TRACK_WIDTH);
-    private final Rotation2d m_gyroAngle = new Rotation2d();
-    private double m_leftDistanceMeters  = 0;
-    private double m_rightDistanceMeters  = 0;
-    private Pose2d m_initialPoseMeters = new Pose2d(0, 0, new Rotation2d(0));
-    private final DifferentialDrivePoseEstimator m_poseEstimator = new DifferentialDrivePoseEstimator(
-        m_kinematics,
-        m_gyro.getRotation2d(),
-        getLeftEncoderPosition(),
-        getRightEncoderPosition(),
-        new Pose2d());
+    public static DifferentialDrive m_robotDrive;
+    private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(DrivetrainConstants.TRACK_WIDTH);
+    private Rotation2d m_gyroAngle = new Rotation2d();
 
     public static AHRS m_gyro = new AHRS(Port.kMXP);
 
-    DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(
+    public DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(
         m_gyro.getRotation2d(),
         getLeftEncoderPosition(), getRightEncoderPosition(),
         new Pose2d(0, 0, new Rotation2d()));
+    
     
     public Drivetrain(OI humanControl) {
       m_robotDrive = new DifferentialDrive(m_leftPrimary, m_rightPrimary);
@@ -84,10 +79,10 @@ public class Drivetrain extends SubsystemBase {
     @Override
     public void periodic() {
         // Get the rotation of the robot from the gyro.
-        var gyroAngle = m_gyro.getRotation2d();
+        m_gyroAngle = m_gyro.getRotation2d();
 
-        // Update the pose
-        m_odometry.update(gyroAngle,
+        // Update the robot pose accordingly
+        m_odometry.update(m_gyroAngle,
             getLeftEncoderPosition(),
             getRightEncoderPosition());
     }
@@ -106,6 +101,7 @@ public class Drivetrain extends SubsystemBase {
       m_rightSecondary.setInverted(true);
 
     }
+    // getting encoder values
 
     // returns position in "rotations"
     public double getLeftEncoderPosition() {
@@ -127,6 +123,20 @@ public class Drivetrain extends SubsystemBase {
         return m_rightPrimaryEncoder.getVelocity();
     }
 
+    // odometry methods
+
+    // returns current robot pose in meters
+    public Pose2d getPose() {
+        return m_odometry.getPoseMeters();
+    }
+
+    public void resetPose(Rotation2d gyroAngle, DifferentialDriveWheelPositions wheelPositions, Pose2d poseMeters) {
+        m_odometry.resetPosition(gyroAngle, wheelPositions, poseMeters);
+    }
+
+    // public ChassisSpeeds getCurrentSpeeds() {
+
+    // }
 
 
     @Override
