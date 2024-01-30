@@ -10,7 +10,7 @@ public class PivotForwardCommand extends Command{
     private Hood m_hood;
 
     public PivotForwardCommand(Hood hood){
-        m_hood  = hood;
+        m_hood = hood;
     }
 
     @Override

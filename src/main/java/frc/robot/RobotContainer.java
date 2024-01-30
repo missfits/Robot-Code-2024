@@ -13,11 +13,15 @@ import frc.robot.commands.IntakeBackwardCommand;
 import frc.robot.commands.IntakeForwardCommand;
 import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
-import frc.robot.commands.DefaultIntakeCommand;
+import frc.robot.commands.ShootAmpCommand;
+import frc.robot.commands.ShootSpeakerCommand;
+import frc.robot.commands.ShootBackwardCommand;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Hood;
+import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -34,14 +38,15 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
-  private static final Hood m_intake = new Hood();
+  private static final Intake m_intake = new Intake();
+  private static final Hood m_hood = new Hood();
+  private static final Shooter m_shooter = new Shooter();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    m_intake.setDefaultCommand(new DefaultIntakeCommand(m_intake));
   }
 
   /**
@@ -53,12 +58,12 @@ public class RobotContainer {
    * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  private void configureBindings() {
+  private void configureBindings() { // need to update
 
     OI.m_coPilotXbox.b().whileTrue(new IntakeForwardCommand(m_intake));
     OI.m_coPilotXbox.a().whileTrue(new IntakeBackwardCommand(m_intake));
-    OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_intake));
-    OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_intake));
+    OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_hood));
+    OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_hood));
   }
 
   /**

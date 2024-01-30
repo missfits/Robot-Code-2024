@@ -48,7 +48,9 @@ public final class Constants {
 
     public static final int SHOOTER_MOTOR_PORT = 6; // TO DO: update
 
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
 
     public static final int COUNTS_PER_REV = 42;
   }

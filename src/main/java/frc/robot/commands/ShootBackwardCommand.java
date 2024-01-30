@@ -9,10 +9,10 @@ import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
 /** An example command that uses an example subsystem. */
-public class ShooterForwardCommand extends Command {
+public class ShootBackwardCommand extends Command {
     private Shooter m_shooter;
     
-    public ShooterForwardCommand(Shooter shooter){
+    public ShootBackwardCommand(Shooter shooter){
         m_shooter = shooter;
         addRequirements(shooter);
     }
@@ -24,7 +24,7 @@ public class ShooterForwardCommand extends Command {
 
     @Override
     public void execute() {
-        m_shooter.runShooterMotor(ShooterConstants.INTAKE_MOTOR_SPEED_FORWARD);
+        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_BACKWARD);
     }
 
     @Override
