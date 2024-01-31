@@ -44,7 +44,7 @@ public class Drivetrain extends SubsystemBase {
     public static DifferentialDrive m_robotDrive;
     
     public Drivetrain(OI humanControl) {
-      m_robotDrive = new DifferentialDrive(m_leftPrimary, m_rightPrimary);
+      m_robotDrive = new DifferentialDrive(m_rightPrimary, m_leftPrimary);
       m_humanControl = humanControl;
 
       configDrivetrainMotors();
