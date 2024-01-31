@@ -17,15 +17,21 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
+// import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
 
 import com.kauailabs.navx.frc.AHRS;
+
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.I2C.Port;
+
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.util.ReplanningConfig;
 
 public class Drivetrain extends SubsystemBase {
 
@@ -74,6 +80,26 @@ public class Drivetrain extends SubsystemBase {
       m_humanControl = humanControl;
 
       configDrivetrainMotors();
+
+      AutoBuilder.configureRamsete(
+            this::getPose, // Robot pose supplier
+            this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
+            this::getCurrentSpeeds, // Current ChassisSpeeds supplier
+            this::drive, // Method that will drive the robot given ChassisSpeeds
+            new ReplanningConfig(), // Default path replanning config. See the API for the options here
+            () -> {
+              // Boolean supplier that controls when the path will be mirrored for the red alliance
+              // This will flip the path being followed to the red side of the field.
+              // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+              var alliance = DriverStation.getAlliance();
+              if (alliance.isPresent()) {
+                return alliance.get() == DriverStation.Alliance.Red;
+              }
+              return false;
+            },
+            this // Reference to this subsystem to set requirements
+        );
     }
 
     @Override
@@ -101,6 +127,7 @@ public class Drivetrain extends SubsystemBase {
       m_rightSecondary.setInverted(true);
 
     }
+
     // getting encoder values
 
     // returns position in "rotations"
@@ -130,14 +157,22 @@ public class Drivetrain extends SubsystemBase {
         return m_odometry.getPoseMeters();
     }
 
-    public void resetPose(Rotation2d gyroAngle, DifferentialDriveWheelPositions wheelPositions, Pose2d poseMeters) {
-        m_odometry.resetPosition(gyroAngle, wheelPositions, poseMeters);
+    // resets robot pose to given pose
+    public void resetPose(Pose2d pose) {
+        m_odometry.resetPosition(m_gyro.getRotation2d(), new DifferentialDriveWheelPositions(getLeftEncoderPosition(), getRightEncoderPosition()), pose);
     }
 
-    // public ChassisSpeeds getCurrentSpeeds() {
+    // gets current chassis speeds of robot
+    public ChassisSpeeds getCurrentSpeeds() {
+        return m_kinematics.toChassisSpeeds(new DifferentialDriveWheelSpeeds(getLeftEncoderVelocity(), getRightEncoderVelocity()));
+    }
 
-    // }
-
+    // drives the robot given x and y chassis speeds (for auto, not for regular drive!)
+    public void drive(ChassisSpeeds chassisSpeeds) {
+        DifferentialDriveWheelSpeeds wheelSpeeds = m_kinematics.toWheelSpeeds(chassisSpeeds);
+        m_leftPrimary.set(wheelSpeeds.leftMetersPerSecond);
+        m_rightPrimary.set(wheelSpeeds.rightMetersPerSecond);
+    }
 
     @Override
     public void simulationPeriodic() {}
