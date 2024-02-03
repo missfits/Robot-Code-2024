@@ -6,7 +6,7 @@ package frc.robot;
 
 // import frc.robot.Constants.OperatorConstants;
 
-import frc.robot.commands.Autos;
+// import frc.robot.commands.Autos;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.commands.IntakeBackwardCommand;
@@ -14,11 +14,18 @@ import frc.robot.commands.IntakeForwardCommand;
 import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
 import frc.robot.commands.DefaultIntakeCommand;
-
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+// import com.pathplanner.lib.auto.NamedCommands;
+
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
@@ -36,12 +43,26 @@ public class RobotContainer {
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
   private static final Intake m_intake = new Intake();
 
+  private final SendableChooser<Command> m_autoChooser; // sendable chooser that holds the autos
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
     m_intake.setDefaultCommand(new DefaultIntakeCommand(m_intake));
+
+    // Build an auto chooser with all the PathPlanner autos. Uses Commands.none() as the default option.
+    // To set a different default auto, put its name (as a String) below as a parameter
+    m_autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData("Auto Chooser", m_autoChooser);
+
+    // Creating the tab for auto chooser in shuffleboard (under tab named "Comp HUD")
+    ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
+    compTab.add("Auto Chooser", m_autoChooser).withSize(3, 2);
+
+    // Registering commands for pathplanner
+    // NamedCommands.registerCommand("Drive straight", Autos.driveStraightPathPlannerAuto());
   }
 
   /**
@@ -67,7 +88,9 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // the taxi command that will be run in autonomous
-    return Autos.taxiAuto(m_drivetrain);
+    // returns selected command from the auto chooser
+    return m_autoChooser.getSelected();
   }
+
+
 }

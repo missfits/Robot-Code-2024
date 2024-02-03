@@ -62,11 +62,8 @@ public class Drivetrain extends SubsystemBase {
 
         
     // odometry
-
     public static DifferentialDrive m_robotDrive;
     private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(DrivetrainConstants.TRACK_WIDTH);
-    private Rotation2d m_gyroAngle = new Rotation2d();
-
     public static AHRS m_gyro = new AHRS(Port.kMXP);
 
     public DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(
@@ -74,29 +71,30 @@ public class Drivetrain extends SubsystemBase {
         getLeftEncoderPosition(), getRightEncoderPosition(),
         new Pose2d(0, 0, new Rotation2d()));
     
-    
+    // constructor for drivetrain
     public Drivetrain(OI humanControl) {
-      m_robotDrive = new DifferentialDrive(m_leftPrimary, m_rightPrimary);
-      m_humanControl = humanControl;
+        m_robotDrive = new DifferentialDrive(m_leftPrimary, m_rightPrimary);
+        m_humanControl = humanControl;
 
-      configDrivetrainMotors();
+        configDrivetrainMotors();
 
-      AutoBuilder.configureRamsete(
+        // configure auto builder
+        AutoBuilder.configureRamsete(
             this::getPose, // Robot pose supplier
             this::resetPose, // Method to reset odometry (will be called if your auto has a starting pose)
             this::getCurrentSpeeds, // Current ChassisSpeeds supplier
             this::drive, // Method that will drive the robot given ChassisSpeeds
             new ReplanningConfig(), // Default path replanning config. See the API for the options here
             () -> {
-              // Boolean supplier that controls when the path will be mirrored for the red alliance
-              // This will flip the path being followed to the red side of the field.
-              // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+            // Boolean supplier that controls when the path will be mirrored for the red alliance
+            // This will flip the path being followed to the red side of the field.
+            // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
 
-              var alliance = DriverStation.getAlliance();
-              if (alliance.isPresent()) {
+            var alliance = DriverStation.getAlliance();
+            if (alliance.isPresent()) {
                 return alliance.get() == DriverStation.Alliance.Red;
-              }
-              return false;
+            }
+            return false;
             },
             this // Reference to this subsystem to set requirements
         );
@@ -104,11 +102,9 @@ public class Drivetrain extends SubsystemBase {
 
     @Override
     public void periodic() {
-        // Get the rotation of the robot from the gyro.
-        m_gyroAngle = m_gyro.getRotation2d();
 
         // Update the robot pose accordingly
-        m_odometry.update(m_gyroAngle,
+        m_odometry.update(m_gyro.getRotation2d(),
             getLeftEncoderPosition(),
             getRightEncoderPosition());
     }
