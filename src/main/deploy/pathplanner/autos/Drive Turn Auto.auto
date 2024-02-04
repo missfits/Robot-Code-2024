@@ -5,7 +5,7 @@
       "x": 1.0,
       "y": 5.0
     },
-    "rotation": 0
+    "rotation": 90.0
   },
   "command": {
     "type": "sequential",
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Drive Horizontally"
+            "pathName": "Drive Horizontally #2"
           }
         },
         {
