@@ -19,14 +19,14 @@ public final class Constants {
     public static final int COPILOT_XBOX_PORT = 1;
 
     public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
-    public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
+    public static final double DRIVE_SPEED_ADJUSTMENT = 0.4;
   }
 
   public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 1; // TO DO: update
-    public static final int LEFT_MOTOR_2_PORT = 2; // TO DO: update
-    public static final int RIGHT_MOTOR_1_PORT = 3; // ^^
-    public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
+    public static final int LEFT_MOTOR_1_PORT = 3; // TO DO: update
+    public static final int LEFT_MOTOR_2_PORT = 4; // TO DO: update
+    public static final int RIGHT_MOTOR_1_PORT = 1; // ^^
+    public static final int RIGHT_MOTOR_2_PORT = 2; // ^^
 
     public static final int COUNTS_PER_REV = 42;
 

@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 // import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
+// import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
@@ -32,6 +32,8 @@ import edu.wpi.first.wpilibj.I2C.Port;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.util.ReplanningConfig;
+
+import java.lang.Math;
 
 public class Drivetrain extends SubsystemBase {
 
@@ -111,16 +113,16 @@ public class Drivetrain extends SubsystemBase {
 
     public void configDrivetrainMotors() {
 
-      // makes the secondary motors follow the primary ones
-      m_leftSecondary.follow(m_leftPrimary);
-      m_rightSecondary.follow(m_rightPrimary);
+        // makes the secondary motors follow the primary ones
+        //   m_leftSecondary.follow(m_leftPrimary); // FOR TESTING ON 2/5, UNCOMMENT THIS AFTER DONE
+        m_rightSecondary.follow(m_rightPrimary);
 
-      // inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
-      m_leftPrimary.setInverted(false);
-      m_leftSecondary.setInverted(false);
+        // inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
+        m_leftPrimary.setInverted(false);
+        m_leftSecondary.setInverted(false);
 
-      m_rightPrimary.setInverted(true);
-      m_rightSecondary.setInverted(true);
+        m_rightPrimary.setInverted(true);
+        m_rightSecondary.setInverted(true);
 
     }
 
@@ -171,8 +173,9 @@ public class Drivetrain extends SubsystemBase {
     // drives the robot given x and y chassis speeds (for auto, not for regular drive!)
     public void drive(ChassisSpeeds chassisSpeeds) {
         DifferentialDriveWheelSpeeds wheelSpeeds = m_kinematics.toWheelSpeeds(chassisSpeeds);
-        m_leftPrimary.set(wheelSpeeds.leftMetersPerSecond);
-        m_rightPrimary.set(wheelSpeeds.rightMetersPerSecond);
+        m_leftPrimary.set(0.5 > Math.abs(0.2*wheelSpeeds.rightMetersPerSecond) ? 0.2*wheelSpeeds.rightMetersPerSecond : 0);
+        m_rightPrimary.set(0.5 > Math.abs(0.2*wheelSpeeds.leftMetersPerSecond) ? 0.2*wheelSpeeds.leftMetersPerSecond : 0);
+        System.out.println("even more slowed down driving? " + wheelSpeeds);
     }
 
     @Override
