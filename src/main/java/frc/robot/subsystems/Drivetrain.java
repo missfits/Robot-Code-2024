@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 // import edu.wpi.first.math.estimator.DifferentialDrivePoseEstimator;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
-// import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive.WheelSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelSpeeds;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
@@ -107,8 +107,8 @@ public class Drivetrain extends SubsystemBase {
 
         // Update the robot pose accordingly
         m_odometry.update(m_gyro.getRotation2d(),
-            getLeftEncoderPosition(),
-            getRightEncoderPosition());
+            DrivetrainConstants.ENCODER_TICKS_TO_METERS * getLeftEncoderPosition(),
+            DrivetrainConstants.ENCODER_TICKS_TO_METERS * getRightEncoderPosition());
     }
 
     public void configDrivetrainMotors() {
@@ -168,14 +168,15 @@ public class Drivetrain extends SubsystemBase {
 
     // gets current chassis speeds of robot
     public ChassisSpeeds getCurrentSpeeds() {
-        return m_kinematics.toChassisSpeeds(new DifferentialDriveWheelSpeeds(getLeftEncoderVelocity(), getRightEncoderVelocity()));
+        return m_kinematics.toChassisSpeeds(new DifferentialDriveWheelSpeeds(DrivetrainConstants.ENCODER_RPM_TO_WHEEL_SPEED * getLeftEncoderVelocity(), DrivetrainConstants.ENCODER_RPM_TO_WHEEL_SPEED * getRightEncoderVelocity()));
     }
 
     // drives the robot given x and y chassis speeds (for auto, not for regular drive!)
     public void drive(ChassisSpeeds chassisSpeeds) {
         DifferentialDriveWheelSpeeds wheelSpeeds = m_kinematics.toWheelSpeeds(chassisSpeeds);
-        m_leftPrimary.set(0.5 > Math.abs(0.2*wheelSpeeds.rightMetersPerSecond) ? 0.2*wheelSpeeds.rightMetersPerSecond : 0);
-        m_rightPrimary.set(0.5 > Math.abs(0.2*wheelSpeeds.leftMetersPerSecond) ? 0.2*wheelSpeeds.leftMetersPerSecond : 0);
+
+        m_leftPrimary.set(0.5 > Math.abs(wheelSpeeds.rightMetersPerSecond) ? wheelSpeeds.rightMetersPerSecond : 0);
+        m_rightPrimary.set(0.5 > Math.abs(wheelSpeeds.leftMetersPerSecond) ? wheelSpeeds.leftMetersPerSecond : 0);
         System.out.println("even more slowed down driving? " + wheelSpeeds);
     }
 

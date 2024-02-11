@@ -30,7 +30,7 @@ public class ArcadeDriveCommand extends Command {
         double y_val = Math.abs(yJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? yJoy : 0.0;
 
         m_drivetrain.arcadeDrive(OperatorConstants.DRIVE_SPEED_ADJUSTMENT * x_val, OperatorConstants.DRIVE_SPEED_ADJUSTMENT * y_val);
-        // System.out.println("rotation: " + m_drivetrain.getRotation() + ", pose: " + m_drivetrain.getPose());
+        System.out.println("rotation: " + m_drivetrain.getRotation() + ", pose: " + m_drivetrain.getPose());
     }
 
     // Called once the command ends or is interrupted.
