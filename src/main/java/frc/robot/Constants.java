@@ -29,6 +29,8 @@ public final class Constants {
     public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
 
     public static final int COUNTS_PER_REV = 42;
+
+    public static final double METERS_TO_ROTATIONS = 0.53; // TO DO: tune (approximate taken from 2023 code)
   }
 
   public static class IntakeConstants {
