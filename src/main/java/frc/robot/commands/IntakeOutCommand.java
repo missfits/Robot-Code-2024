@@ -5,17 +5,20 @@ import frc.robot.subsystems.Intake;
 import frc.robot.Constants.IntakeConstants;
 
 
-public class IntakeBackwardCommand extends Command {
+/**
+ * Spits out note.
+ */
+public class IntakeOutCommand extends Command {
     private Intake m_intake;
-
-    public IntakeBackwardCommand(Intake intake){
+    
+    public IntakeOutCommand(Intake intake){
         m_intake = intake;
         addRequirements(intake);
     }
 
     @Override
     public void initialize() {
-        // System.out.println("INTAKE SPIT COMMAND STARTED");
+        // System.out.println("INTAKE SUCK COMMAND STARTED");
     }  
 
     @Override
@@ -30,6 +33,6 @@ public class IntakeBackwardCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return false;
+       return false;
     }
 }
