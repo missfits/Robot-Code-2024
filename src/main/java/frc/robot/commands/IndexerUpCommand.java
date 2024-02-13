@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Indexer;
 import frc.robot.Constants.IndexerConstants;
 
-public class IndexerBackwardCommand extends Command {
+public class IndexerUpCommand extends Command {
     private Indexer m_indexer;
     
-    public IndexerBackwardCommand(Indexer indexer){
+    public IndexerUpCommand(Indexer indexer){
         m_indexer = indexer;
         addRequirements(indexer);
     }

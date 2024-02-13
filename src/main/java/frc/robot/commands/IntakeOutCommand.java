@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.Constants.IntakeConstants;
 
-public class IntakeBackwardCommand extends Command {
+public class IntakeOutCommand extends Command {
     private Intake m_intake;
     
-    public IntakeBackwardCommand(Intake intake){
+    public IntakeOutCommand(Intake intake){
         m_intake = intake;
         addRequirements(intake);
     }

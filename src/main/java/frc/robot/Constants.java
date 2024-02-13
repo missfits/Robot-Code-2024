@@ -36,8 +36,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.1; 
-    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.1;
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.05; 
+    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.05;
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
 
     public static final int COUNTS_PER_REV = 42;
@@ -46,8 +46,8 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.1; 
-    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.1;
+    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.05; 
+    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.05;
     public static final double INDEXER_MOTOR_SPEED_DEFAULT = 0.05;
 
     public static final int COUNTS_PER_REV = 42;
@@ -68,8 +68,8 @@ public final class Constants {
 
     // CONSTANTS FROM OFFSEASON; may need changing
 
-    public static final int HOOD_MOTOR_PORT = 6; // TO DO: update
-    public static final int PIVOT_MOTOR_PORT = 8; // TO DO: update
+    public static final int HOOD_MOTOR_PORT = 98; // TO DO: update
+    public static final int PIVOT_MOTOR_PORT = 99; // TO DO: update
 
     public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4;
     public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6;

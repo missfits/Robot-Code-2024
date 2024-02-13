@@ -19,7 +19,7 @@ public class ShootBackwardCommand extends Command {
 
     @Override
     public void initialize() {
-        // System.out.println("SHOOTER SUCK COMMAND STARTED");
+        System.out.println("SHOOTER SUCK COMMAND STARTED");
     }  
 
     @Override
