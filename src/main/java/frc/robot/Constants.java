@@ -25,32 +25,41 @@ public final class Constants {
   }
 
   public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 1; // TO DO: update
-    public static final int LEFT_MOTOR_2_PORT = 2; // TO DO: update
-    public static final int RIGHT_MOTOR_1_PORT = 3; // ^^
-    public static final int RIGHT_MOTOR_2_PORT = 4; // ^^
+    public static final int LEFT_MOTOR_1_PORT = 1;
+    public static final int LEFT_MOTOR_2_PORT = 2;
+    public static final int RIGHT_MOTOR_1_PORT = 3;
+    public static final int RIGHT_MOTOR_2_PORT = 4;
 
     public static final int COUNTS_PER_REV = 42;
   }
 
   public static class IntakeConstants {
+    public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final int INTAKE_MOTOR_PORT = 6; // TO DO: update
-
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; 
     public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
 
     public static final int COUNTS_PER_REV = 42;
   }
 
+  public static class IndexerConstants {
+    public static final int INDEXER_MOTOR_PORT = 6;
+
+    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.4; 
+    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.6;
+    public static final double INDEXER_MOTOR_SPEED_DEFAULT = 0.05;
+
+    public static final int COUNTS_PER_REV = 42;
+  }
+
   public static class ShooterConstants {
 
-    public static final int SHOOTER_MOTOR_PORT = 6; // TO DO: update
+    public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.4; // default value 0.6, lower to prevent cubes from breaking
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.4; // default value 0.6, lower to prevent cubes from breaking
-    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.4;
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.4;
+    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.4; 
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -62,7 +71,7 @@ public final class Constants {
     public static final int HOOD_MOTOR_PORT = 6; // TO DO: update
     public static final int PIVOT_MOTOR_PORT = 8; // TO DO: update
 
-    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // default value 0.6, lower to prevent cubes from breaking
+    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4;
     public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6;
     public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05;
 

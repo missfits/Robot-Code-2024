@@ -19,9 +19,10 @@ import frc.robot.commands.ShootBackwardCommand;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Hood;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Hood;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -38,9 +39,10 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
+  private static final Indexer m_indexer = new Indexer();
   private static final Intake m_intake = new Intake();
-  private static final Hood m_hood = new Hood();
   private static final Shooter m_shooter = new Shooter();
+  private static final Hood m_hood = new Hood();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
