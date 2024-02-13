@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
-/** An example command that uses an example subsystem. */
+/** Shooter command for testing. */
 public class ShooterOutCommand extends Command {
     private Shooter m_shooter;
     

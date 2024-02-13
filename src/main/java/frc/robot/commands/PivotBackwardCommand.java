@@ -5,6 +5,9 @@ import frc.robot.subsystems.Hood;
 
 import frc.robot.Constants.HoodConstants;
 
+/**
+ * Puts hood backwards (in speaker shooting position).
+ */
 public class PivotBackwardCommand extends Command {
     private double m_encoderStart;
     private Hood m_hood;
