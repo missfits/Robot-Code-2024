@@ -62,8 +62,8 @@ public class RobotContainer {
    */
   private void configureBindings() { // need to update
 
-    OI.m_coPilotXbox.b().whileTrue(new IntakeForwardCommand(m_intake));
-    OI.m_coPilotXbox.a().whileTrue(new IntakeBackwardCommand(m_intake));
+    OI.m_coPilotXbox.b().whileTrue(new ShootSpeakerCommand(m_shooter));
+    OI.m_coPilotXbox.a().whileTrue(new ShootAmpCommand(m_shooter));
     OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_hood));
     OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_hood));
   }
