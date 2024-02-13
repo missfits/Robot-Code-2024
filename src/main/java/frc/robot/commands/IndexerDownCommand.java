@@ -22,7 +22,7 @@ public class IndexerDownCommand extends Command {
 
     @Override
     public void execute() {
-        m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_FORWARD);
+        m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_DOWN);
     }
 
     @Override

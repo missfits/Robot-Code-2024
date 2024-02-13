@@ -24,7 +24,7 @@ public class ShooterOutCommand extends Command {
 
     @Override
     public void execute() {
-        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_BACKWARD);
+        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_OUT);
     }
 
     @Override

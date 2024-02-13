@@ -22,7 +22,7 @@ public class IntakeInCommand extends Command {
 
     @Override
     public void execute() {
-        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_FORWARD);
+        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_IN);
     }
 
     @Override
