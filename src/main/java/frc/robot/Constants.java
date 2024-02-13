@@ -30,7 +30,10 @@ public final class Constants {
 
     public static final int COUNTS_PER_REV = 42;
 
-    public static final double METERS_TO_ROTATIONS = 0.53; // TO DO: tune (approximate taken from 2023 code)
+    // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
+    public static final double METERS_TO_ROTATIONS = 17.664; // TO DO: tune
+
+    // 5676 RPM = 94.6 RPS = 5.36 m/s
   }
 
   public static class IntakeConstants {
