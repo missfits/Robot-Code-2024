@@ -27,7 +27,7 @@ public class Indexer extends SubsystemBase {
   }
 
   // Sets Indexer motor speed to zero and stops motor
-  public void IndexerOff() {
+  public void indexerOff() {
     m_IndexerMotor.set(0);
     m_IndexerMotor.stopMotor();
   }

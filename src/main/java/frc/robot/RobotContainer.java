@@ -7,6 +7,8 @@ package frc.robot;
 // import frc.robot.Constants.OperatorConstants;
 
 import frc.robot.commands.Autos;
+import frc.robot.commands.IndexerBackwardCommand;
+import frc.robot.commands.IndexerForwardCommand;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.commands.IntakeBackwardCommand;
@@ -60,12 +62,15 @@ public class RobotContainer {
    * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  private void configureBindings() { // need to update
+  private void configureBindings() { // temp for testing 
 
-    OI.m_coPilotXbox.b().whileTrue(new ShootSpeakerCommand(m_shooter));
-    OI.m_coPilotXbox.a().whileTrue(new ShootAmpCommand(m_shooter));
-    OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_hood));
-    OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_hood));
+    OI.m_coPilotXbox.a().whileTrue(new IndexerBackwardCommand(m_indexer));
+    OI.m_coPilotXbox.b().whileTrue(new IndexerForwardCommand(m_indexer));
+    OI.m_coPilotXbox.x().whileTrue(new IntakeBackwardCommand(m_intake));
+    OI.m_coPilotXbox.y().whileTrue(new IntakeForwardCommand(m_intake));
+    OI.m_coPilotXbox.leftBumper().whileTrue(new ShootBackwardCommand(m_shooter));
+    
+
   }
 
   /**

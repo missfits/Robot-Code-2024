@@ -36,8 +36,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4; 
-    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.1; 
+    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.1;
     public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
 
     public static final int COUNTS_PER_REV = 42;
@@ -46,8 +46,8 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.4; 
-    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.6;
+    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.1; 
+    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.1;
     public static final double INDEXER_MOTOR_SPEED_DEFAULT = 0.05;
 
     public static final int COUNTS_PER_REV = 42;
@@ -57,9 +57,9 @@ public final class Constants {
 
     public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.4;
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.4;
-    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.4; 
+    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.1;
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.1;
+    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.1; 
 
     public static final int COUNTS_PER_REV = 42;
   }
