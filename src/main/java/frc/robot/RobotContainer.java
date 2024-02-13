@@ -14,12 +14,15 @@ import frc.robot.commands.IntakeForwardCommand;
 import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
 import frc.robot.commands.DefaultIntakeCommand;
-
+import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
-
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -36,12 +39,28 @@ public class RobotContainer {
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
   private static final Intake m_intake = new Intake();
 
+  public SendableChooser<Command> m_chooser = new SendableChooser<>();
+  private DistanceDriveCommand m_distanceDriveCommand = new DistanceDriveCommand(m_drivetrain, 2);
+  // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
+  //       // new SuctionOnCommand(m_gripper),
+  //       // new ArmPlaceHighCommand(m_arm),
+  //       // new SuctionOffCommand(m_gripper),
+  //       new DistanceDriveCommand(m_drivetrain, 1),
+  //       new DistanceDriveCommand(m_drivetrain, 2)
+  // );
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
     m_intake.setDefaultCommand(new DefaultIntakeCommand(m_intake));
+
+    m_chooser.addOption("Drive 2 meters", m_distanceDriveCommand);
+    // m_chooser.addOption("Double drive", m_driveTwice);
+
+    ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
+    compTab.add("Auto Chooser", m_chooser).withSize(3, 2);
   }
 
   /**
@@ -67,7 +86,7 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // the taxi command that will be run in autonomous
-    return Autos.taxiAuto(m_drivetrain);
+    // the selected command from shuffleboard that will be run in autonomous
+    return m_chooser.getSelected();
   }
 }
