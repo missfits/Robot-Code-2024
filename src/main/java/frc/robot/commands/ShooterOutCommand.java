@@ -9,22 +9,22 @@ import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
 /** An example command that uses an example subsystem. */
-public class ShootAmpCommand extends Command {
+public class ShooterOutCommand extends Command {
     private Shooter m_shooter;
     
-    public ShootAmpCommand(Shooter shooter){
+    public ShooterOutCommand(Shooter shooter){
         m_shooter = shooter;
         addRequirements(shooter);
     }
 
     @Override
     public void initialize() {
-        // System.out.println("SHOOTER SUCK COMMAND STARTED");
+        System.out.println("SHOOTER SUCK COMMAND STARTED");
     }  
 
     @Override
     public void execute() {
-        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_AMP);
+        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_BACKWARD);
     }
 
     @Override

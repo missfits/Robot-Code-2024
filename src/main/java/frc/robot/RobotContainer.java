@@ -11,13 +11,15 @@ import frc.robot.commands.IndexerUpCommand;
 import frc.robot.commands.IndexerDownCommand;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ArcadeDriveCommand;
+import frc.robot.commands.IndexerDownCommand;
+import frc.robot.commands.IndexerUpCommand;
 import frc.robot.commands.IntakeOutCommand;
 import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
-import frc.robot.commands.ShootAmpCommand;
-import frc.robot.commands.ShootSpeakerCommand;
-import frc.robot.commands.ShootBackwardCommand;
+import frc.robot.commands.ShooterAmpCommand;
+import frc.robot.commands.ShooterSpeakerCommand;
+import frc.robot.commands.ShooterOutCommand;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -29,6 +31,8 @@ import frc.robot.subsystems.Hood;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -68,9 +72,8 @@ public class RobotContainer {
     OI.m_coPilotXbox.b().whileTrue(new IndexerDownCommand(m_indexer));
     OI.m_coPilotXbox.x().whileTrue(new IntakeOutCommand(m_intake));
     OI.m_coPilotXbox.y().whileTrue(new IntakeInCommand(m_intake));
-    OI.m_coPilotXbox.leftBumper().whileTrue(new ShootBackwardCommand(m_shooter));
+    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
     
-
   }
 
   /**

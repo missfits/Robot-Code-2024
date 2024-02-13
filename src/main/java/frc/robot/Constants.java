@@ -36,9 +36,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.05; 
-    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.05;
-    public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
+    public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.05; // for testing
+    public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.05; // for testing
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -46,45 +45,39 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.05; 
-    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.05;
-    public static final double INDEXER_MOTOR_SPEED_DEFAULT = 0.05;
+    public static final double INDEXER_MOTOR_SPEED_FORWARD = 0.05; // for testing
+    public static final double INDEXER_MOTOR_SPEED_BACKWARD = -0.05; // for testing
 
     public static final int COUNTS_PER_REV = 42;
   }
 
   public static class ShooterConstants {
-
     public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.1;
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.1;
-    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.1; 
+    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.1; // TO DO: update
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.1; // TO DO: update
+    public static final double SHOOTER_MOTOR_SPEED_BACKWARD = 0.15; // for testing
 
     public static final int COUNTS_PER_REV = 42;
   }
 
   public static class HoodConstants {
-
-    // CONSTANTS FROM OFFSEASON; may need changing
-
     public static final int HOOD_MOTOR_PORT = 98; // TO DO: update
     public static final int PIVOT_MOTOR_PORT = 99; // TO DO: update
 
-    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4;
-    public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6;
-    public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05;
+    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // TO DO: update
+    public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6; // TO DO: update
+    public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05; // TO DO: update
 
-    public static final double PIVOT_MOTOR_SPEED = 0.2;
-
-    public static final int COUNTS_PER_REV = 42;
+    public static final double PIVOT_MOTOR_SPEED = 0.2; // TO DO: update
 
     public static final double PIVOT_DELTA = 8; // for if we want to run a relative encoder thing
 
     // for if we want to fix encoder values for up and down (these are untested!)
-    public static final double PIVOT_DOWN_POSITION = 8.5;
-    public static final double PIVOT_UP_POSITION = 0.5;
+    public static final double PIVOT_DOWN_POSITION = 8.5; // TO DO: update
+    public static final double PIVOT_UP_POSITION = 0.5; // TO DO: update
 
+    public static final int COUNTS_PER_REV = 42;
   }
 
   public static class ClimberConstants {

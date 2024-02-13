@@ -11,6 +11,8 @@ import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
+
 public class Shooter extends SubsystemBase {
   private final CANSparkMax m_shooterMotor = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_PORT, MotorType.kBrushless);
   private final SparkRelativeEncoder m_shooterEncoder = (SparkRelativeEncoder) m_shooterMotor
@@ -27,5 +29,20 @@ public class Shooter extends SubsystemBase {
   public void shooterOff() {
     m_shooterMotor.set(0);
     m_shooterMotor.stopMotor();
+  }
+
+  // returns encoder position
+  public double getEncoderPosition() {
+    return m_shooterEncoder.getPosition();
+  }
+
+  // sets encoder to desired position
+  public void setEncoderPosition(double position) {
+      m_shooterEncoder.setPosition(position);
+  }
+
+  // returns encoder velocity
+  public double getEncoderVelocity() {
+    return m_shooterEncoder.getVelocity();
   }
 }

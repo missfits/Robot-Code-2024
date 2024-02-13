@@ -7,6 +7,8 @@ import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.HoodConstants;
 
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
+
 public class Hood extends SubsystemBase {
 
     // instance variables
@@ -41,6 +43,11 @@ public class Hood extends SubsystemBase {
     // sets encoder to desired position
     public void setPivotEncoderPosition(double position) {
         m_pivotEncoder.setPosition(position);
+    }
+
+    // returns encoder velocity
+    public double getEncoderVelocity() {
+        return m_hoodEncoder.getVelocity();
     }
 
     // initializes encoder position to 0 - MAKE SURE INTAKE IS ALWAYS FULLY UP WHENEVER THIS METHOD IS CALLED

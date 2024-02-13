@@ -11,6 +11,8 @@ import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
+
 public class Intake extends SubsystemBase {
 
   // instance variables
@@ -30,5 +32,20 @@ public class Intake extends SubsystemBase {
   public void intakeOff() {
     m_intakeMotor.set(0);
     m_intakeMotor.stopMotor();
+  }
+
+  // returns encoder position
+  public double getEncoderPosition() {
+    return m_intakeEncoder.getPosition();
+  }
+
+  // sets encoder to desired position
+  public void setEncoderPosition(double position) {
+      m_intakeEncoder.setPosition(position);
+  }
+
+  // returns encoder velocity
+  public double getEncoderVelocity() {
+    return m_intakeEncoder.getVelocity();
   }
 }

@@ -9,10 +9,10 @@ import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Shooter;
 
 /** An example command that uses an example subsystem. */
-public class ShootSpeakerCommand extends Command {
+public class ShooterSpeakerCommand extends Command {
     private Shooter m_shooter;
     
-    public ShootSpeakerCommand(Shooter shooter){
+    public ShooterSpeakerCommand(Shooter shooter){
         m_shooter = shooter;
         addRequirements(shooter);
     }
