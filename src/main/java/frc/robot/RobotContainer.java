@@ -58,8 +58,6 @@ public class RobotContainer {
   private static final Hood m_hood = new Hood();
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
-  private DistanceDriveCommand m_distanceDriveCommand = new DistanceDriveCommand(m_drivetrain, 2);
-  private RotationCommand m_rotationCommand = new RotationCommand(m_drivetrain, 90);
   // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
   //       // new SuctionOnCommand(m_gripper),
   //       // new ArmPlaceHighCommand(m_arm),
@@ -74,8 +72,8 @@ public class RobotContainer {
     configureBindings();
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
 
-    m_chooser.addOption("Drive 2 meters", m_distanceDriveCommand);
-    m_chooser.addOption("Rotate 180 degrees", m_rotationCommand);
+    m_chooser.addOption("Drive 2 meters", new DistanceDriveCommand(m_drivetrain, 2));
+    m_chooser.addOption("Rotate 90 degrees", new RotationCommand(m_drivetrain, 90));
     // m_chooser.addOption("Double drive", m_driveTwice);
 
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
