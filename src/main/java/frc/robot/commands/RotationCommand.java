@@ -20,7 +20,7 @@ public class RotationCommand extends Command {
         // System.out.println("targetDistance: " + targetDegrees);
         m_drivetrain = drivetrain;
         m_targetDegrees = targetDegrees * DrivetrainConstants.DEGREES_TO_ROTATIONS; // convert degrees to motor rotations
-
+        // System.out.println("target degrees: " + targetDegrees + ", target motor rotations: " + m_targetDegrees);
         addRequirements(drivetrain);
     }
 
@@ -37,12 +37,14 @@ public class RotationCommand extends Command {
     public void execute() {
         double thrust = AutoConstants.ROTATION_SPEED*Math.signum(m_targetDegrees); // takes the sign of targetDegrees
         m_drivetrain.tankDrive(thrust, -thrust); // drives in two opposite directions so the robot spins
-        System.out.println("Left encoder position: " + m_drivetrain.getLeftEncoderPosition() + ", Right encoder position: " + m_drivetrain.getRightEncoderPosition());
+        // System.out.println("Left encoder position: " + m_drivetrain.getLeftEncoderPosition() + ", Right encoder position: " + m_drivetrain.getRightEncoderPosition());
     }
 
     @Override
     public void end(boolean interrupted) {
         m_drivetrain.stopMotors();
+        m_drivetrain.setRightEncoder(0);
+        m_drivetrain.setleftEncoder(0);
     }
 
     @Override

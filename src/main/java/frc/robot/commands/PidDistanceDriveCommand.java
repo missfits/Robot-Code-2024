@@ -59,6 +59,8 @@ public class PidDistanceDriveCommand extends Command {
     @Override
     public void end(boolean interrupted) {
         m_drivetrain.stopMotors();
+        m_drivetrain.setRightEncoder(0);
+        m_drivetrain.setleftEncoder(0);
     }
 
     @Override

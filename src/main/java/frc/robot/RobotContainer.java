@@ -15,6 +15,7 @@ import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
 import frc.robot.commands.DefaultIntakeCommand;
 import frc.robot.commands.DistanceDriveCommand;
+import frc.robot.commands.RotationCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
@@ -41,6 +42,7 @@ public class RobotContainer {
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
   private DistanceDriveCommand m_distanceDriveCommand = new DistanceDriveCommand(m_drivetrain, 2);
+  private RotationCommand m_rotationCommand = new RotationCommand(m_drivetrain, 90);
   // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
   //       // new SuctionOnCommand(m_gripper),
   //       // new ArmPlaceHighCommand(m_arm),
@@ -57,6 +59,7 @@ public class RobotContainer {
     m_intake.setDefaultCommand(new DefaultIntakeCommand(m_intake));
 
     m_chooser.addOption("Drive 2 meters", m_distanceDriveCommand);
+    m_chooser.addOption("Rotate 180 degrees", m_rotationCommand);
     // m_chooser.addOption("Double drive", m_driveTwice);
 
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");

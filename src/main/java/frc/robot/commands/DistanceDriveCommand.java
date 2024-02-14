@@ -25,10 +25,9 @@ public class DistanceDriveCommand extends Command {
    * Takes in target distance in meters and drives straight that amount.
    */ 
   public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance) {
-    System.out.println("targetDistance: " + targetDistance);
     m_drivetrain = drivetrain;
     m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
-    System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
+    // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
 
     addRequirements(drivetrain);
   }
@@ -45,13 +44,15 @@ public class DistanceDriveCommand extends Command {
   @Override
   public void execute() {
     double thrust = AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance); // drives in the direction of targetDistance
-    m_drivetrain.tankDrive(thrust, thrust);
-    System.out.println("Left encoder position: " + m_drivetrain.getLeftEncoderPosition() + ", Right encoder position: " + m_drivetrain.getRightEncoderPosition());
+    m_drivetrain.tankDrive(-thrust, -thrust);
+    // System.out.println("Left encoder position: " + m_drivetrain.getLeftEncoderPosition() + ", Right encoder position: " + m_drivetrain.getRightEncoderPosition());
   }
 
   @Override
   public void end(boolean interrupted) {
     m_drivetrain.stopMotors();
+    m_drivetrain.setRightEncoder(0);
+    m_drivetrain.setleftEncoder(0);
   }
 
   @Override
