@@ -4,10 +4,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.Constants.IntakeConstants;
 
-public class IntakeForwardCommand extends Command {
+/**
+ * Sucks in note.
+ */
+public class IntakeInCommand extends Command {
     private Intake m_intake;
     
-    public IntakeForwardCommand(Intake intake){
+    public IntakeInCommand(Intake intake){
         m_intake = intake;
         addRequirements(intake);
     }
@@ -19,7 +22,7 @@ public class IntakeForwardCommand extends Command {
 
     @Override
     public void execute() {
-        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_FORWARD);
+        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_IN);
     }
 
     @Override

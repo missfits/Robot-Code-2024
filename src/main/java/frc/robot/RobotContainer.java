@@ -6,26 +6,40 @@ package frc.robot;
 
 // import frc.robot.Constants.OperatorConstants;
 
-import frc.robot.commands.Autos;
 // import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.Autos;
+import frc.robot.commands.IndexerUpCommand;
+import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.IntakeBackwardCommand;
-import frc.robot.commands.IntakeForwardCommand;
+import frc.robot.commands.IndexerDownCommand;
+import frc.robot.commands.IndexerUpCommand;
+import frc.robot.commands.IntakeOutCommand;
+import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
-import frc.robot.commands.DefaultIntakeCommand;
 import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.commands.RotationCommand;
+import frc.robot.commands.ShooterAmpCommand;
+import frc.robot.commands.ShooterSpeakerCommand;
+import frc.robot.commands.ShooterOutCommand;
+
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Hood;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -38,7 +52,10 @@ public class RobotContainer {
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
+  private static final Indexer m_indexer = new Indexer();
   private static final Intake m_intake = new Intake();
+  private static final Shooter m_shooter = new Shooter();
+  private static final Hood m_hood = new Hood();
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
   private DistanceDriveCommand m_distanceDriveCommand = new DistanceDriveCommand(m_drivetrain, 2);
@@ -56,7 +73,6 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    m_intake.setDefaultCommand(new DefaultIntakeCommand(m_intake));
 
     m_chooser.addOption("Drive 2 meters", m_distanceDriveCommand);
     m_chooser.addOption("Rotate 180 degrees", m_rotationCommand);
@@ -75,12 +91,14 @@ public class RobotContainer {
    * PS4} controllers or {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  private void configureBindings() {
+  private void configureBindings() { // temp for testing 
 
-    OI.m_coPilotXbox.b().whileTrue(new IntakeForwardCommand(m_intake));
-    OI.m_coPilotXbox.a().whileTrue(new IntakeBackwardCommand(m_intake));
-    OI.m_coPilotXbox.x().whileTrue(new PivotBackwardCommand(m_intake));
-    OI.m_coPilotXbox.y().whileTrue(new PivotForwardCommand(m_intake));
+    OI.m_coPilotXbox.a().whileTrue(new IndexerUpCommand(m_indexer));
+    OI.m_coPilotXbox.b().whileTrue(new IndexerDownCommand(m_indexer));
+    OI.m_coPilotXbox.x().whileTrue(new IntakeOutCommand(m_intake));
+    OI.m_coPilotXbox.y().whileTrue(new IntakeInCommand(m_intake));
+    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
+    
   }
 
   /**
