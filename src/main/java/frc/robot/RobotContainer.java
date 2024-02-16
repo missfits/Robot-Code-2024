@@ -13,8 +13,12 @@ import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.IndexerUpCommand;
+import frc.robot.commands.IntakeIndexCommand;
+
 import frc.robot.commands.IntakeOutCommand;
 import frc.robot.commands.IntakeInCommand;
+import frc.robot.commands.IntakeIndexCommand;
+import frc.robot.commands.OuttakeIndexCommand;
 import frc.robot.commands.PivotBackwardCommand;
 import frc.robot.commands.PivotForwardCommand;
 import frc.robot.commands.ShooterAmpCommand;
@@ -68,8 +72,8 @@ public class RobotContainer {
    */
   private void configureBindings() { // temp for testing 
 
-    OI.m_coPilotXbox.a().whileTrue(new IndexerUpCommand(m_indexer));
-    OI.m_coPilotXbox.b().whileTrue(new IndexerDownCommand(m_indexer));
+    OI.m_coPilotXbox.a().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
+    OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake));
     OI.m_coPilotXbox.x().whileTrue(new IntakeOutCommand(m_intake));
     OI.m_coPilotXbox.y().whileTrue(new IntakeInCommand(m_intake));
     OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
