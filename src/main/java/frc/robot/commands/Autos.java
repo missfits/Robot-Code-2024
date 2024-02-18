@@ -47,6 +47,18 @@ public final class Autos {
     );
   }
 
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param intake intake subsystem of robot
+   * @param indexer indexer subsystem of robot
+   * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (from the left edge when facing the speaker),
+   *          picks up the note closest to amp, drives back to the shooter (left edge), and shoots the second note
+   */
+  public static SequentialCommandGroup leftSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
+    return null;
+  }
+
   private Autos() {
     throw new UnsupportedOperationException("This is a utility class!");
   }
