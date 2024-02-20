@@ -22,6 +22,7 @@ import frc.robot.commands.OuttakeIndexCommand;
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
 import frc.robot.commands.DistanceDriveCommand;
+import frc.robot.commands.HoodEncoderTest;
 import frc.robot.commands.RotationCommand;
 import frc.robot.commands.ShooterAmpCommand;
 import frc.robot.commands.ShooterSpeakerCommand;
@@ -74,8 +75,12 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
 
+    // set default commands
+    m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
+    m_hood.setDefaultCommand(new HoodEncoderTest(m_hood));
+
+    // auto routines
     m_chooser.addOption("Drive 2 meters", new DistanceDriveCommand(m_drivetrain, 2));
     m_chooser.addOption("Rotate 90 degrees", new RotationCommand(m_drivetrain, 90));
     // m_chooser.addOption("Double drive", m_driveTwice);

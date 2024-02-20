@@ -10,7 +10,6 @@ import frc.robot.Constants.HoodConstants;
  * Puts hood forward (in amp shooting position).
  */
 public class HoodPivotForwardCommand extends Command{
-    private double m_encoderStart;
     private Hood m_hood;
 
     public HoodPivotForwardCommand(Hood hood){

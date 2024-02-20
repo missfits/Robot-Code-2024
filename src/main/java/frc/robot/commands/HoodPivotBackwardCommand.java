@@ -9,7 +9,6 @@ import frc.robot.Constants.HoodConstants;
  * Puts hood backwards (in speaker shooting position).
  */
 public class HoodPivotBackwardCommand extends Command {
-    private double m_encoderStart;
     private Hood m_hood;
 
     public HoodPivotBackwardCommand(Hood hood){
@@ -23,6 +22,7 @@ public class HoodPivotBackwardCommand extends Command {
 
     @Override
     public void execute() {
+        // If hood pass 80% of pivot distance, it slows
         if(Math.abs(m_hood.getPivotEncoderPosition()) > 0.8*HoodConstants.PIVOT_DISTANCE){
             m_hood.runPivotHoodMotor(-HoodConstants.SLOW_PIVOT_MOTOR_SPEED);
         }else{

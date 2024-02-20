@@ -3,13 +3,10 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Hood;
 
-import frc.robot.Constants.HoodConstants;
-
 /**
- * Puts hood backwards (in speaker shooting position).
+ * A tester command that prints the hood encoder position at all times
  */
 public class HoodEncoderTest extends Command {
-    private double m_encoderStart;
     private Hood m_hood;
 
     public HoodEncoderTest(Hood hood){
