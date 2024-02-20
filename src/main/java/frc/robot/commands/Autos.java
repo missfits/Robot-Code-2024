@@ -37,9 +37,9 @@ public final class Autos {
         new ShooterOutCommand(shooter) // TO DO: replace shooter out with shooter speaker command once testing is done
       ).withTimeout(2),
       new ParallelCommandGroup( // drive towards note while intaking
-        new DistanceDriveCommand(drivetrain, 1.30),
-        new IntakeIndexCommand(indexer, intake).withTimeout(4)),
-      new DistanceDriveCommand(drivetrain, -1.30), // drive back towards speaker
+        new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+        new IntakeIndexCommand(indexer, intake)),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE), // drive back towards speaker
       new ParallelCommandGroup( // shoots second note into speaker for 2 seconds
         new IndexerUpCommand(indexer),
         new ShooterOutCommand(shooter) // TO DO: replace shooter out with shooter speaker command once testing is done
