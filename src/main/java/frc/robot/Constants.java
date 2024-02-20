@@ -74,12 +74,9 @@ public final class Constants {
     public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05; // TO DO: update
 
     public static final double PIVOT_MOTOR_SPEED = 0.2; // TO DO: update
+    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.1; // TO DO: TUNE
 
-    public static final double PIVOT_DELTA = 8; // for if we want to run a relative encoder thing
-
-    // for if we want to fix encoder values for up and down (these are untested!)
-    public static final double PIVOT_DOWN_POSITION = 8.5; // TO DO: update
-    public static final double PIVOT_UP_POSITION = 0.5; // TO DO: update
+    public static final double PIVOT_DISTANCE = 8; // TO DO: TUNE
 
     public static final int COUNTS_PER_REV = 42;
   }
