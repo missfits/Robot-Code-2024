@@ -41,6 +41,6 @@ public class IntakeIndexCommand extends Command {
 
     @Override
     public boolean isFinished() {
-       return false;
+       return !m_indexer.getBeamBreak();
     }
 }

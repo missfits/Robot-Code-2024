@@ -11,9 +11,8 @@ import frc.robot.commands.IndexerUpCommand;
 import frc.robot.commands.IndexerDownCommand;
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.IndexerDownCommand;
-import frc.robot.commands.IndexerUpCommand;
 import frc.robot.commands.IntakeIndexCommand;
+import frc.robot.commands.BeamBreakCommand;
 
 import frc.robot.commands.IntakeOutCommand;
 import frc.robot.commands.IntakeInCommand;
@@ -59,6 +58,8 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings();
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
+    // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer));
+    
   }
 
   /**

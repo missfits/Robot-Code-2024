@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IndexerConstants;
 
@@ -19,6 +20,8 @@ public class Indexer extends SubsystemBase {
   private final CANSparkMax m_indexerMotor = new CANSparkMax(IndexerConstants.INDEXER_MOTOR_PORT, MotorType.kBrushless);
   private final SparkRelativeEncoder m_indexerEncoder = (SparkRelativeEncoder) m_indexerMotor
       .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IndexerConstants.COUNTS_PER_REV);
+
+  public DigitalInput m_input = new DigitalInput(0);
 
   // constructor
   public Indexer() {}
@@ -47,5 +50,14 @@ public class Indexer extends SubsystemBase {
   // returns encoder velocity
   public double getEncoderVelocity() {
     return m_indexerEncoder.getVelocity();
+  }
+
+  // returns true if beam is *not* broken, false if no light detected
+  public boolean getBeamBreak() {
+    return m_input.get();
+  }
+
+  public void printBeamBreak() {
+    System.out.println(m_input.get());
   }
 }
