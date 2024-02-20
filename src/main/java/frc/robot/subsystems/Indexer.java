@@ -12,8 +12,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IndexerConstants;
 
-// ***NEED TO BE UPDATED FOR 2024 SEASON***
-
 public class Indexer extends SubsystemBase {
 
   // instance variables
@@ -21,7 +19,7 @@ public class Indexer extends SubsystemBase {
   private final SparkRelativeEncoder m_indexerEncoder = (SparkRelativeEncoder) m_indexerMotor
       .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IndexerConstants.COUNTS_PER_REV);
 
-  public DigitalInput m_input = new DigitalInput(0);
+  public DigitalInput m_input = new DigitalInput(0); // takes in values from the beam breaker
 
   // constructor
   public Indexer() {}
@@ -57,6 +55,7 @@ public class Indexer extends SubsystemBase {
     return m_input.get();
   }
 
+  // testing method for beam break
   public void printBeamBreak() {
     System.out.println(m_input.get());
   }

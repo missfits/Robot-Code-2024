@@ -7,7 +7,8 @@ import frc.robot.subsystems.Intake;
 import frc.robot.Constants.IntakeConstants;
 
 /**
- * Runs the indexer wheels upwards (moves note up towards shooter).
+ * Runs the intake and indexer wheels upwards (moves note up towards shooter).
+ * Ends when the note hits the beam breaker.
  */
 public class IntakeIndexCommand extends Command {
     private Indexer m_indexer;
@@ -22,7 +23,6 @@ public class IntakeIndexCommand extends Command {
 
     @Override
     public void initialize() {
-        // System.out.println("indexer intake SUCK COMMAND STARTED");
     }  
 
     @Override
@@ -41,6 +41,6 @@ public class IntakeIndexCommand extends Command {
 
     @Override
     public boolean isFinished() {
-       return !m_indexer.getBeamBreak();
+       return !m_indexer.getBeamBreak(); // if the beam is broken (if the method returns false) end the command
     }
 }
