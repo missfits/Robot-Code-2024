@@ -16,8 +16,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class DistanceDriveCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain m_drivetrain;
-  // private double m_rightEncoderStart;
-  // private double m_leftEncoderStart;
   private double m_targetDistance;
 
   /** 
@@ -34,11 +32,9 @@ public class DistanceDriveCommand extends Command {
 
   @Override
   public void initialize() {
-    // gets start positions of encoders
+    // resets positions of encoders
     m_drivetrain.setRightEncoder(0);
     m_drivetrain.setleftEncoder(0);
-    // m_rightEncoderStart = m_drivetrain.getRightEncoderPosition();
-    // m_leftEncoderStart = m_drivetrain.getLeftEncoderPosition();
   }
 
   @Override

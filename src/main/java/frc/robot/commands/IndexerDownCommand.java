@@ -17,7 +17,6 @@ public class IndexerDownCommand extends Command {
 
     @Override
     public void initialize() {
-        // System.out.println("INTAKE SUCK COMMAND STARTED");
     }  
 
     @Override

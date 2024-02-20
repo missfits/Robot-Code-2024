@@ -15,7 +15,7 @@ import edu.wpi.first.math.controller.PIDController;
 // import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
-/** A PID controlled taxi command that uses the drivetrain subsystem. */
+/** A PID controlled taxi command that uses the drivetrain subsystem, UNTESTED DO NOT USE. */
 public class PidDistanceDriveCommand extends Command {
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
     private final Drivetrain m_drivetrain;
