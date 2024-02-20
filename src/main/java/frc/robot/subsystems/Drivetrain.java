@@ -14,6 +14,8 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
+import edu.wpi.first.math.controller.PIDController;
+
 public class Drivetrain extends SubsystemBase {
 
     // instance variables
@@ -42,6 +44,12 @@ public class Drivetrain extends SubsystemBase {
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
     public static DifferentialDrive m_robotDrive;
+
+    // pid
+    private final double drive_P = 0;
+    private final double drive_I = 0;
+    private final double drive_D = 0;
+    public PIDController drive_controller = new PIDController(drive_P, drive_I, drive_D);
     
     public Drivetrain(OI humanControl) {
       m_robotDrive = new DifferentialDrive(m_rightPrimary, m_leftPrimary);
@@ -89,6 +97,16 @@ public class Drivetrain extends SubsystemBase {
         return m_rightPrimaryEncoder.getVelocity();
     }
 
+    // sets right encoder position to given double
+    public void setRightEncoder(double position) {
+        m_rightPrimaryEncoder.setPosition(position);
+    }
+
+    // sets left encoder position to given double
+    public void setleftEncoder(double position) {
+        m_leftPrimaryEncoder.setPosition(position);
+    }
+
     @Override
     public void simulationPeriodic() {}
 
@@ -107,5 +125,19 @@ public class Drivetrain extends SubsystemBase {
     // arcade drive
     public void arcadeDrive(double forwardSpeed, double rotationSpeed) {
         m_robotDrive.arcadeDrive(forwardSpeed, rotationSpeed);
+    }
+
+    /* 
+     * tank drive 
+     * takes in two thrust values for left and right motor, from -1.0 to 1.0
+     * only to be used for auto driving commands
+     */ 
+    public void tankDrive(double leftSpeed, double rightSpeed) {
+        m_robotDrive.tankDrive(leftSpeed, rightSpeed);
+    }
+
+    // stops all motors
+    public void stopMotors() {
+        m_robotDrive.stopMotor();
     }
 }

@@ -31,6 +31,10 @@ public final class Constants {
     public static final int RIGHT_MOTOR_2_PORT = 4;
 
     public static final int COUNTS_PER_REV = 42;
+
+    // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
+    public static final double METERS_TO_ROTATIONS = 17.664;
+    public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
   }
 
   public static class IntakeConstants {
@@ -87,7 +91,8 @@ public final class Constants {
   }
 
   public static class AutoConstants {
-    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // (temp) distance (in rotations of encoder) to travel (can be both neg + pos)
-    public static final double TAXI_AUTO_SPEED = 0.25; // (temp) speed of robot during taxi auto 
+    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // distance in meters to taxi (unset for 2024)
+    public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
+    public static final double ROTATION_SPEED = 0.5;
   }
 }
