@@ -62,6 +62,8 @@ public final class Constants {
     public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.1; // TO DO: update
     public static final double SHOOTER_MOTOR_SPEED_OUT = 0.6; // for testing
 
+    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 0.5; // TODO: TESTING
+
     public static final int COUNTS_PER_REV = 42;
   }
 
