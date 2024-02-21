@@ -66,8 +66,8 @@ public final class Constants {
   }
 
   public static class HoodConstants {
-    public static final int HOOD_MOTOR_PORT = 98; // TO DO: update
-    public static final int PIVOT_MOTOR_PORT = 99; // TO DO: update
+    public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
+    public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
     public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // TO DO: update
     public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6; // TO DO: update
