@@ -69,14 +69,15 @@ public final class Constants {
     public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
     public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
-    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // TO DO: update
-    public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6; // TO DO: update
-    public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05; // TO DO: update
+    public static final double HOOD_MOTOR_SPEED = 0.4; // TO DO: update
 
     public static final double PIVOT_MOTOR_SPEED = 0.2; // TO DO: update
     public static final double SLOW_PIVOT_MOTOR_SPEED = 0.1; // TO DO: TUNE
 
-    public static final double PIVOT_DISTANCE = 8; // TO DO: TUNE
+    // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the encoder position for the hood to be forward
+    public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
+    // public static final double PIVOT_DISTANCE = 40;
+
 
     public static final int COUNTS_PER_REV = 42;
   }

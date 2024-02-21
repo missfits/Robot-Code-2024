@@ -11,6 +11,7 @@ public class HoodEncoderTest extends Command {
 
     public HoodEncoderTest(Hood hood){
         m_hood = hood;
+        addRequirements(hood);
     }
 
     @Override

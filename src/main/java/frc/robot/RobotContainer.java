@@ -21,6 +21,7 @@ import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
+import frc.robot.commands.HoodMotorCommand;
 import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.commands.HoodEncoderTest;
 import frc.robot.commands.RotationCommand;
@@ -101,10 +102,10 @@ public class RobotContainer {
   private void configureBindings() { // temp for testing 
 
     OI.m_coPilotXbox.a().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
-    OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake));
-    OI.m_coPilotXbox.x().whileTrue(new IntakeOutCommand(m_intake));
-    OI.m_coPilotXbox.y().whileTrue(new IntakeInCommand(m_intake));
-    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
+    OI.m_coPilotXbox.b().whileTrue(new HoodMotorCommand(m_hood));
+    OI.m_coPilotXbox.x().whileTrue(new HoodPivotForwardCommand(m_hood));
+    OI.m_coPilotXbox.y().whileTrue(new HoodPivotBackwardCommand(m_hood));
+    OI.m_coPilotXbox.leftStick().whileTrue(new HoodMotorCommand(m_hood));
     
   }
 
