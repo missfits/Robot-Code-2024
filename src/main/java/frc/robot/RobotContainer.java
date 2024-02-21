@@ -99,7 +99,7 @@ public class RobotContainer {
     OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake));
     OI.m_coPilotXbox.x().whileTrue(new IntakeOutCommand(m_intake));
     OI.m_coPilotXbox.y().whileTrue(new IntakeInCommand(m_intake));
-    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
+    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterSpeakerCommand(m_shooter));
     
   }
 
