@@ -5,47 +5,56 @@
 package frc.robot.commands;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.Constants.AutoConstants;
-
+import frc.robot.Constants.DrivetrainConstants;
 
 //import java.lang.Math.*;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
 
-/** An taxi command that uses the drivetrain subsystem. */
+/** A dead reckoning taxi command that uses the drivetrain subsystem. */
 public class DistanceDriveCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Drivetrain m_drivetrain;
-  private double m_rightEncoderStart;
-  private double m_leftEncoderStart;
   private double m_targetDistance;
 
-
+  /** 
+   * A dead reckoning drive command.
+   * Takes in target distance in meters and drives straight that amount.
+   */ 
   public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance) {
     m_drivetrain = drivetrain;
-    m_targetDistance = targetDistance; // supports both neg + pos targetDistance
+    m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
+    // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
+
     addRequirements(drivetrain);
   }
 
   @Override
   public void initialize() {
-    // gets start positions of encoders
-    m_rightEncoderStart = m_drivetrain.getRightEncoderPosition();
-    m_leftEncoderStart = m_drivetrain.getLeftEncoderPosition();
+    // resets positions of encoders
+    m_drivetrain.setRightEncoder(0);
+    m_drivetrain.setleftEncoder(0);
   }
 
   @Override
   public void execute() {
-    m_drivetrain.arcadeDrive(AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance), 0); // drives in the direction of targetDistance 
+    double thrust = AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance); // drives in the direction of targetDistance
+    m_drivetrain.tankDrive(-thrust, -thrust);
+    // System.out.println("Left encoder position: " + m_drivetrain.getLeftEncoderPosition() + ", Right encoder position: " + m_drivetrain.getRightEncoderPosition());
   }
 
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_drivetrain.stopMotors();
+    m_drivetrain.setRightEncoder(0);
+    m_drivetrain.setleftEncoder(0);
+  }
 
   @Override
   public boolean isFinished() {
     // calculates if either encoder has moved enough to reach the target distance
-    return (Math.abs(m_drivetrain.getRightEncoderPosition() - m_rightEncoderStart) >  Math.abs(m_targetDistance)
-    || Math.abs(m_drivetrain.getLeftEncoderPosition() - m_leftEncoderStart) >  Math.abs(m_targetDistance)); 
+    return (Math.abs(m_drivetrain.getRightEncoderPosition()) > Math.abs(m_targetDistance)
+    || Math.abs(m_drivetrain.getLeftEncoderPosition()) > Math.abs(m_targetDistance)); 
   }
 }
