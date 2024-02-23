@@ -23,7 +23,7 @@ import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
 import frc.robot.commands.HoodMotorCommand;
 import frc.robot.commands.DistanceDriveCommand;
-import frc.robot.commands.HoodEncoderTest;
+import frc.robot.commands.PrintHoodEncoder;
 import frc.robot.commands.RotationCommand;
 import frc.robot.commands.ShooterAmpCommand;
 import frc.robot.commands.ShooterSpeakerCommand;
@@ -79,7 +79,7 @@ public class RobotContainer {
 
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    // m_hood.setDefaultCommand(new HoodEncoderTest(m_hood));
+    // m_hood.setDefaultCommand(new PrintHoodEncoder(m_hood));
 
     // auto routines
     m_chooser.addOption("Drive 2 meters", new DistanceDriveCommand(m_drivetrain, 2));

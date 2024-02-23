@@ -6,10 +6,10 @@ import frc.robot.subsystems.Hood;
 /**
  * A tester command that prints the hood encoder position at all times
  */
-public class HoodEncoderTest extends Command {
+public class PrintHoodEncoder extends Command {
     private Hood m_hood;
 
-    public HoodEncoderTest(Hood hood){
+    public PrintHoodEncoder(Hood hood){
         m_hood = hood;
         addRequirements(hood);
     }
