@@ -21,7 +21,6 @@ import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
-import frc.robot.commands.HoodMotorCommand;
 import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.commands.PrintHoodEncoder;
 import frc.robot.commands.RotationCommand;
@@ -101,11 +100,18 @@ public class RobotContainer {
    */
   private void configureBindings() { // temp for testing 
 
-    OI.m_coPilotXbox.a().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
-    OI.m_coPilotXbox.b().whileTrue(new HoodMotorCommand(m_hood));
-    OI.m_coPilotXbox.x().whileTrue(new HoodPivotForwardCommand(m_hood));
-    OI.m_coPilotXbox.y().whileTrue(new HoodPivotBackwardCommand(m_hood));
-    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
+    // OI.m_coPilotXbox.a().whileTrue(new IntakeIndexCommand(m_indexer, m_intake)); // a remains unused
+    OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake));
+    OI.m_coPilotXbox.x().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
+    OI.m_coPilotXbox.y().whileTrue(new IndexerUpCommand(m_indexer));
+
+    OI.m_coPilotXbox.leftTrigger().whileTrue(new ShooterSpeakerCommand(m_shooter));
+    OI.m_coPilotXbox.rightTrigger().whileTrue(new ShooterAmpCommand(m_shooter, m_hood));
+
+    OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotForwardCommand(m_hood));
+    OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotBackwardCommand(m_hood));
+
+    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterSpeakerCommand(m_shooter));
     
   }
 
