@@ -9,8 +9,7 @@ import frc.robot.Constants.HoodConstants;
 import frc.robot.subsystems.Hood;
 
 /** 
- * Command for shooting in the amp 
- * Runs both the shooter and hood rollers
+ * test command that runs the hood roller only
  */
 public class HoodRollerCommand extends Command {
     private Hood m_hood;
@@ -22,7 +21,6 @@ public class HoodRollerCommand extends Command {
 
     @Override
     public void initialize() {
-        // System.out.println("SHOOTER SUCK COMMAND STARTED");
     }  
 
     @Override
