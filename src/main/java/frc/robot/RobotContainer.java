@@ -21,6 +21,7 @@ import frc.robot.commands.OuttakeIndexCommand;
 // hood pivot commands
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
+import frc.robot.commands.HoodRollerCommand;
 import frc.robot.commands.HoodPivotBackwardBackup;
 import frc.robot.commands.HoodPivotForwardBackup;
 import frc.robot.commands.PrintHoodEncoder;
@@ -123,7 +124,7 @@ public class RobotContainer {
     OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
   
 
-    // OI.m_coPilotXbox.leftStick().whileTrue(new ShooterSpeakerCommand(m_shooter));
+    OI.m_coPilotXbox.leftStick().whileTrue(new HoodRollerCommand(m_hood)); // for testing only!
     
   }
 
