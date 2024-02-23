@@ -93,7 +93,7 @@ public final class Constants {
   }
 
   public static class AutoConstants {
-    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // distance in meters to taxi (unset for 2024)
+    public static final double TAXI_AUTO_TARGET_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
     public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
     public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.30; // TODO: test
