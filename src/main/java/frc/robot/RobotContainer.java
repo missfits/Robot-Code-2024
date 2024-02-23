@@ -27,6 +27,7 @@ import frc.robot.commands.RotationCommand;
 import frc.robot.commands.ShooterAmpCommand;
 import frc.robot.commands.ShooterSpeakerCommand;
 import frc.robot.commands.ShooterOutCommand;
+import frc.robot.commands.ShooterHoodBackward;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -100,8 +101,8 @@ public class RobotContainer {
    */
   private void configureBindings() { // temp for testing 
 
-    // OI.m_coPilotXbox.a().whileTrue(new IntakeIndexCommand(m_indexer, m_intake)); // a remains unused
-    OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake));
+    OI.m_coPilotXbox.a().whileTrue(new ShooterHoodBackward(m_shooter, m_hood)); // emergency use button that should not be pressed in normal circumstances
+    OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake)); // outtaking should not normally be necessary
     OI.m_coPilotXbox.x().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
     OI.m_coPilotXbox.y().whileTrue(new IndexerUpCommand(m_indexer));
 
@@ -111,7 +112,10 @@ public class RobotContainer {
     OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotForwardCommand(m_hood));
     OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotBackwardCommand(m_hood));
 
-    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterSpeakerCommand(m_shooter));
+    // TO DO: when merged with beam break branch, change this to an intake index command that doesn't use beam break
+    OI.m_coPilotXbox.start().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
+
+    // OI.m_coPilotXbox.leftStick().whileTrue(new ShooterSpeakerCommand(m_shooter));
     
   }
 
