@@ -8,26 +8,31 @@ package frc.robot;
 
 // import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Autos;
-import frc.robot.commands.IndexerUpCommand;
-import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.ArcadeDriveCommand;
-import frc.robot.commands.IndexerDownCommand;
-import frc.robot.commands.IndexerUpCommand;
-import frc.robot.commands.IntakeIndexCommand;
 
+// indexer and intake commands
+import frc.robot.commands.IndexerUpCommand;
+import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.IntakeOutCommand;
 import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
+
+// hood pivot commands
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
-import frc.robot.commands.DistanceDriveCommand;
+import frc.robot.commands.HoodPivotBackwardBackup;
+import frc.robot.commands.HoodPivotForwardBackup;
 import frc.robot.commands.PrintHoodEncoder;
-import frc.robot.commands.RotationCommand;
+
+// shooting commands
 import frc.robot.commands.ShooterAmpCommand;
 import frc.robot.commands.ShooterSpeakerCommand;
 import frc.robot.commands.ShooterOutCommand;
 import frc.robot.commands.ShooterHoodBackward;
+
+import frc.robot.commands.DistanceDriveCommand;
+import frc.robot.commands.RotationCommand;
 
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -38,6 +43,7 @@ import frc.robot.subsystems.Hood;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -112,8 +118,10 @@ public class RobotContainer {
     OI.m_coPilotXbox.leftBumper().whileTrue(new HoodPivotForwardCommand(m_hood));
     OI.m_coPilotXbox.rightBumper().whileTrue(new HoodPivotBackwardCommand(m_hood));
 
-    // TO DO: when merged with beam break branch, change this to an intake index command that doesn't use beam break
-    OI.m_coPilotXbox.start().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
+    // back and start buttons are backup commands for if the hood encoders mess up
+    OI.m_coPilotXbox.back().whileTrue(new HoodPivotForwardBackup(m_hood));
+    OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
+  
 
     // OI.m_coPilotXbox.leftStick().whileTrue(new ShooterSpeakerCommand(m_shooter));
     
