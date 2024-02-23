@@ -40,6 +40,6 @@ public class HoodPivotBackwardCommand extends Command {
     @Override
     public boolean isFinished() {
         // returns true if encoder position is within 0.5 of target position
-        return m_hood.getPivotEncoderPosition() <= 0.5;
+        return Math.abs(m_hood.getPivotEncoderPosition()) <= 0.5;
     }
 }

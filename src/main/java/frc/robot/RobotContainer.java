@@ -79,7 +79,7 @@ public class RobotContainer {
 
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    m_hood.setDefaultCommand(new HoodEncoderTest(m_hood));
+    // m_hood.setDefaultCommand(new HoodEncoderTest(m_hood));
 
     // auto routines
     m_chooser.addOption("Drive 2 meters", new DistanceDriveCommand(m_drivetrain, 2));
@@ -105,7 +105,7 @@ public class RobotContainer {
     OI.m_coPilotXbox.b().whileTrue(new HoodMotorCommand(m_hood));
     OI.m_coPilotXbox.x().whileTrue(new HoodPivotForwardCommand(m_hood));
     OI.m_coPilotXbox.y().whileTrue(new HoodPivotBackwardCommand(m_hood));
-    OI.m_coPilotXbox.leftStick().whileTrue(new HoodMotorCommand(m_hood));
+    OI.m_coPilotXbox.leftStick().whileTrue(new ShooterOutCommand(m_shooter));
     
   }
 
