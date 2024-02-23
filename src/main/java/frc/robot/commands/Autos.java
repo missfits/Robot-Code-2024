@@ -32,18 +32,12 @@ public final class Autos {
    */
   public static SequentialCommandGroup frontSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
-      new ParallelCommandGroup( // shoots preloaded into speaker for 2 seconds
-        new IndexerUpCommand(indexer),
-        new ShooterOutCommand(shooter) // TO DO: replace shooter out with shooter speaker command once testing is done
-      ).withTimeout(2),
-      new ParallelCommandGroup( // drive towards note while intaking
+      new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
+      new ParallelCommandGroup( // drive towards note while intaking, intake for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
-        new IntakeIndexCommand(indexer, intake)),
+        new IntakeIndexCommand(indexer, intake).withTimeout(4)),
       new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE), // drive back towards speaker
-      new ParallelCommandGroup( // shoots second note into speaker for 2 seconds
-        new IndexerUpCommand(indexer),
-        new ShooterOutCommand(shooter) // TO DO: replace shooter out with shooter speaker command once testing is done
-      ).withTimeout(2)
+      new AutoSpeakerShootCommand(indexer, shooter) // shoot second note
     );
   }
 
