@@ -71,8 +71,8 @@ public final class Constants {
 
     public static final double HOOD_MOTOR_SPEED = 0.4; // TO DO: update and tune to shooter speed
 
-    public static final double PIVOT_MOTOR_SPEED = 0.2; // TO DO: TUNE
-    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.1; // TO DO: TUNE
+    public static final double PIVOT_MOTOR_SPEED = 0.5; // TO DO: TUNE
+    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // TO DO: TUNE
 
     // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
     public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
