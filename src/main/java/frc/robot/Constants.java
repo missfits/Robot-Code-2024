@@ -49,8 +49,8 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.2; // for testing
-    public static final double INDEXER_MOTOR_SPEED_UP = -0.2; // for testing
+    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.2; // for testing/backup, finalized 02/23/2024
+    public static final double INDEXER_MOTOR_SPEED_UP = -0.2; // for testing/backup, finalized 02/23/2024
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -58,7 +58,7 @@ public final class Constants {
   public static class ShooterConstants {
     public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED
+    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
     public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/19/24
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // for testing
 
@@ -69,10 +69,10 @@ public final class Constants {
     public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
     public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
-    public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP
+    public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 02/23/2024
 
-    public static final double PIVOT_MOTOR_SPEED = 0.5; // TO DO: TUNE
-    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // TO DO: TUNE
+    public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
+    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
 
     // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
     public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
