@@ -36,7 +36,10 @@ public class AutoSpeakerShootCommand extends Command {
     } 
 
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    m_shooter.shooterOff();
+    m_indexer.indexerOff();
+  }
 
   @Override
   public boolean isFinished() {
