@@ -19,7 +19,7 @@ public class Indexer extends SubsystemBase {
   private final SparkRelativeEncoder m_indexerEncoder = (SparkRelativeEncoder) m_indexerMotor
       .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IndexerConstants.COUNTS_PER_REV);
 
-  public DigitalInput m_input = new DigitalInput(0); // takes in values from the beam breaker
+  public DigitalInput m_input = new DigitalInput(9); // takes in values from the beam breaker
 
   // constructor
   public Indexer() {}
