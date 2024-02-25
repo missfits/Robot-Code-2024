@@ -11,14 +11,14 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Hood;
 
 /** 
- * Command for shooting in the amp 
- * Runs both the shooter and hood rollers
+ * Backup command that runs shooter and hood rollers backwards
+ * Should not be ever called unless the note is stuck in some way
  */
-public class ShooterAmpCommand extends Command {
+public class ShooterHoodBackward extends Command {
     private Shooter m_shooter;
     private Hood m_hood;
     
-    public ShooterAmpCommand(Shooter shooter, Hood hood){
+    public ShooterHoodBackward(Shooter shooter, Hood hood){
         m_shooter = shooter;
         m_hood = hood;
         addRequirements(shooter, hood);
@@ -31,8 +31,8 @@ public class ShooterAmpCommand extends Command {
 
     @Override
     public void execute() {
-        m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_AMP);
-        m_hood.runHoodMotor(HoodConstants.HOOD_MOTOR_SPEED);
+        m_shooter.runShooterMotor(-ShooterConstants.SHOOTER_MOTOR_SPEED_AMP);
+        m_hood.runHoodMotor(-HoodConstants.HOOD_MOTOR_SPEED);
     }
 
     @Override

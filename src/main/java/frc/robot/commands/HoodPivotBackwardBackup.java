@@ -5,22 +5,21 @@ import frc.robot.subsystems.Hood;
 
 import frc.robot.Constants.HoodConstants;
 
-
 /**
- * Puts hood forward (in amp shooting position).
+ * Backup hood command (in case encoder values break)
+ * Runs hood backwards with no stop condition, REQUIRES MANUAL STOP by releasing trigger
  */
-public class PivotForwardCommand extends Command{
-    private double m_encoderStart;
+public class HoodPivotBackwardBackup extends Command {
     private Hood m_hood;
 
-    public PivotForwardCommand(Hood hood){
+    public HoodPivotBackwardBackup(Hood hood){
         m_hood = hood;
+        addRequirements(hood);
     }
 
     @Override
     public void initialize() {
-        m_encoderStart = m_hood.getPivotEncoderPosition();
-    }  
+    }
 
     @Override
     public void execute() {
@@ -34,7 +33,6 @@ public class PivotForwardCommand extends Command{
 
     @Override
     public boolean isFinished() {
-        return m_hood.getPivotEncoderPosition() >= m_encoderStart + HoodConstants.PIVOT_DELTA;
-        // return m_hood.getPivotEncoderPosition() >= IntakeConstants.PIVOT_DOWN_POSITION;
+        return false;
     }
 }

@@ -40,8 +40,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; // for testing
-    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; // for testing
+    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; 
+    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; 
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -49,8 +49,11 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // for testing
-    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // for testing
+    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TODO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TODO: replace with values from beam break branch
+
+    public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
+    public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -58,7 +61,7 @@ public final class Constants {
   public static class ShooterConstants {
     public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = 0.1; // TO DO: update
+    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
     public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/19/24
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // for testing
 
@@ -69,17 +72,14 @@ public final class Constants {
     public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
     public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
-    public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // TO DO: update
-    public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6; // TO DO: update
-    public static final double HOOD_MOTOR_SPEED_DEFAULT = 0.05; // TO DO: update
+    public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 02/23/2024
 
-    public static final double PIVOT_MOTOR_SPEED = 0.2; // TO DO: update
+    public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
+    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
 
-    public static final double PIVOT_DELTA = 8; // for if we want to run a relative encoder thing
+    // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
+    public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
 
-    // for if we want to fix encoder values for up and down (these are untested!)
-    public static final double PIVOT_DOWN_POSITION = 8.5; // TO DO: update
-    public static final double PIVOT_UP_POSITION = 0.5; // TO DO: update
 
     public static final int COUNTS_PER_REV = 42;
   }

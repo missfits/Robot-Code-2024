@@ -8,14 +8,12 @@ import frc.robot.Constants.IntakeConstants;
 
 /**
  * Runs the indexer wheels upwards (moves note up towards shooter).
- * TO DO: REPLACE WITH BEAM BREAK VERSION WHEN MERGING
- * THIS IS A PLACEHOLDER COMMAND
  */
-public class IntakeIndexCommand extends Command {
+public class IntakeIndexCommandBackup extends Command {
     private Indexer m_indexer;
     private Intake m_intake;
     
-    public IntakeIndexCommand(Indexer indexer, Intake intake){
+    public IntakeIndexCommandBackup(Indexer indexer, Intake intake){
         m_indexer = indexer;
         addRequirements(indexer);
         m_intake = intake;
@@ -29,7 +27,7 @@ public class IntakeIndexCommand extends Command {
 
     @Override
     public void execute() {
-        m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP);
+        m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP_BACKUP);
         m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_IN);
 
     }
