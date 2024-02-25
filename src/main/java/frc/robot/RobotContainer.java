@@ -15,6 +15,7 @@ import frc.robot.commands.IndexerUpCommand;
 import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.IntakeOutCommand;
 import frc.robot.commands.IntakeInCommand;
+import frc.robot.commands.IntakeIndexCommandBackup;
 import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
 
@@ -123,8 +124,8 @@ public class RobotContainer {
     OI.m_coPilotXbox.back().whileTrue(new HoodPivotForwardBackup(m_hood));
     OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
   
-
-    OI.m_coPilotXbox.leftStick().whileTrue(new HoodRollerCommand(m_hood)); // for testing only!
+    OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake));
+    // OI.m_coPilotXbox.leftStick().whileTrue(new HoodRollerCommand(m_hood)); // for testing only!
     
   }
 
