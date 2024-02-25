@@ -52,6 +52,8 @@ public final class Constants {
     public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // finalized as of 2/19/24
     public static final double INDEXER_MOTOR_SPEED_UP = -0.4;
 
+    public static final double BACKUP_DISTANCE = 1; // TO DO: test
+
     public static final int COUNTS_PER_REV = 42;
   }
 
