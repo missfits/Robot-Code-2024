@@ -40,8 +40,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = 0.2; // for testing
-    public static final double INTAKE_MOTOR_SPEED_OUT = -0.05; // for testing
+    public static final double INTAKE_MOTOR_SPEED_IN = 0.2; // finalized as of 02/23/24
+    public static final double INTAKE_MOTOR_SPEED_OUT = -0.2;
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -49,8 +49,10 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.05; // for testing
-    public static final double INDEXER_MOTOR_SPEED_UP = -0.05; // for testing
+    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // finalized as of 2/19/24
+    public static final double INDEXER_MOTOR_SPEED_UP = -0.4;
+
+    public static final double BACKUP_DISTANCE = 1; // TO DO: test
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -59,8 +61,8 @@ public final class Constants {
     public static final int SHOOTER_MOTOR_PORT = 7;
 
     public static final double SHOOTER_MOTOR_SPEED_AMP = 0.1; // TO DO: update
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = 0.1; // TO DO: update
-    public static final double SHOOTER_MOTOR_SPEED_OUT = 0.6; // for testing
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/19/24
+    public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // for testing
 
     public static final double SHOOTER_TARGET_SPEED_SPEAKER = 0.5; // TODO: TESTING
 
@@ -68,8 +70,8 @@ public final class Constants {
   }
 
   public static class HoodConstants {
-    public static final int HOOD_MOTOR_PORT = 98; // TO DO: update
-    public static final int PIVOT_MOTOR_PORT = 99; // TO DO: update
+    public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
+    public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
     public static final double HOOD_MOTOR_SPEED_FORWARD = 0.4; // TO DO: update
     public static final double HOOD_MOTOR_SPEED_BACKWARD = -0.6; // TO DO: update
