@@ -27,7 +27,7 @@ public class IntakeIndexCommandBackup extends Command {
 
     @Override
     public void execute() {
-        m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP);
+        m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP_BACKUP);
         m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_IN);
 
     }

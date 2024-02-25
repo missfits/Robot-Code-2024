@@ -124,7 +124,7 @@ public class RobotContainer {
     OI.m_coPilotXbox.back().whileTrue(new HoodPivotForwardBackup(m_hood));
     OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
   
-    OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake));
+    OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
     // OI.m_coPilotXbox.leftStick().whileTrue(new HoodRollerCommand(m_hood)); // for testing only!
     
   }
