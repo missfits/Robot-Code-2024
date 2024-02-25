@@ -40,8 +40,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; // for testing
-    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; // for testing
+    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; 
+    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; 
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -49,8 +49,8 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; 
-    public static final double INDEXER_MOTOR_SPEED_UP = -0.4;
+    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TODO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TODO: replace with values from beam break branch
 
     public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
     public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
