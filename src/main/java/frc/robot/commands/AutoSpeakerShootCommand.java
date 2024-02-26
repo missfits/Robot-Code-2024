@@ -1,5 +1,6 @@
 package frc.robot.commands;
 
+import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.IndexerConstants;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.subsystems.Indexer;
@@ -33,6 +34,7 @@ public class AutoSpeakerShootCommand extends Command {
     m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_SPEAKER);
     if(Math.abs(m_shooter.getEncoderVelocity())> ShooterConstants.SHOOTER_TARGET_SPEED_SPEAKER)
         m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP);
+        System.out.println(m_shooter.getEncoderVelocity());
     } 
 
   @Override
@@ -43,6 +45,6 @@ public class AutoSpeakerShootCommand extends Command {
 
   @Override
   public boolean isFinished() {
-    return m_timer.get() > 3;
+    return m_timer.get() > AutoConstants.SPEAKER_SHOOT_TIMEOUT;
   }
 }

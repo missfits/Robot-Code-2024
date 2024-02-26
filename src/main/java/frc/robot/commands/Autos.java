@@ -100,7 +100,7 @@ public final class Autos {
       new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
       new ParallelCommandGroup( // drive towards note while intaking, intake for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
-        new IntakeIndexCommand(indexer, intake).withTimeout(4)),
+        new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.INTAKE_TIMEOUT)),
       new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE), // drive back towards speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot second note
     );
@@ -125,7 +125,7 @@ public final class Autos {
       new RotationCommand(drivetrain, -60), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, 1.75), // 1.75 is the distance needed to get to the note
-        new IntakeIndexCommand(indexer, intake).withTimeout(4)
+        new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.INTAKE_TIMEOUT)
       ),
       new DistanceDriveCommand(drivetrain, -1.75), // back up same distance as before
       new RotationCommand(drivetrain, 60), // turn the other way 60 degrees (facing speaker)
@@ -153,7 +153,7 @@ public final class Autos {
       new RotationCommand(drivetrain, 60), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, 1.75),
-        new IntakeIndexCommand(indexer, intake).withTimeout(4)
+        new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.INTAKE_TIMEOUT)
       ),
       new DistanceDriveCommand(drivetrain, -1.75), // back up same distance as before
       new RotationCommand(drivetrain, -60), // turn the other way 60 degrees (facing speaker)
