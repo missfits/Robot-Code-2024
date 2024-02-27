@@ -108,10 +108,10 @@ public final class Constants {
         // side to align with close note (untested for 2024)
     public static final double CLOSE_HORIZONTAL_DISTANCE = 1.75; // distance in meters to close
         //  note after alignment (untested for 2024)
-    public static final double FAR_DIAGONAL_DISTANCE = 0.33; // distance in meters from speaker
-        // side to align with far note (untested for 2024) COPIED VALUE FIX!!!!!!
-    public static final double FAR_HORIZONTAL_DISTANCE = 0.33; // distance in meters to far note
-        //  after alignment (untested for 2024) COPIED VALUE FIX!!!!!!
+    public static final double FAR_DIAGONAL_DISTANCE = 0.86; // distance in meters from speaker
+        // side to align with far note (untested for 2024)
+    public static final double FAR_HORIZONTAL_DISTANCE = 7.23; // distance in meters to far note
+        //  after alignment (untested for 2024)
 
     public static final double TAXI_AUTO_SPEED = 0.5; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
