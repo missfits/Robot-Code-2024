@@ -7,9 +7,10 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.ExampleSubsystem;
 
-/** An example command that uses an example subsystem. */
+/*
+ * Runs during auto to shoot note into speaker
+ */
 public class AutoSpeakerShootCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Indexer m_indexer;
@@ -32,9 +33,9 @@ public class AutoSpeakerShootCommand extends Command {
   @Override
   public void execute() {
     m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_SPEAKER);
+     // once shooter motor reaches desired speed, run indexer motor
     if(Math.abs(m_shooter.getEncoderVelocity())> ShooterConstants.SHOOTER_TARGET_SPEED_SPEAKER)
         m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP);
-        System.out.println(m_shooter.getEncoderVelocity());
     } 
 
   @Override

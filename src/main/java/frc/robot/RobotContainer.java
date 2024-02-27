@@ -66,7 +66,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
+  // robot subsystems
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);

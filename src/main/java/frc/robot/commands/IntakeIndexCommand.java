@@ -29,7 +29,7 @@ public class IntakeIndexCommand extends Command {
 
     @Override
     public void execute() {
-        System.out.println("intkeindexer commamdn running :D");
+        System.out.println("intake indexer command running :D");
         // once the beam has been broken, switch flag to true and reset encoders on indexer
         if (!m_indexer.getBeamBreak() && !beam_break) {
             // System.out.println("beam break bool switched");
