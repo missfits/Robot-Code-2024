@@ -1,5 +1,7 @@
 package frc.robot;
 
+// ***NEED TO BE UPDATED FOR 2024 SEASON***
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or
  * boolean constants. This class should not be used for any other purpose. All constants should be
@@ -9,77 +11,84 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    /**
-     * Constructs Constants object.
-     */
-    public Constants() {}
 
-    /**
-     * Class for operator constants.
-     */
-    public static class OperatorConstants {
-        public static final int DRIVER_XBOX_PORT = 0;
-        public static final int COPILOT_XBOX_PORT = 1;
+  public static class OperatorConstants {
+    public static final int DRIVER_XBOX_PORT = 0;
+    public static final int COPILOT_XBOX_PORT = 1;
 
-        public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
-        public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
-    }
+    public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
+    public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
+  }
 
-    /**
-     * Class for drivetrain constants.
-     */
-    public static class DrivetrainConstants {
-        // TO DO: update
-        public static final int LEFT_MOTOR_1_PORT = 1;
-        public static final int LEFT_MOTOR_2_PORT = 2;
-        public static final int RIGHT_MOTOR_1_PORT = 3;
-        public static final int RIGHT_MOTOR_2_PORT = 4;
+  public static class DrivetrainConstants {
+    public static final int LEFT_MOTOR_1_PORT = 1;
+    public static final int LEFT_MOTOR_2_PORT = 2;
+    public static final int RIGHT_MOTOR_1_PORT = 3; 
+    public static final int RIGHT_MOTOR_2_PORT = 4;
 
-        public static final int COUNTS_PER_REV = 42;
-    }
+    public static final int COUNTS_PER_REV = 42;
 
-    /**
-     * Class for intake constants.
-     */
-    public static class IntakeConstants {
-        // TO DO: update
-        public static final int INTAKE_MOTOR_PORT = 6;
-        public static final int PIVOT_MOTOR_PORT = 8;
+    // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
+    public static final double METERS_TO_ROTATIONS = 17.664;
+    public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
+  }
 
-        public static final double INTAKE_MOTOR_SPEED_FORWARD = 0.4;
-        public static final double INTAKE_MOTOR_SPEED_BACKWARD = -0.6;
-        public static final double INTAKE_MOTOR_SPEED_DEFAULT = 0.05;
+  public static class IntakeConstants {
+    public static final int INTAKE_MOTOR_PORT = 5;
 
-        public static final double PIVOT_MOTOR_SPEED = 0.2;
+    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; 
+    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; 
 
-        public static final int COUNTS_PER_REV = 42;
+    public static final int COUNTS_PER_REV = 42;
+  }
 
-        // TO DO: delete after intake is updated
-        // For if we want to run a relative encoder thing
-        public static final double PIVOT_DELTA = 8;
+  public static class IndexerConstants {
+    public static final int INDEXER_MOTOR_PORT = 6;
 
-        // TO DO: delete after intake is updated
-        // For if we want to fix encoder values for up and down (these are untested)
-        public static final double PIVOT_DOWN_POSITION = 8.5;
-        public static final double PIVOT_UP_POSITION = 0.5;
-    }
+    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TODO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TODO: replace with values from beam break branch
 
-    /**
-     * Class for climber constants.
-     */
-    public static class ClimberConstants {
-        // TO DO: set ID val
-        public static final int CLIMBER_MOTOR_PORT = 100;
+    public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
+    public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
 
-        public static final int COUNTS_PER_REV = 42;
-    }
+    public static final int COUNTS_PER_REV = 42;
+  }
 
-    /**
-     * Class for auto constants.
-     */
-    public static class AutoConstants {
-        // TO DO: update
-        public static final double TAXI_AUTO_TARGET_DISTANCE = 25;
-        public static final double TAXI_AUTO_SPEED = 0.25; 
-    }
+  public static class ShooterConstants {
+    public static final int SHOOTER_MOTOR_PORT = 7;
+
+    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/25/24
+    public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
+
+    public static final int COUNTS_PER_REV = 42;
+  }
+
+  public static class HoodConstants {
+    public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
+    public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
+
+    public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 02/23/2024
+
+    public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
+    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
+
+    // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
+    public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
+
+
+    public static final int COUNTS_PER_REV = 42;
+  }
+
+  public static class ClimberConstants {
+    public static final int CLIMBER_MOTOR_PORT = 100; // TO DO: set ID val
+
+    public static final int COUNTS_PER_REV = 42;
+  }
+
+  public static class AutoConstants {
+    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // distance in meters to taxi (unset for 2024)
+    public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
+    public static final double ROTATION_SPEED = 0.5;
+  }
 }

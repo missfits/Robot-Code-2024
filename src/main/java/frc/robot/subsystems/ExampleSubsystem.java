@@ -2,15 +2,11 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-/**
- * Subsystem example.
- */
 public class ExampleSubsystem extends SubsystemBase {
-    /**
-     * Constructs an ExampleSubsystem subsystem.
-     */
-    public ExampleSubsystem() {}
+  /** Creates a new ExampleSubsystem. */
+  public ExampleSubsystem() {}
 
     /**
      * Factory method to create command (not being used right now).

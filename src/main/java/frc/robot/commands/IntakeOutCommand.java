@@ -5,17 +5,14 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake;
 import frc.robot.Constants.IntakeConstants;
 
+
 /**
- * Command to run intake forward. Uses Intake subsystem.
+ * Spits out note.
  */
-public class IntakeForwardCommand extends Command {
-    // Instance variables
+public class IntakeOutCommand extends Command {
     private Intake m_intake;
     
-    /**
-     * Constructs an IntakeForwardCommand command.
-     */
-    public IntakeForwardCommand(Intake intake){
+    public IntakeOutCommand(Intake intake){
         m_intake = intake;
         addRequirements(intake);
     }
@@ -24,14 +21,16 @@ public class IntakeForwardCommand extends Command {
      * Method called once per time the command is scheduled.
      */
     @Override
-    public void initialize() {}  
+    public void initialize() {
+        // System.out.println("INTAKE SUCK COMMAND STARTED");
+    }  
 
     /**
      * Method called repeatedly while the command is scheduled (every time the scheduler runs).
      */
     @Override
     public void execute() {
-        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_FORWARD);
+        m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_OUT);
     }
 
     /**

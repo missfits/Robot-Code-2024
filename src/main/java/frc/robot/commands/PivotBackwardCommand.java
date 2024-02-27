@@ -55,3 +55,4 @@ public class PivotBackwardCommand extends Command {
         return m_intake.getPivotEncoderPosition() <= m_encoderStart - IntakeConstants.PIVOT_DELTA;
     }
 }
+
