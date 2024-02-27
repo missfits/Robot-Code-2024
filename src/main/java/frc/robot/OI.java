@@ -13,9 +13,9 @@ public class OI {
 
     // driver xbox inputs
 
-    // needs to be negative to make motors run straight as of 9/26/23
+    // needs to be negative to make motors run straight as of 2/25/24
     public double getDriverXBoxLeftJoyY() {
-        return -m_driverXbox.getLeftY();
+        return m_driverXbox.getLeftY();
     }
 
     public double getDriverXBoxLeftJoyX() {
@@ -26,7 +26,7 @@ public class OI {
         return m_driverXbox.getRightY();
     }
 
-    // needs to be negative to make the turning correct as of 9/26/23
+    // needs to be negative to make the turning correct as of 2/25/24
     public double getDriverXBoxRightJoyX() {
         return -m_driverXbox.getRightX();
     }

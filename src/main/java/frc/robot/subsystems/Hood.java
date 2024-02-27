@@ -16,9 +16,9 @@ public class Hood extends SubsystemBase {
     // pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
     private final CANSparkMax m_pivotHoodMotor = new CANSparkMax(HoodConstants.PIVOT_MOTOR_PORT, MotorType.kBrushless);
 
-    private final SparkRelativeEncoder m_pivotEncoder = (SparkRelativeEncoder) m_pivotHoodMotor
+    public final SparkRelativeEncoder m_pivotEncoder = (SparkRelativeEncoder) m_pivotHoodMotor
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, HoodConstants.COUNTS_PER_REV);
-    private final SparkRelativeEncoder m_hoodEncoder = (SparkRelativeEncoder) m_hoodMotor
+    public final SparkRelativeEncoder m_hoodEncoder = (SparkRelativeEncoder) m_hoodMotor
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, HoodConstants.COUNTS_PER_REV);
     
     // constructor
@@ -50,8 +50,8 @@ public class Hood extends SubsystemBase {
         return m_hoodEncoder.getVelocity();
     }
 
-    // initializes encoder position to 0 - MAKE SURE INTAKE IS ALWAYS FULLY UP WHENEVER THIS METHOD IS CALLED
-    public void initializePivotEncoderPosition() {
+    // initializes encoder position to 0
+    public void resetPivotEncoderPosition() {
         setPivotEncoderPosition(0); // TO DO: WRITE THE SET FUNCTION
     }
 

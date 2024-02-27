@@ -68,7 +68,7 @@ public class Drivetrain extends SubsystemBase {
       m_rightSecondary.follow(m_rightPrimary);
 
       // inverts the right side to account for the fact that that side initially moves backwards for positive velocity and forwards for negative
-      // inversion is correct as of 1/30/2024
+      // inversion is correct as of 2/25/24
       m_leftPrimary.setInverted(true);
       m_leftSecondary.setInverted(true);
 
