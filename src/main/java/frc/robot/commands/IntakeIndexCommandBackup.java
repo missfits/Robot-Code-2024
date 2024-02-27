@@ -29,14 +29,12 @@ public class IntakeIndexCommandBackup extends Command {
     public void execute() {
         m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP_BACKUP);
         m_intake.runIntakeMotor(IntakeConstants.INTAKE_MOTOR_SPEED_IN);
-
     }
 
     @Override
     public void end(boolean interrupted) {
         m_indexer.indexerOff();
         m_intake.intakeOff();
-
     }
 
     @Override

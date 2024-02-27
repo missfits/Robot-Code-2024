@@ -14,35 +14,36 @@ import frc.robot.Constants.ShooterConstants;
 // ***NEED TO BE UPDATED FOR 2024 SEASON***
 
 public class Shooter extends SubsystemBase {
-  private final CANSparkMax m_shooterMotor = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_PORT, MotorType.kBrushless);
-  private final SparkRelativeEncoder m_shooterEncoder = (SparkRelativeEncoder) m_shooterMotor
-      .getEncoder(SparkRelativeEncoder.Type.kHallSensor, ShooterConstants.COUNTS_PER_REV);
+    private final CANSparkMax m_shooterMotor = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_PORT,
+        MotorType.kBrushless);
+    private final SparkRelativeEncoder m_shooterEncoder = (SparkRelativeEncoder)
+        m_shooterMotor.getEncoder(SparkRelativeEncoder.Type.kHallSensor, ShooterConstants.COUNTS_PER_REV);
 
-  public Shooter() {}
+    public Shooter() {}
 
-  // Sets intake motor speed (forward if positive, backward if negative)
-  public void runShooterMotor(double speed) {
-    m_shooterMotor.set(speed);
-  }
+    // Sets intake motor speed (forward if positive, backward if negative)
+    public void runShooterMotor(double speed) {
+        m_shooterMotor.set(speed);
+    }
 
-  // Sets intake motor speed to zero and stops motor
-  public void shooterOff() {
-    m_shooterMotor.set(0);
-    m_shooterMotor.stopMotor();
-  }
+    // Sets intake motor speed to zero and stops motor
+    public void shooterOff() {
+        m_shooterMotor.set(0);
+        m_shooterMotor.stopMotor();
+    }
 
-  // returns encoder position
-  public double getEncoderPosition() {
-    return m_shooterEncoder.getPosition();
-  }
+    // returns encoder position
+    public double getEncoderPosition() {
+        return m_shooterEncoder.getPosition();
+    }
 
-  // sets encoder to desired position
-  public void setEncoderPosition(double position) {
-      m_shooterEncoder.setPosition(position);
-  }
+    // sets encoder to desired position
+    public void setEncoderPosition(double position) {
+        m_shooterEncoder.setPosition(position);
+    }
 
-  // returns encoder velocity
-  public double getEncoderVelocity() {
-    return m_shooterEncoder.getVelocity();
-  }
+    // returns encoder velocity
+    public double getEncoderVelocity() {
+        return m_shooterEncoder.getVelocity();
+    }
 }

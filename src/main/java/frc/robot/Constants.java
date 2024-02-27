@@ -12,83 +12,83 @@ package frc.robot;
  */
 public final class Constants {
 
-  public static class OperatorConstants {
-    public static final int DRIVER_XBOX_PORT = 0;
-    public static final int COPILOT_XBOX_PORT = 1;
+    public static class OperatorConstants {
+        public static final int DRIVER_XBOX_PORT = 0;
+        public static final int COPILOT_XBOX_PORT = 1;
 
-    public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
-    public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
-  }
+        public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
+        public static final double DRIVE_SPEED_ADJUSTMENT = 0.8;
+    }
 
-  public static class DrivetrainConstants {
-    public static final int LEFT_MOTOR_1_PORT = 1;
-    public static final int LEFT_MOTOR_2_PORT = 2;
-    public static final int RIGHT_MOTOR_1_PORT = 3; 
-    public static final int RIGHT_MOTOR_2_PORT = 4;
+    public static class DrivetrainConstants {
+        public static final int LEFT_MOTOR_1_PORT = 1;
+        public static final int LEFT_MOTOR_2_PORT = 2;
+        public static final int RIGHT_MOTOR_1_PORT = 3; 
+        public static final int RIGHT_MOTOR_2_PORT = 4;
 
-    public static final int COUNTS_PER_REV = 42;
+        public static final int COUNTS_PER_REV = 42;
 
-    // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
-    public static final double METERS_TO_ROTATIONS = 17.664;
-    public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
-  }
+        // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
+        public static final double METERS_TO_ROTATIONS = 17.664;
+        public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
+    }
 
-  public static class IntakeConstants {
-    public static final int INTAKE_MOTOR_PORT = 5;
+    public static class IntakeConstants {
+        public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; 
-    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; 
+        public static final double INTAKE_MOTOR_SPEED_IN = 0.4; 
+        public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; 
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class IndexerConstants {
-    public static final int INDEXER_MOTOR_PORT = 6;
+    public static class IndexerConstants {
+        public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TO DO: replace with values from beam break branch
-    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TO DO: replace with values from beam break branch
+        public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TO DO: replace with values from beam break branch
+        public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TO DO: replace with values from beam break branch
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
-    public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
+        public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
+        public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class ShooterConstants {
-    public static final int SHOOTER_MOTOR_PORT = 7;
+    public static class ShooterConstants {
+        public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/25/24
-    public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
+        public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
+        public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/25/24
+        public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class HoodConstants {
-    public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
-    public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
+    public static class HoodConstants {
+        public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
+        public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
-    public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 02/23/2024
+        public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 02/23/2024
 
-    public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
-    public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
+        public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
+        public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
 
-    // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
-    public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
+        // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
+        public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
 
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class ClimberConstants {
-    public static final int CLIMBER_MOTOR_PORT = 100; // TO DO: set ID val
+    public static class ClimberConstants {
+        public static final int CLIMBER_MOTOR_PORT = 100; // TO DO: set ID val
 
-    public static final int COUNTS_PER_REV = 42;
-  }
+        public static final int COUNTS_PER_REV = 42;
+    }
 
-  public static class AutoConstants {
-    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // distance in meters to taxi (unset for 2024)
-    public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
-    public static final double ROTATION_SPEED = 0.5;
-  }
+    public static class AutoConstants {
+        public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // distance in meters to taxi (unset for 2024)
+        public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
+        public static final double ROTATION_SPEED = 0.5;
+    }
 }

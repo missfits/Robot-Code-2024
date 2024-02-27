@@ -20,7 +20,7 @@ public class PrintHoodEncoder extends Command {
 
     @Override
     public void execute() {
-      System.out.println(m_hood.getPivotEncoderPosition());
+        System.out.println(m_hood.getPivotEncoderPosition());
     }
 
     @Override
