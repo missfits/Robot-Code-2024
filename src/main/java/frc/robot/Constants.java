@@ -57,7 +57,7 @@ public final class Constants {
 
     // FOR AUTO 
     public static final double INDEXER_MOTOR_REVERSE_SPEED = 0.2;
-    public static final double REVERSE_DISTANCE = 10.0; // TO DO: test
+    public static final double REVERSE_DISTANCE = 0.01; // TO DO: test
 
     public static final int COUNTS_PER_REV = 42;
   }

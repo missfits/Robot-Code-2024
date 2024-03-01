@@ -21,6 +21,7 @@ public class BeamBreakCommand extends Command {
     @Override
     public void execute() {
         m_indexer.printBeamBreak();
+        System.out.println(m_indexer.getEncoderPosition());
     }
 
     @Override

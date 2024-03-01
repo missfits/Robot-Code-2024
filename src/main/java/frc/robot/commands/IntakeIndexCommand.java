@@ -14,22 +14,24 @@ public class IntakeIndexCommand extends Command {
     private Indexer m_indexer;
     private Intake m_intake;
     private boolean beam_break = false;
+    private int count;
     
     public IntakeIndexCommand(Indexer indexer, Intake intake){
         m_indexer = indexer;
         m_intake = intake;
         addRequirements(indexer, intake);
+        count = 0;
     }
 
     @Override
     public void initialize() {
         beam_break = false;
-        System.out.println("indexer intake  COMMAND STARTED");
+        // System.out.println("indexer intake  COMMAND STARTED");
     }  
 
     @Override
     public void execute() {
-        System.out.println("intake indexer command running :D");
+        // System.out.println("intake indexer command running :D");
         // once the beam has been broken, switch flag to true and reset encoders on indexer
         if (!m_indexer.getBeamBreak() && !beam_break) {
             // System.out.println("beam break bool switched");
@@ -40,6 +42,7 @@ public class IntakeIndexCommand extends Command {
         // System.out.println("Encoder value: " + m_indexer.getEncoderPosition());
         if (beam_break) { // if the beam has been broken run the indexer down a bit
             m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_REVERSE_SPEED);
+            count++;
             // System.out.println("Backing up");
         } else { // otherwise intake
             m_indexer.runIndexerMotor(IndexerConstants.INDEXER_MOTOR_SPEED_UP);
@@ -50,6 +53,9 @@ public class IntakeIndexCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
+        // System.out.println("reverse speed: " + IndexerConstants.INDEXER_MOTOR_REVERSE_SPEED + ", distance: " + IndexerConstants.REVERSE_DISTANCE);
+        // System.out.println("final encoder val: " + m_indexer.getEncoderPosition());
+        // System.out.println("how many times the command has run backwards: " + count);
         m_indexer.indexerOff();
         m_intake.intakeOff();
         m_indexer.setEncoderPosition(0);
@@ -60,6 +66,6 @@ public class IntakeIndexCommand extends Command {
     @Override
     public boolean isFinished() {
         // if the beam is broken and if the backwards command has run for enough encoder rotations, end command
-        return (beam_break && (Math.abs(m_indexer.getEncoderPosition()) > IndexerConstants.REVERSE_DISTANCE)); 
+        return (beam_break && (m_indexer.getEncoderPosition() > IndexerConstants.REVERSE_DISTANCE)); 
     }
 }
