@@ -18,6 +18,7 @@ import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.IntakeIndexCommandBackup;
 import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
+import frc.robot.commands.BeamBreakCommand;
 
 // hood pivot commands
 import frc.robot.commands.HoodPivotBackwardCommand;
@@ -33,15 +34,18 @@ import frc.robot.commands.ShooterSpeakerCommand;
 import frc.robot.commands.ShooterOutCommand;
 import frc.robot.commands.ShooterHoodBackward;
 
+// auto commands
 import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.commands.RotationCommand;
 
+// subsystems
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Hood;
+import frc.robot.commands.Autos;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -62,7 +66,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
  * subsystems, commands, and trigger mappings) should be declared here.
  */
 public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
+  // robot subsystems
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private static final OI m_humanControl = new OI();
   public static final Drivetrain m_drivetrain = new Drivetrain(m_humanControl);
@@ -87,15 +91,24 @@ public class RobotContainer {
 
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    // m_hood.setDefaultCommand(new PrintHoodEncoder(m_hood));
+    // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
 
-    // auto routines
-    m_chooser.addOption("Drive 2 meters", new DistanceDriveCommand(m_drivetrain, 2));
-    m_chooser.addOption("Rotate 90 degrees", new RotationCommand(m_drivetrain, 90));
+    m_chooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
+    m_chooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));
+
+    m_chooser.addOption("Taxi forward", Autos.taxiAuto(m_drivetrain));
+    m_chooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("Shoot and taxi from left", Autos.shootTaxiLeft(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("Shoot and taxi from right", Autos.shootTaxiRight(m_drivetrain, m_indexer, m_shooter));
+    
+    m_chooser.addOption("2pc auto from front", Autos.frontSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_chooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+
     // m_chooser.addOption("Double drive", m_driveTwice);
 
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
-    compTab.add("Auto Chooser", m_chooser).withSize(3, 2);
+    compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
   }
 
   /**

@@ -40,8 +40,8 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; 
-    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4; 
+    public static final double INTAKE_MOTOR_SPEED_IN = 0.4; // finalized as of 02/23/24
+    public static final double INTAKE_MOTOR_SPEED_OUT = -0.4;
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -49,11 +49,15 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TODO: replace with values from beam break branch
-    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TODO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TO DO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TO DO: replace with values from beam break branch
 
     public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
     public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
+
+    // FOR AUTO 
+    public static final double INDEXER_MOTOR_REVERSE_SPEED = 0.2;
+    public static final double REVERSE_DISTANCE = 0.01; // TO DO: test
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -64,6 +68,9 @@ public final class Constants {
     public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
     public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/25/24
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
+
+    // FOR AUTO
+    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400; // TO DO: TESTING
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -91,8 +98,22 @@ public final class Constants {
   }
 
   public static class AutoConstants {
-    public static final double TAXI_AUTO_TARGET_DISTANCE = 25; // distance in meters to taxi (unset for 2024)
-    public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
+    public static final double SPEAKER_SHOOT_TIMEOUT  = 5; // unit: seconds
+    public static final double CLOSE_INTAKE_TIMEOUT = 5; // in seconds
+    public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
+
+    public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
+    public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.30; // TO DO: test
+    public static final double CLOSE_DIAGONAL_DISTANCE = 0.33; // distance in meters from speaker
+        // side to align with close note (untested for 2024)
+    public static final double CLOSE_HORIZONTAL_DISTANCE = 1.75; // distance in meters to close
+        //  note after alignment (untested for 2024)
+    public static final double FAR_DIAGONAL_DISTANCE = 0.86; // distance in meters from speaker
+        // side to align with far note (untested for 2024)
+    public static final double FAR_HORIZONTAL_DISTANCE = 7.23; // distance in meters to far note
+        //  after alignment (untested for 2024)
+
+    public static final double TAXI_AUTO_SPEED = 0.5; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
   }
 }
