@@ -20,7 +20,8 @@ import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
 import frc.robot.commands.PrintClimberEncoder;
 import frc.robot.commands.BeamBreakCommand;
-
+import frc.robot.commands.ClimberUpCommand;
+import frc.robot.commands.ClimberDownCommand;
 // hood pivot commands
 import frc.robot.commands.HoodPivotBackwardCommand;
 import frc.robot.commands.HoodPivotForwardCommand;
@@ -95,7 +96,7 @@ public class RobotContainer {
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
     // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
-    m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
+    // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
     m_chooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
     m_chooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));
@@ -141,8 +142,9 @@ public class RobotContainer {
     OI.m_coPilotXbox.back().whileTrue(new HoodPivotForwardBackup(m_hood));
     OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
   
-    OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
-    // OI.m_coPilotXbox.leftStick().whileTrue(new HoodRollerCommand(m_hood)); // for testing only!
+    // OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
+    OI.m_coPilotXbox.leftStick().whileTrue(new ClimberUpCommand(m_climber)); // for testing only!
+    OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownCommand(m_climber));
     
   }
 

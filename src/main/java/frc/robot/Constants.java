@@ -47,7 +47,7 @@ public final class Constants {
   }
 
   public static class IndexerConstants {
-    public static final int INDEXER_MOTOR_PORT = 6;
+    public static final int INDEXER_MOTOR_PORT = 6; // RETURN TO 6 WHEN DONE
 
     public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TO DO: replace with values from beam break branch
     public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TO DO: replace with values from beam break branch
@@ -96,7 +96,7 @@ public final class Constants {
     public static final int CLIMBER_MOTOR_PORT_RIGHT = 100;
 
     public static final int TELESCOPE_DISTANCE = 100; // TO DO: TUNE
-    public static final double SLOW_CLIMBER_MOTOR_SPEED = 0.5; // TO DO: TUNE
+    public static final double SLOW_CLIMBER_MOTOR_SPEED = 0.2; // TO DO: TUNE
     public static final double CLIMBER_MOTOR_SPEED = 0.7; //TO DO: TUNE
 
     public static final int COUNTS_PER_REV = 42;
