@@ -18,6 +18,7 @@ import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.IntakeIndexCommandBackup;
 import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
+import frc.robot.commands.PrintClimberEncoder;
 import frc.robot.commands.BeamBreakCommand;
 
 // hood pivot commands
@@ -45,6 +46,7 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Hood;
+import frc.robot.subsystems.Climber;
 import frc.robot.commands.Autos;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -74,6 +76,7 @@ public class RobotContainer {
   private static final Intake m_intake = new Intake();
   private static final Shooter m_shooter = new Shooter();
   private static final Hood m_hood = new Hood();
+  private static final Climber m_climber = new Climber();
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
   // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
@@ -92,6 +95,7 @@ public class RobotContainer {
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
     // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
+    m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
     m_chooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
     m_chooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));

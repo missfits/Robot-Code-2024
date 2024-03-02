@@ -92,7 +92,8 @@ public final class Constants {
   }
 
   public static class ClimberConstants {
-    public static final int CLIMBER_MOTOR_PORT = 100; // TO DO: set ID val
+    public static final int CLIMBER_MOTOR_PORT_LEFT = 99; // TO DO: set ID val
+    public static final int CLIMBER_MOTOR_PORT_RIGHT = 100;
 
     public static final int TELESCOPE_DISTANCE = 100; // TO DO: TUNE
     public static final double SLOW_CLIMBER_MOTOR_SPEED = 0.5; // TO DO: TUNE
