@@ -47,7 +47,7 @@ public final class Constants {
   }
 
   public static class IndexerConstants {
-    public static final int INDEXER_MOTOR_PORT = 6; // RETURN TO 6 WHEN DONE
+    public static final int INDEXER_MOTOR_PORT = 6;
 
     public static final double INDEXER_MOTOR_SPEED_DOWN = 0.4; // TO DO: replace with values from beam break branch
     public static final double INDEXER_MOTOR_SPEED_UP = -0.4; // TO DO: replace with values from beam break branch
@@ -55,8 +55,7 @@ public final class Constants {
     public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
     public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
 
-    // FOR AUTO 
-    public static final double INDEXER_MOTOR_REVERSE_SPEED = 0.2;
+    public static final double INDEXER_MOTOR_REVERSE_SPEED = 0.2; // for running the note backwards a little after beam break
     public static final double REVERSE_DISTANCE = 0.01; // TO DO: test
 
     public static final int COUNTS_PER_REV = 42;
@@ -70,7 +69,7 @@ public final class Constants {
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
     // FOR AUTO
-    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400; // TO DO: TESTING
+    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -95,9 +94,7 @@ public final class Constants {
     public static final int CLIMBER_MOTOR_PORT_LEFT = 99; // TO DO: set ID val
     public static final int CLIMBER_MOTOR_PORT_RIGHT = 100;
 
-    public static final int TELESCOPE_DISTANCE = 100; // TO DO: TUNE
-    public static final double SLOW_CLIMBER_MOTOR_SPEED = 0.2; // TO DO: TUNE
-    public static final double CLIMBER_MOTOR_SPEED = 0.7; //TO DO: TUNE
+    public static final double CLIMBER_MOTOR_SPEED = 0.2; //TO DO: TUNE
 
     public static final int COUNTS_PER_REV = 42;
   }

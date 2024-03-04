@@ -7,8 +7,6 @@ import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.HoodConstants;
 
-// ***NEED TO BE UPDATED FOR 2024 SEASON***
-
 public class Hood extends SubsystemBase {
 
     // instance variables
