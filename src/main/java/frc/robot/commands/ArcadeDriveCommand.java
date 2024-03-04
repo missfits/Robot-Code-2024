@@ -29,6 +29,13 @@ public class ArcadeDriveCommand extends Command {
         double x_val = Math.abs(xJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? xJoy : 0.0;
         double y_val = Math.abs(yJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? yJoy : 0.0;
 
+        double original = x_val;
+
+        int sign = xJoy > 0 ? 1 : -1;
+        x_val = (x_val*x_val)*sign;
+
+        System.out.println(original + ", " + x_val);
+
         m_drivetrain.arcadeDrive(OperatorConstants.DRIVE_SPEED_ADJUSTMENT * x_val, OperatorConstants.DRIVE_SPEED_ADJUSTMENT * y_val);
     }
 
