@@ -3,6 +3,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Climber;
 
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
+
 import frc.robot.Constants.ClimberConstants;
 
 /**
@@ -10,9 +13,11 @@ import frc.robot.Constants.ClimberConstants;
  */
 public class ClimberUpCommand extends Command {
     private Climber m_climber;
+    private CommandXboxController m_xbox;
 
-    public ClimberUpCommand(Climber climber){
+    public ClimberUpCommand(Climber climber, CommandXboxController xbox){
         m_climber = climber;
+        m_xbox = xbox;
         addRequirements(climber);
     }
 
@@ -22,8 +27,9 @@ public class ClimberUpCommand extends Command {
 
     @Override
     public void execute() {
-        m_climber.runMotor(ClimberConstants.CLIMBER_MOTOR_SPEED);
-    //     System.out.println(m_climber.getEncoderPosition());
+        if (m_xbox.x().getAsBoolean()) {
+            m_climber.runMotor(ClimberConstants.CLIMBER_MOTOR_SPEED);
+        }
     }
 
     @Override

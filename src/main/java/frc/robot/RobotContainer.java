@@ -143,8 +143,12 @@ public class RobotContainer {
     OI.m_coPilotXbox.start().whileTrue(new HoodPivotBackwardBackup(m_hood));
   
     // OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
-    OI.m_coPilotXbox.leftStick().whileTrue(new ClimberUpCommand(m_climber)); // for testing only!
+    // OI.m_coPilotXbox.leftStick().whileTrue(new ClimberUpCommand(m_climber)); // for testing only!
     OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownCommand(m_climber));
+
+    // for unwinding the climber after match
+    // requires driver to first hold down b button, then x button
+    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_climber, OI.m_driverXbox)); 
     
   }
 
