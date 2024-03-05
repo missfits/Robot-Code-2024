@@ -116,7 +116,7 @@ public class RobotContainer {
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
 
     //add camera widget
-    Shuffleboard.getTab("SmartDashbpard").addCamera("Intkae Camera", "Intake Camera", "roborio-6418-frc.local:1181");
+    Shuffleboard.getTab("SmartDashboard").addCamera("Intake Camera", "Intake Camera", "roborio-6418-frc.local:1181");
   }
 
   /**
