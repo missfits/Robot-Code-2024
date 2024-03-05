@@ -91,8 +91,8 @@ public final class Constants {
   }
 
   public static class ClimberConstants {
-    public static final int CLIMBER_MOTOR_PORT_LEFT = 10;
-    public static final int CLIMBER_MOTOR_PORT_RIGHT = 11;
+    public static final int CLIMBER_MOTOR_PORT_LEFT = 11;
+    public static final int CLIMBER_MOTOR_PORT_RIGHT = 10;
 
     public static final double CLIMBER_MOTOR_SPEED = 0.2; //TO DO: TUNE
 
