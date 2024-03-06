@@ -8,10 +8,10 @@ import frc.robot.Constants.ClimberConstants;
 /**
  * Runs climber motor in one direction (does not necessarily correspond to the direction the climber is going)
  */
-public class ClimberDownCommand extends Command {
+public class ClimberDownLeftCommand extends Command {
     private Climber m_climber;
 
-    public ClimberDownCommand(Climber climber){
+    public ClimberDownLeftCommand(Climber climber){
         m_climber = climber;
         addRequirements(climber);
     }
@@ -23,13 +23,13 @@ public class ClimberDownCommand extends Command {
     @Override
     public void execute() {
         m_climber.runLeftMotor(ClimberConstants.CLIMBER_MOTOR_SPEED);
-        m_climber.runRightMotor(-ClimberConstants.CLIMBER_MOTOR_SPEED);
+        // m_climber.runRightMotor(-ClimberConstants.CLIMBER_MOTOR_SPEED);
         // System.out.println(m_climber.getEncoderPosition());
     }
 
     @Override
     public void end(boolean interrupted) {
-        m_climber.motorOff();
+        // m_climber.motorOff();
     }
 
     @Override
