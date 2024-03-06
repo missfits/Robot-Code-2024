@@ -15,37 +15,37 @@ import frc.robot.Constants.IndexerConstants;
 
 public class Indexer extends SubsystemBase {
 
-  // instance variables
-  private final CANSparkMax m_indexerMotor = new CANSparkMax(IndexerConstants.INDEXER_MOTOR_PORT, MotorType.kBrushless);
-  private final SparkRelativeEncoder m_indexerEncoder = (SparkRelativeEncoder) m_indexerMotor
-      .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IndexerConstants.COUNTS_PER_REV);
+    // instance variables
+    private final CANSparkMax m_indexerMotor = new CANSparkMax(IndexerConstants.INDEXER_MOTOR_PORT, MotorType.kBrushless);
+    private final SparkRelativeEncoder m_indexerEncoder = (SparkRelativeEncoder) m_indexerMotor
+            .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IndexerConstants.COUNTS_PER_REV);
 
-  // constructor
-  public Indexer() {}
+    // constructor
+    public Indexer() {}
 
-  // Sets Indexer motor speed (forward if positive, backward if negative)
-  public void runIndexerMotor(double speed) {
-    m_indexerMotor.set(speed);
-  }
+    // Sets Indexer motor speed (forward if positive, backward if negative)
+    public void runIndexerMotor(double speed) {
+        m_indexerMotor.set(speed);
+    }
 
-  // Sets Indexer motor speed to zero and stops motor
-  public void indexerOff() {
-    m_indexerMotor.set(0);
-    m_indexerMotor.stopMotor();
-  }
+    // Sets Indexer motor speed to zero and stops motor
+    public void indexerOff() {
+        m_indexerMotor.set(0);
+        m_indexerMotor.stopMotor();
+    }
 
-  // returns encoder position
-  public double getEncoderPosition() {
-    return m_indexerEncoder.getPosition();
-  }
+    // returns encoder position
+    public double getEncoderPosition() {
+        return m_indexerEncoder.getPosition();
+    }
 
-  // sets encoder to desired position
-  public void setEncoderPosition(double position) {
-      m_indexerEncoder.setPosition(position);
-  }
+    // sets encoder to desired position
+    public void setEncoderPosition(double position) {
+        m_indexerEncoder.setPosition(position);
+    }
 
-  // returns encoder velocity
-  public double getEncoderVelocity() {
-    return m_indexerEncoder.getVelocity();
-  }
+    // returns encoder velocity
+    public double getEncoderVelocity() {
+        return m_indexerEncoder.getVelocity();
+    }
 }
