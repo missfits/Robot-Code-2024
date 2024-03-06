@@ -28,7 +28,8 @@ public class ClimberUpCommand extends Command {
     @Override
     public void execute() {
         if (m_xbox.x().getAsBoolean()) {
-            m_climber.runMotor(ClimberConstants.CLIMBER_MOTOR_SPEED);
+            m_climber.runLeftMotor(-ClimberConstants.CLIMBER_MOTOR_SPEED);
+            m_climber.runRightMotor(ClimberConstants.CLIMBER_MOTOR_SPEED);
         }
     }
 

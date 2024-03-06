@@ -22,7 +22,8 @@ public class PrintClimberEncoder extends Command {
 
   @Override
   public void execute() {
-    System.out.println(m_climber.getEncoderPosition());
+    System.out.println(m_climber.getLeftEncoderPosition());
+    System.out.println(m_climber.getRightEncoderPosition());
   }
 
   @Override

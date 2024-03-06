@@ -22,7 +22,8 @@ public class ClimberDownCommand extends Command {
 
     @Override
     public void execute() {
-        m_climber.runMotor(-ClimberConstants.CLIMBER_MOTOR_SPEED);
+        m_climber.runLeftMotor(ClimberConstants.CLIMBER_MOTOR_SPEED);
+        m_climber.runRightMotor(-ClimberConstants.CLIMBER_MOTOR_SPEED);
         // System.out.println(m_climber.getEncoderPosition());
     }
 

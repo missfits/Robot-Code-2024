@@ -21,33 +21,47 @@ public class Climber extends SubsystemBase {
     
     // Constructor for the Climber class
     public Climber(){
-        m_climberMotorRight.follow(m_climberMotorLeft); // both motors should move exactly the same way
     }
 
     // returns encoder position
-    public double getEncoderPosition() {
+    public double getLeftEncoderPosition() {
         return m_climberEncoderLeft.getPosition();
     }
 
+    public double getRightEncoderPosition() {
+        return m_climberEncoderRight.getPosition();
+    }
+
     // sets encoder to desired position
-    public void setEncoderPosition(double position) {
+    public void setLeftEncoderPosition(double position) {
         m_climberEncoderLeft.setPosition(position);
+    }
+
+    public void setRightEncoderPosition(double position) {
+        m_climberEncoderRight.setPosition(position);
     }
 
     // initializes encoder position to 0
     public void initializeEncoderPosition() {
-        setEncoderPosition(0);
+        setLeftEncoderPosition(0);
+        setRightEncoderPosition(0);
     }
 
     // Sets intake motor speed (forward if positive, backward if negative)
-    public void runMotor(double speed){
+    public void runLeftMotor(double speed){
         m_climberMotorLeft.set(speed);
+    }
+
+    public void runRightMotor(double speed){
+        m_climberMotorRight.set(speed);
     }
 
     // Sets intake motor speed to zero and stops motor
     public void motorOff() {
       m_climberMotorLeft.set(0);
       m_climberMotorLeft.stopMotor();
+      m_climberMotorRight.set(0);
+      m_climberMotorRight.stopMotor();
     }
 
 }

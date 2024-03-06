@@ -28,7 +28,7 @@ public final class Constants {
     public static final int LEFT_MOTOR_1_PORT = 1;
     public static final int LEFT_MOTOR_2_PORT = 2;
     public static final int RIGHT_MOTOR_1_PORT = 3;
-    public static final int RIGHT_MOTOR_2_PORT = 4;
+    public static final int RIGHT_MOTOR_2_PORT = 100; // TO DO: SET BACK TO 4
 
     public static final int COUNTS_PER_REV = 42;
 
@@ -69,7 +69,7 @@ public final class Constants {
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
     // FOR AUTO
-    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
+    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 100; // TO DO: SWITCH BACK TO 2400
 
     public static final int COUNTS_PER_REV = 42;
   }
