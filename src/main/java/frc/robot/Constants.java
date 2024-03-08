@@ -84,7 +84,7 @@ public final class Constants {
     public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
 
     // assuming hood back is at encoder position 0, PIVOT_DISTANCE is the required encoder position for the hood to be forward
-    public static final double PIVOT_DISTANCE = -48.20; // correct as of 2/20/24
+    public static final double PIVOT_DISTANCE = -30.43; // correct as of 3/5/24
 
 
     public static final int COUNTS_PER_REV = 42;
