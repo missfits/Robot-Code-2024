@@ -34,7 +34,7 @@ public final class Constants {
 
     // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
     public static final double METERS_TO_ROTATIONS = 17.664;
-    public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
+    public static final double DEGREES_TO_ROTATIONS = 0.15; // value accurate as of 3/8/24
   }
 
   public static class IntakeConstants {
@@ -105,8 +105,8 @@ public final class Constants {
     public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
 
     public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
-    public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.30; // TO DO: test
-    public static final double CLOSE_DIAGONAL_DISTANCE = 0.33; // distance in meters from speaker
+    public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.30; // correct as of 3/8/24
+    public static final double CLOSE_DIAGONAL_DISTANCE = 0.30; // distance in meters from speaker
         // side to align with close note (untested for 2024)
     public static final double CLOSE_HORIZONTAL_DISTANCE = 1.75; // distance in meters to close
         //  note after alignment (untested for 2024)
