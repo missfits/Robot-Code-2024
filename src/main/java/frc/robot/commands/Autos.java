@@ -29,6 +29,13 @@ public final class Autos {
   }
 
   /**
+   * Shoot into speaker and do nothing
+   */
+  public static Command justShoot(Indexer indexer, Shooter shooter) {
+    return new AutoSpeakerShootCommand(indexer, shooter);
+  }
+
+  /**
    * @param drivetrain drivetrain subsystem of robot
    * @param indexer intake subsystem of robot
    * @param shooter shooter subsystem of robot
@@ -121,7 +128,7 @@ public final class Autos {
   public static SequentialCommandGroup leftSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
       new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
-      new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.33m gets center robot in line with note
+      new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.3m gets center robot in line with note
       new RotationCommand(drivetrain, -60), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // 1.75 is the distance needed to get to the note
