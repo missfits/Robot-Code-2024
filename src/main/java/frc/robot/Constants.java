@@ -28,7 +28,7 @@ public final class Constants {
     public static final int LEFT_MOTOR_1_PORT = 1;
     public static final int LEFT_MOTOR_2_PORT = 2;
     public static final int RIGHT_MOTOR_1_PORT = 3;
-    public static final int RIGHT_MOTOR_2_PORT = 100; // TO DO: SET BACK TO 4
+    public static final int RIGHT_MOTOR_2_PORT = 4;
 
     public static final int COUNTS_PER_REV = 42;
 
@@ -64,12 +64,12 @@ public final class Constants {
   public static class ShooterConstants {
     public static final int SHOOTER_MOTOR_PORT = 7;
 
-    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 02/23/2024
+    public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 03/5/2024
     public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/25/24
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
     // FOR AUTO
-    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 100; // TO DO: SWITCH BACK TO 2400
+    public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
 
     public static final int COUNTS_PER_REV = 42;
   }
@@ -78,7 +78,7 @@ public final class Constants {
     public static final int HOOD_MOTOR_PORT = 9; // correct as of 2/20/24
     public static final int PIVOT_MOTOR_PORT = 8; // correct as of 2/20/24
 
-    public static final double HOOD_MOTOR_SPEED = 0.4; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 02/23/2024
+    public static final double HOOD_MOTOR_SPEED = 0.6; // should be double of SHOOTER_MOTOR_SPEED_AMP, finalized 03 /5/2024
 
     public static final double PIVOT_MOTOR_SPEED = 0.5; // finalized 02/23/2024
     public static final double SLOW_PIVOT_MOTOR_SPEED = 0.2; // finalized 02/23/2024
@@ -94,7 +94,7 @@ public final class Constants {
     public static final int CLIMBER_MOTOR_PORT_LEFT = 11;
     public static final int CLIMBER_MOTOR_PORT_RIGHT = 10;
 
-    public static final double CLIMBER_MOTOR_SPEED = 0.2; //TO DO: TUNE
+    public static final double CLIMBER_MOTOR_SPEED = 0.7; //TO DO: TUNE
 
     public static final int COUNTS_PER_REV = 42;
   }
