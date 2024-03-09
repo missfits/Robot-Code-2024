@@ -105,6 +105,8 @@ public class RobotContainer {
     m_chooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
     m_chooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));
 
+    m_chooser.addOption("Just shoot", Autos.justShoot(m_indexer, m_shooter));
+
     m_chooser.addOption("Taxi forward", Autos.taxiAuto(m_drivetrain));
     m_chooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
     m_chooser.addOption("Shoot and taxi from left", Autos.shootTaxiLeft(m_drivetrain, m_indexer, m_shooter));
