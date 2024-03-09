@@ -57,11 +57,14 @@ public class Climber extends SubsystemBase {
     }
 
     // Sets intake motor speed to zero and stops motor
-    public void motorOff() {
-      m_climberMotorLeft.set(0);
-      m_climberMotorLeft.stopMotor();
-      m_climberMotorRight.set(0);
-      m_climberMotorRight.stopMotor();
+    public void leftMotorOff() {
+        m_climberMotorLeft.set(0);
+        m_climberMotorLeft.stopMotor();
+    }
+
+    public void rightMotorOff() {
+        m_climberMotorRight.set(0);
+        m_climberMotorRight.stopMotor();
     }
 
 }
