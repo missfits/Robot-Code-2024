@@ -122,9 +122,9 @@ public class RobotContainer {
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
 
-    ShuffleboardTab tab3 = Shuffleboard.getTab("Tab 3");
-    BooleanSupplier bbSupplier = () -> m_indexer.getBeamBreak();
-    tab3.addBoolean("Beam break signal", bbSupplier).withWidget(BuiltInWidgets.kBooleanBox);
+    ShuffleboardTab bbTab = Shuffleboard.getTab("Beam Break Tab");
+    BooleanSupplier bbSupplier = () -> m_indexer.getBeamBreakSignal();
+    bbTab.addBoolean("Beam break signal", bbSupplier).withWidget(BuiltInWidgets.kBooleanBox);
   }
 
   /**
