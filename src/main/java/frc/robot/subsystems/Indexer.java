@@ -62,14 +62,15 @@ public class Indexer extends SubsystemBase {
 
   // returns true (green) for 1 second after beam is broken, false (red) otherwise
   public boolean getBeamBreakSignal() {
-    if (m_input.get()) {
+    if (!m_input.get()) {
+      bbTimer.stop();
+      bbTimer.reset();
       bbTimer.start();
       return true;
-    } else if (bbTimer.get() <= 1) {
+    } else if (bbTimer.get() <= 5) {
       return true;
     } else {
       bbTimer.stop();
-      bbTimer.reset();
       return false;
     }
   }
