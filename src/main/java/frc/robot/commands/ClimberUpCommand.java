@@ -35,7 +35,8 @@ public class ClimberUpCommand extends Command {
 
     @Override
     public void end(boolean interrupted) {
-        m_climber.motorOff();
+        m_climber.rightMotorOff(); 
+        m_climber.leftMotorOff();
     }
 
     @Override
