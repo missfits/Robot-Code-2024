@@ -61,6 +61,9 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+
+import java.util.function.BooleanSupplier;
 
 // ***NEED TO BE UPDATED FOR 2024 SEASON***
 
@@ -120,6 +123,10 @@ public class RobotContainer {
 
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
+
+    ShuffleboardTab bbTab = Shuffleboard.getTab("Beam Break Tab");
+    BooleanSupplier bbSupplier = () -> m_indexer.getBeamBreakSignal();
+    bbTab.addBoolean("Beam break signal", bbSupplier).withWidget(BuiltInWidgets.kBooleanBox);
   }
 
   /**
