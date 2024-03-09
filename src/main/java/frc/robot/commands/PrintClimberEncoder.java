@@ -5,14 +5,14 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.LeftClimber;
 
 /** An example command that uses an example subsystem. */
 public class PrintClimberEncoder extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final Climber m_climber;
+  private final LeftClimber m_climber;
 
-  public PrintClimberEncoder(Climber climber) {
+  public PrintClimberEncoder(LeftClimber climber) {
     m_climber = climber;
     addRequirements(climber);
   }
@@ -23,7 +23,7 @@ public class PrintClimberEncoder extends Command {
   @Override
   public void execute() {
     System.out.println(m_climber.getLeftEncoderPosition());
-    System.out.println(m_climber.getRightEncoderPosition());
+    // System.out.println(m_climber.getRightEncoderPosition());
   }
 
   @Override

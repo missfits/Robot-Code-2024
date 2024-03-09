@@ -48,7 +48,8 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Hood;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.LeftClimber;
+import frc.robot.subsystems.RightClimber;
 import frc.robot.commands.Autos;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -78,7 +79,8 @@ public class RobotContainer {
   private static final Intake m_intake = new Intake();
   private static final Shooter m_shooter = new Shooter();
   private static final Hood m_hood = new Hood();
-  private static final Climber m_climber = new Climber();
+  private static final LeftClimber m_leftClimber = new LeftClimber();
+  private static final RightClimber m_rightClimber = new RightClimber();
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
   // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
@@ -146,13 +148,13 @@ public class RobotContainer {
   
     // OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
     // OI.m_coPilotXbox.leftStick().whileTrue(new ClimberUpCommand(m_climber)); // for testing only!
-    OI.m_coPilotXbox.leftStick().whileTrue(new ClimberDownRightCommand(m_climber)); 
-    OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownLeftCommand(m_climber));
+    OI.m_coPilotXbox.leftStick().whileTrue(new ClimberDownRightCommand(m_rightClimber)); 
+    OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownLeftCommand(m_leftClimber));
     // are the CAN IDs switched?? CHECK
 
     // for unwinding the climber after match
     // requires driver to first hold down b button, then x button
-    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_climber, OI.m_driverXbox)); 
+    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_leftClimber, m_rightClimber, OI.m_driverXbox)); 
     
   }
 
