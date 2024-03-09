@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cscore.VideoMode;
+import edu.wpi.first.cscore.VideoSource;
 import edu.wpi.first.util.PixelFormat;
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -23,8 +24,9 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
   private RobotContainer m_robotContainer;
+  private UsbCamera m_camera_1;
+  private UsbCamera m_camera_2;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,7 +39,11 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
 
     // Camera will start capturing frames and sending them to the dashboard
-    final UsbCamera camera = CameraServer.startAutomaticCapture(); 
+    m_camera_1 = CameraServer.startAutomaticCapture(0); 
+    m_camera_2 = CameraServer.startAutomaticCapture(1);
+
+    m_camera_1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    m_camera_2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     // VideoMode videoMode = new VideoMode(PixelFormat.kMJPEG, 640, 480, 30);
     // camera.setVideoMode(videoMode);
   }
