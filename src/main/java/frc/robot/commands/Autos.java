@@ -66,7 +66,7 @@ public final class Autos {
     return new SequentialCommandGroup(
       new AutoSpeakerShootCommand(indexer, shooter),
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
-      new RotationCommand(drivetrain, -60), // rotate
+      new RotationCommand(drivetrain, -40), // rotate
       new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards
     );
   }
@@ -85,7 +85,7 @@ public final class Autos {
     return new SequentialCommandGroup(
       new AutoSpeakerShootCommand(indexer, shooter),
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
-      new RotationCommand(drivetrain, 60), // rotate
+      new RotationCommand(drivetrain, 40), // rotate
       new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards
     );
   }
@@ -121,22 +121,23 @@ public final class Autos {
    * @return a sequential command group that shoots preloaded note into speaker (from the left edge when facing the speaker),
    *          picks up the note closest to amp, drives back to the shooter (left edge), and shoots the second note
    * 
-   * Start position: Against left edge of speaker, as far against the field wall as possible
+   * Start position: one foot away from the left edge of the speaker
    * 
    * UNTESTED
    */
   public static SequentialCommandGroup leftSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
       new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
-      new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.3m gets center robot in line with note
-      new RotationCommand(drivetrain, -60), // turns robot to face note
+      // new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.3m gets center robot in line with note
+      new RotationCommand(drivetrain, -55), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // 1.75 is the distance needed to get to the note
         new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
       ),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // back up same distance as before
-      new RotationCommand(drivetrain, 60), // turn the other way 60 degrees (facing speaker)
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
+      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE+0.15), // back up same distance as before
+      new WaitCommand(1),
+      new RotationCommand(drivetrain, 65), // turn the other way 60 degrees (facing speaker)
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot again
     );
   }
@@ -149,22 +150,23 @@ public final class Autos {
    * @return a sequential command group that shoots preloaded note into speaker (from the right edge when facing the speaker),
    *          picks up the note closest to center, drives back to the shooter (right edge), and shoots the second note
    * 
-   * Start position: Against the right edge of speaker, as far against the wall as possible
+   * Start position: one foot away from the right side of speaker
    * 
    * UNTESTED
    */
   public static SequentialCommandGroup rightSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
       new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
-      new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.33m gets center robot in line with note
+      // new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.33m gets center robot in line with note
       new RotationCommand(drivetrain, 60), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_HORIZONTAL_DISTANCE),
         new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
       ),
       new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // back up same distance as before
+      new WaitCommand(1),
       new RotationCommand(drivetrain, -60), // turn the other way 60 degrees (facing speaker)
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot again
     );
   }
