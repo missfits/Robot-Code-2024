@@ -34,7 +34,7 @@ public final class Constants {
 
     // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
     public static final double METERS_TO_ROTATIONS = 17.664;
-    public static final double DEGREES_TO_ROTATIONS = 0.08; // value accurate as of 3/9/24
+    public static final double DEGREES_TO_ROTATIONS = 0.065; // value accurate as of 3/9/24
   }
 
   public static class IntakeConstants {
