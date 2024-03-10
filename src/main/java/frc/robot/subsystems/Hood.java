@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.HoodConstants;
 
 public class Hood extends SubsystemBase {
-
     // instance variables
     private final CANSparkMax m_hoodMotor = new CANSparkMax(HoodConstants.HOOD_MOTOR_PORT, MotorType.kBrushless);
     // pivot motor represents the stuff that will control the four bar linkage in the 2024 bot
@@ -20,7 +19,9 @@ public class Hood extends SubsystemBase {
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, HoodConstants.COUNTS_PER_REV);
     
     // constructor
-    public Hood() {}
+    public Hood() {
+        resetPivotEncoderPosition();
+    }
 
     // Sets intake motor speed (forward if positive, backward if negative)
     public void runHoodMotor(double speed) {

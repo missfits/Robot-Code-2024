@@ -214,6 +214,42 @@ public final class Autos {
     );
   }
 
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (left edge) and taxis out
+   * 
+   * Start position: against the left edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup elimsBlue(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new RotationCommand(drivetrain, -20), // rotate
+      new DistanceDriveCommand(drivetrain, AutoConstants.SFR_ELIMS_DISTANCE) // taxi forwards
+    );
+  }
+
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (left edge) and taxis out
+   * 
+   * Start position: against the left edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup elimsRed(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new RotationCommand(drivetrain, 20), // rotate
+      new DistanceDriveCommand(drivetrain, AutoConstants.SFR_ELIMS_DISTANCE) // taxi forwards
+    );
+  }
+
   private Autos() {
     throw new UnsupportedOperationException("This is a utility class!");
   }
