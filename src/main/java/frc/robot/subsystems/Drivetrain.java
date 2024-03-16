@@ -12,7 +12,16 @@ import frc.robot.OI;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
+
+import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.I2C.Port;
 
 public class Drivetrain extends SubsystemBase {
 
@@ -41,8 +50,16 @@ public class Drivetrain extends SubsystemBase {
     public final SparkRelativeEncoder m_rightSecondaryEncoder = (SparkRelativeEncoder) m_rightSecondary
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
+    // odometry
     public static DifferentialDrive m_robotDrive;
-    
+    // private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(DrivetrainConstants.TRACK_WIDTH);
+    public static AHRS m_gyro = new AHRS(Port.kMXP);
+
+    public DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(
+        m_gyro.getRotation2d(),
+        getLeftEncoderPosition(), getRightEncoderPosition(),
+        new Pose2d(0, 0, new Rotation2d()));
+
     public Drivetrain(OI humanControl) {
       m_robotDrive = new DifferentialDrive(m_rightPrimary, m_leftPrimary);
       m_humanControl = humanControl;
@@ -51,7 +68,12 @@ public class Drivetrain extends SubsystemBase {
     }
 
     @Override
-    public void periodic() {}
+    public void periodic() {
+        // Update the robot pose accordingly
+        m_odometry.update(m_gyro.getRotation2d(),
+            DrivetrainConstants.ENCODER_TICKS_TO_METERS * getLeftEncoderPosition(),
+            DrivetrainConstants.ENCODER_TICKS_TO_METERS * getRightEncoderPosition());
+    }
 
     public void configDrivetrainMotors() {
 
@@ -97,6 +119,23 @@ public class Drivetrain extends SubsystemBase {
     // sets left encoder position to given double
     public void setleftEncoder(double position) {
         m_leftPrimaryEncoder.setPosition(position);
+    }
+
+    // odometry methods
+
+    // returns current robot pose in meters
+    public Pose2d getPose() {
+        return m_odometry.getPoseMeters();
+    }
+
+    // returns current robot rotation
+    public Rotation2d getRotation() {
+        return m_gyro.getRotation2d();
+    }
+
+    // resets robot pose to given pose
+    public void resetPose(Pose2d pose) {
+        m_odometry.resetPosition(m_gyro.getRotation2d(), new DifferentialDriveWheelPositions(getLeftEncoderPosition(), getRightEncoderPosition()), pose);
     }
 
     @Override
