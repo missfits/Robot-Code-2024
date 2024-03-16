@@ -27,11 +27,12 @@ public class PidDistanceDriveCommand extends Command {
      * Takes in targetDistance in meters (can be positive or negative)
      */
     public PidDistanceDriveCommand(Drivetrain drivetrain, double targetDistance) {
+        
         m_drivetrain = drivetrain;
         // the encoders measure distance in number of rotations, so we need to convert to that from meters
-        m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; 
-        m_controller = m_drivetrain.drive_controller;
+        m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS;
 
+        m_controller = new PIDController(DrivetrainConstants.drive_P, DrivetrainConstants.drive_I, DrivetrainConstants.drive_D);
         m_controller.disableContinuousInput();
         m_controller.setTolerance(1.0); // TO DO: tune position tolerance
 

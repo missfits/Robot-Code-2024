@@ -14,8 +14,6 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
-import edu.wpi.first.math.controller.PIDController;
-
 public class Drivetrain extends SubsystemBase {
 
     // instance variables
@@ -44,12 +42,6 @@ public class Drivetrain extends SubsystemBase {
         .getEncoder(SparkRelativeEncoder.Type.kHallSensor, DrivetrainConstants.COUNTS_PER_REV);
 
     public static DifferentialDrive m_robotDrive;
-
-    // pid
-    private final double drive_P = 0;
-    private final double drive_I = 0;
-    private final double drive_D = 0;
-    public PIDController drive_controller = new PIDController(drive_P, drive_I, drive_D);
     
     public Drivetrain(OI humanControl) {
       m_robotDrive = new DifferentialDrive(m_rightPrimary, m_leftPrimary);
