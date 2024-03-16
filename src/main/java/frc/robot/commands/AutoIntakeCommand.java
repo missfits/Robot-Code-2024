@@ -12,7 +12,7 @@ import frc.robot.Constants.IntakeConstants;
  * Runs the intake and indexer wheels upwards (moves note up towards shooter).
  * Ends when the note hits the beam breaker.
  */
-public class IntakeIndexCommand extends Command {
+public class AutoIntakeCommand extends Command {
     private Indexer m_indexer;
     private Intake m_intake;
     private boolean beam_break = false;
@@ -20,7 +20,7 @@ public class IntakeIndexCommand extends Command {
     private XboxController pilot;
     private XboxController copilot;
     
-    public IntakeIndexCommand(Indexer indexer, Intake intake){
+    public AutoIntakeCommand(Indexer indexer, Intake intake){
         m_indexer = indexer;
         m_intake = intake;
         addRequirements(indexer, intake);
