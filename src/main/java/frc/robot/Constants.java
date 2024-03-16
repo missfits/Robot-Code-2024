@@ -65,7 +65,7 @@ public final class Constants {
     public static final int SHOOTER_MOTOR_PORT = 7;
 
     public static final double SHOOTER_MOTOR_SPEED_AMP = HoodConstants.HOOD_MOTOR_SPEED / -2.0; // should be half of HOOD_MOTOR_SPEED, finalized 03/5/2024
-    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 2/25/24
+    public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -1; // correct as of 2/25/24
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
     // FOR AUTO

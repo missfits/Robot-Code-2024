@@ -17,6 +17,7 @@ import frc.robot.commands.IntakeOutCommand;
 import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.IntakeIndexCommandBackup;
 import frc.robot.commands.IntakeIndexCommand;
+import frc.robot.commands.IntakeIndexCommand_teleop;
 import frc.robot.commands.OuttakeIndexCommand;
 import frc.robot.commands.PrintClimberEncoder;
 import frc.robot.commands.BeamBreakCommand;
@@ -40,7 +41,7 @@ import frc.robot.commands.ShooterHoodBackward;
 // auto commands
 import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.commands.RotationCommand;
-
+import frc.robot.commands.RumbleOffCommand;
 // subsystems
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -52,11 +53,12 @@ import frc.robot.subsystems.Climber;
 import frc.robot.commands.Autos;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-
+import edu.wpi.first.wpilibj2.command.WaitCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -79,6 +81,8 @@ public class RobotContainer {
   private static final Shooter m_shooter = new Shooter();
   private static final Hood m_hood = new Hood();
   private static final Climber m_climber = new Climber();
+  private static final XboxController pilot = new XboxController(0);
+  private static final XboxController copilot = new XboxController(1);
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
   // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
@@ -96,7 +100,7 @@ public class RobotContainer {
 
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
-    m_hood.setDefaultCommand(new PrintHoodEncoder(m_hood));
+    // m_hood.setDefaultCommand(new PrintHoodEncoder(m_hood));
     // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
     // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
@@ -131,7 +135,7 @@ public class RobotContainer {
 
     OI.m_coPilotXbox.a().whileTrue(new ShooterHoodBackward(m_shooter, m_hood)); // emergency use button that should not be pressed in normal circumstances
     OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake)); // outtaking should not normally be necessary
-    OI.m_coPilotXbox.x().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
+    OI.m_coPilotXbox.x().whileTrue(new IntakeIndexCommand_teleop(m_indexer, m_intake, copilot, copilot));
     OI.m_coPilotXbox.y().whileTrue(new IndexerUpCommand(m_indexer));
 
     OI.m_coPilotXbox.leftTrigger().whileTrue(new ShooterSpeakerCommand(m_shooter));
