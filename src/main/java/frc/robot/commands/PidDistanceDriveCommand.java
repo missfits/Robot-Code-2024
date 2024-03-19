@@ -20,7 +20,7 @@ public class PidDistanceDriveCommand extends Command {
     @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
     private final Drivetrain m_drivetrain;
     private double m_targetDistance;
-    private PIDController m_controller;
+    private PIDController m_driveController;
 
     /* 
      * Drives a given distance straight.
@@ -32,9 +32,9 @@ public class PidDistanceDriveCommand extends Command {
         // the encoders measure distance in number of rotations, so we need to convert to that from meters
         m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS;
 
-        m_controller = new PIDController(DrivetrainConstants.drive_P, DrivetrainConstants.drive_I, DrivetrainConstants.drive_D);
-        m_controller.disableContinuousInput();
-        m_controller.setTolerance(1.0); // TO DO: tune position tolerance
+        m_driveController = new PIDController(DrivetrainConstants.drive_P, DrivetrainConstants.drive_I, DrivetrainConstants.drive_D);
+        m_driveController.disableContinuousInput();
+        m_driveController.setTolerance(1.0); // TO DO: tune position tolerance
 
         addRequirements(drivetrain);
     }
@@ -46,14 +46,14 @@ public class PidDistanceDriveCommand extends Command {
         m_drivetrain.setRightEncoder(0);
         m_drivetrain.setleftEncoder(0);
 
-        m_controller.reset();
-        m_controller.setSetpoint(m_targetDistance);
+        m_driveController.reset();
+        m_driveController.setSetpoint(m_targetDistance);
     }
 
     @Override
     public void execute() {
-        // sets both motors to the thrust calculated using the left encoder values, is this bad?
-        double thrust = m_controller.calculate(m_drivetrain.getLeftEncoderPosition());
+        // takes average of two encoders ??? to ensure straight-ness?
+        double thrust = m_driveController.calculate((m_drivetrain.getLeftEncoderPosition() + m_drivetrain.getRightEncoderPosition())/2);
         m_drivetrain.tankDrive(thrust, thrust);
     }
 
@@ -66,6 +66,6 @@ public class PidDistanceDriveCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        return m_controller.atSetpoint();
+        return m_driveController.atSetpoint();
     }
 }

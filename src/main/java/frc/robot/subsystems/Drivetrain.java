@@ -133,6 +133,10 @@ public class Drivetrain extends SubsystemBase {
         return m_gyro.getRotation2d();
     }
 
+    public double getDegrees() {
+        return m_gyro.getRotation2d().getDegrees();
+    }
+
     // resets robot pose to given pose
     public void resetPose(Pose2d pose) {
         m_odometry.resetPosition(m_gyro.getRotation2d(), new DifferentialDriveWheelPositions(getLeftEncoderPosition(), getRightEncoderPosition()), pose);
