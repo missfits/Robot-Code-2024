@@ -20,7 +20,6 @@ public class Hood extends SubsystemBase {
     
     // constructor
     public Hood() {
-        resetPivotEncoderPosition();
     }
 
     // Sets intake motor speed (forward if positive, backward if negative)
