@@ -35,6 +35,7 @@ import frc.robot.commands.PrintHoodEncoder;
 // shooting commands
 import frc.robot.commands.ShooterAmpCommand;
 import frc.robot.commands.ShooterSpeakerCommand;
+import frc.robot.commands.ZeroHoodEncoderCommand;
 import frc.robot.commands.ShooterOutCommand;
 import frc.robot.commands.ShooterHoodBackward;
 
@@ -83,14 +84,10 @@ public class RobotContainer {
   private static final XboxController pilot = new XboxController(0);
   private static final XboxController copilot = new XboxController(1);
 
-  public SendableChooser<Command> m_chooser = new SendableChooser<>();
-  // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
-  //       // new SuctionOnCommand(m_gripper),
-  //       // new ArmPlaceHighCommand(m_arm),
-  //       // new SuctionOffCommand(m_gripper),
-  //       new DistanceDriveCommand(m_drivetrain, 1),
-  //       new DistanceDriveCommand(m_drivetrain, 2)
-  // );
+  public SendableChooser<Command> m_autochooser = new SendableChooser<>();
+  public SendableChooser<Boolean> m_ingameChooser = new SendableChooser<>();
+
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -103,22 +100,26 @@ public class RobotContainer {
     // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
     // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
-    m_chooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
-    m_chooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));
+    m_autochooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
+    m_autochooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));
 
-    m_chooser.addOption("Taxi forward", Autos.taxiAuto(m_drivetrain));
-    m_chooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
-    m_chooser.addOption("Shoot and taxi from left", Autos.shootTaxiLeft(m_drivetrain, m_indexer, m_shooter));
-    m_chooser.addOption("Shoot and taxi from right", Autos.shootTaxiRight(m_drivetrain, m_indexer, m_shooter));
+    m_autochooser.addOption("Taxi forward", Autos.taxiAuto(m_drivetrain));
+    m_autochooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
+    m_autochooser.addOption("Shoot and taxi from left", Autos.shootTaxiLeft(m_drivetrain, m_indexer, m_shooter));
+    m_autochooser.addOption("Shoot and taxi from right", Autos.shootTaxiRight(m_drivetrain, m_indexer, m_shooter));
     
-    m_chooser.addOption("2pc auto from front", Autos.frontSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
-    m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
-    m_chooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_autochooser.addOption("2pc auto from front", Autos.frontSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_autochooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_autochooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
 
-    // m_chooser.addOption("Double drive", m_driveTwice);
+    // m_autochooser.addOption("Double drive", m_driveTwice);
+
+    m_ingameChooser.addOption("pit mode", true);
+    m_ingameChooser.addOption("field mode", false);
+
 
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
-    compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
+    compTab.add("Auto Chooser", m_autochooser).withSize(6, 4);
   }
 
   /**
@@ -154,9 +155,12 @@ public class RobotContainer {
     // are the CAN IDs switched?? CHECK
 
     // for unwinding the climber after match
-    // requires driver to first hold down b button, then x button
-    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_climber, OI.m_driverXbox)); 
-    
+    // for pits only: requires driver to first hold down b button, then x button
+    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_climber, OI.m_driverXbox, m_ingameChooser));
+
+    // reset hood encoder position
+    // for pits only: driver controller hold down a button, then y button
+    OI.m_driverXbox.a().whileTrue(new ZeroHoodEncoderCommand(m_hood, OI.m_driverXbox, m_ingameChooser)); 
   }
 
   /**
@@ -166,6 +170,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // the selected command from shuffleboard that will be run in autonomous
-    return m_chooser.getSelected();
+    return m_autochooser.getSelected();
   }
 }
