@@ -32,7 +32,9 @@ public final class Constants {
     public static final double ENCODER_RPM_TO_WHEEL_SPEED = 0.0015;
     public static final double ENCODER_TICKS_TO_METERS = 0.0015;
 
-    public static final int TRACK_WIDTH = 0; // TO DO: update to distance in meters from the center of left wheel to center of right wheel
+    public static final double TRACK_WIDTH = 0.6561201; // taken from the CAD as of 03/21/24
+    public static final double RAMESETE_B = 2.0; // TO DO: tune :)
+    public static final double RAMESETE_ZETA = 0.7; // TO DO: tune :)
   }
 
   public static class IntakeConstants {
