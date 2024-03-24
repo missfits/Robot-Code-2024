@@ -11,6 +11,7 @@ import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IndexerConstants;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Indexer extends SubsystemBase {
 
@@ -18,11 +19,15 @@ public class Indexer extends SubsystemBase {
   private final CANSparkMax m_indexerMotor = new CANSparkMax(IndexerConstants.INDEXER_MOTOR_PORT, MotorType.kBrushless);
   private final SparkRelativeEncoder m_indexerEncoder = (SparkRelativeEncoder) m_indexerMotor
       .getEncoder(SparkRelativeEncoder.Type.kHallSensor, IndexerConstants.COUNTS_PER_REV);
+  private final Timer bbTimer;
 
   public DigitalInput m_input = new DigitalInput(9); // takes in values from the beam breaker
 
   // constructor
-  public Indexer() {}
+  public Indexer() {
+    bbTimer = new Timer();
+    bbTimer.reset();
+  }
 
   // Sets Indexer motor speed (forward if positive, backward if negative)
   public void runIndexerMotor(double speed) {
@@ -53,6 +58,21 @@ public class Indexer extends SubsystemBase {
   // returns true if beam is *not* broken, false if no light detected
   public boolean getBeamBreak() {
     return m_input.get();
+  }
+
+  // returns true (green) for 1 second after beam is broken, false (red) otherwise
+  public boolean getBeamBreakSignal() {
+    if (!m_input.get()) {
+      bbTimer.stop();
+      bbTimer.reset();
+      bbTimer.start();
+      return true;
+    } else if (bbTimer.get() <= 5) {
+      return true;
+    } else {
+      bbTimer.stop();
+      return false;
+    }
   }
 
   // testing method for beam break

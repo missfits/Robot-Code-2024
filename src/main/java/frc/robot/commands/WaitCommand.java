@@ -5,32 +5,39 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.LeftClimber;
+import frc.robot.subsystems.ExampleSubsystem;
+
+import edu.wpi.first.wpilibj.Timer;
 
 /** An example command that uses an example subsystem. */
-public class PrintClimberEncoder extends Command {
+public class WaitCommand extends Command {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
-  private final LeftClimber m_climber;
 
-  public PrintClimberEncoder(LeftClimber climber) {
-    m_climber = climber;
-    addRequirements(climber);
+  private Timer m_timer;
+  private double m_seconds;
+
+  public WaitCommand(double seconds) {
+    m_timer = new Timer();
+    m_seconds = seconds;
   }
 
   @Override
-  public void initialize() {}
-
-  @Override
-  public void execute() {
-    System.out.println(m_climber.getLeftEncoderPosition());
-    // System.out.println(m_climber.getRightEncoderPosition());
+  public void initialize() {
+    m_timer.reset();
+    m_timer.start();
   }
 
   @Override
-  public void end(boolean interrupted) {}
+  public void execute() {}
+
+  @Override
+  public void end(boolean interrupted) {
+    m_timer.stop();
+    m_timer.reset();
+  }
 
   @Override
   public boolean isFinished() {
-    return false;
+    return m_timer.get() > m_seconds;
   }
 }

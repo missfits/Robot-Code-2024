@@ -32,7 +32,7 @@ public class ArcadeDriveCommand extends Command {
         int sign = xJoy > 0 ? 1 : -1; // preserve pos/neg
         x_val = (x_val*x_val)*sign; // square
 
-        m_drivetrain.arcadeDrive(OperatorConstants.DRIVE_SPEED_ADJUSTMENT * x_val, OperatorConstants.DRIVE_SPEED_ADJUSTMENT * y_val);
+        m_drivetrain.arcadeDrive(OperatorConstants.DRIVE_SPEED_ADJUSTMENT * x_val, OperatorConstants.ROTATION_SPEED_ADJUSTMENT * y_val);
     }
 
     // Called once the command ends or is interrupted.
