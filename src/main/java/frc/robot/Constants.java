@@ -61,7 +61,6 @@ public final class Constants {
 
     public static final int COUNTS_PER_REV = 42;
   }
-
   public static class ShooterConstants {
     public static final int SHOOTER_MOTOR_PORT = 7;
 
