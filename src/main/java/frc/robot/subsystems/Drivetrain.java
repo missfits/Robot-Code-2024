@@ -10,6 +10,7 @@ import frc.robot.Constants.DrivetrainConstants;
 
 import frc.robot.OI;
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.SparkPIDController;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 
@@ -35,7 +36,7 @@ public class Drivetrain extends SubsystemBase {
         MotorType.kBrushless);
     private final CANSparkMax m_leftSecondary = new CANSparkMax(DrivetrainConstants.LEFT_MOTOR_2_PORT,
         MotorType.kBrushless);
-    private final CANSparkMax m_rightPrimary = new CANSparkMax(DrivetrainConstants.RIGHT_MOTOR_1_PORT,
+    public final CANSparkMax m_rightPrimary = new CANSparkMax(DrivetrainConstants.RIGHT_MOTOR_1_PORT,
         MotorType.kBrushless);
     private final CANSparkMax m_rightSecondary = new CANSparkMax(DrivetrainConstants.RIGHT_MOTOR_2_PORT,
         MotorType.kBrushless);
@@ -54,6 +55,8 @@ public class Drivetrain extends SubsystemBase {
     public static DifferentialDrive m_robotDrive;
     // private final DifferentialDriveKinematics m_kinematics = new DifferentialDriveKinematics(DrivetrainConstants.TRACK_WIDTH);
     public static AHRS m_gyro = new AHRS(Port.kMXP);
+
+    public SparkPIDController m_pidController;
 
     public DifferentialDriveOdometry m_odometry = new DifferentialDriveOdometry(
         m_gyro.getRotation2d(),
