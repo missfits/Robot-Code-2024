@@ -14,12 +14,10 @@ import frc.robot.commands.ArcadeDriveCommand;
 import frc.robot.commands.IndexerUpCommand;
 import frc.robot.commands.IndexerDownCommand;
 import frc.robot.commands.IntakeOutCommand;
-import frc.robot.commands.NavXRotationCommand;
 import frc.robot.commands.IntakeInCommand;
 import frc.robot.commands.IntakeIndexCommandBackup;
 import frc.robot.commands.IntakeIndexCommand;
 import frc.robot.commands.OuttakeIndexCommand;
-import frc.robot.commands.PidDistanceDriveCommand;
 import frc.robot.commands.PrintClimberEncoder;
 import frc.robot.commands.BeamBreakCommand;
 import frc.robot.commands.ClimberUpCommand;
@@ -131,11 +129,8 @@ public class RobotContainer {
    */
   private void configureBindings() { // temp for testing 
 
-    // OI.m_coPilotXbox.a().whileTrue(new ShooterHoodBackward(m_shooter, m_hood)); // emergency use button that should not be pressed in normal circumstances
-    // OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake)); // outtaking should not normally be necessary
-
-    OI.m_coPilotXbox.a().onTrue(new PidDistanceDriveCommand(m_drivetrain, 1));
-    OI.m_coPilotXbox.b().onTrue(new NavXRotationCommand(m_drivetrain, 90));
+    OI.m_coPilotXbox.a().whileTrue(new ShooterHoodBackward(m_shooter, m_hood)); // emergency use button that should not be pressed in normal circumstances
+    OI.m_coPilotXbox.b().whileTrue(new OuttakeIndexCommand(m_indexer, m_intake)); // outtaking should not normally be necessary
     OI.m_coPilotXbox.x().whileTrue(new IntakeIndexCommand(m_indexer, m_intake));
     OI.m_coPilotXbox.y().whileTrue(new IndexerUpCommand(m_indexer));
 
