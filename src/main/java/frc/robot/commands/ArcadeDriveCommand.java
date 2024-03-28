@@ -27,7 +27,9 @@ public class ArcadeDriveCommand extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        double xJoy = filter.calculate(m_humanControl.getDriverXBoxLeftJoyY());
+        // double xJoy = filter.calculate(m_humanControl.getDriverXBoxLeftJoyY());
+        double xJoy = m_humanControl.getDriverXBoxLeftJoyY();
+
         double yJoy = m_humanControl.getDriverXBoxRightJoyX();
         double x_val = Math.abs(xJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? xJoy : 0.0;
         double y_val = Math.abs(yJoy) > OperatorConstants.DRIVER_JOYSTICK_DEADBAND ? yJoy : 0.0;
