@@ -16,6 +16,8 @@ import com.revrobotics.SparkRelativeEncoder;
 
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.MathUtil;
+
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.math.kinematics.DifferentialDriveWheelPositions;
@@ -131,9 +133,9 @@ public class Drivetrain extends SubsystemBase {
         return m_odometry.getPoseMeters();
     }
 
-    // returns current robot rotation
-    public Rotation2d getRotation() {
-        return m_gyro.getRotation2d();
+    // returns current robot rotation in degrees relative to the field, from -180 to 180
+    public double getRotation() {
+        return MathUtil.inputModulus(m_gyro.getRotation2d().getDegrees(), -180, 180);
     }
 
     // resets robot pose to given pose
