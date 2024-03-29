@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.SparkRelativeEncoder;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShooterConstants;
 
@@ -18,7 +19,8 @@ public class Shooter extends SubsystemBase {
   private final SparkRelativeEncoder m_shooterEncoder = (SparkRelativeEncoder) m_shooterMotor
       .getEncoder(SparkRelativeEncoder.Type.kHallSensor, ShooterConstants.COUNTS_PER_REV);
 
-  public Shooter() {}
+  public Shooter() {
+  }
 
   // Sets intake motor speed (forward if positive, backward if negative)
   public void runShooterMotor(double speed) {

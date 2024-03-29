@@ -75,6 +75,12 @@ public final class Constants {
     // FOR AUTO
     public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
 
+    // PID constants
+
+    public static final double KP = 0; // TO DO: TUNE
+    public static final double KI = 0;
+    public static final double KD = 0;
+
     public static final int COUNTS_PER_REV = 42;
   }
 
