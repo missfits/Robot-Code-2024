@@ -7,6 +7,8 @@ package frc.robot.commands;
 import frc.robot.subsystems.*;
 import frc.robot.Constants.AutoConstants;
 
+import javax.print.attribute.standard.MediaSize.NA;
+
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
@@ -57,9 +59,10 @@ public final class Autos {
    */
   public static SequentialCommandGroup shootTaxiLeft(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
+      new InitializeNavX(drivetrain, 60),
       new AutoSpeakerShootCommand(indexer, shooter),
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
-      new RotationCommand(drivetrain, -60), // rotate
+      new NavXRotationCommand(drivetrain, 0), // rotate
       new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards
     );
   }
@@ -76,9 +79,10 @@ public final class Autos {
    */
   public static SequentialCommandGroup shootTaxiRight(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
+      new InitializeNavX(drivetrain, -60),
       new AutoSpeakerShootCommand(indexer, shooter),
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // drive a little 
-      new RotationCommand(drivetrain, 60), // rotate
+      new RotationCommand(drivetrain, 0), // rotate
       new DistanceDriveCommand(drivetrain, AutoConstants.TAXI_DISTANCE) // taxi forwards
     );
   }
@@ -120,9 +124,10 @@ public final class Autos {
    */
   public static SequentialCommandGroup leftSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
+      new InitializeNavX(drivetrain, 60),
       new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.33m gets center robot in line with note
-      new RotationCommand(drivetrain, -60), // turns robot to face note
+      new RotationCommand(drivetrain, 0), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // 1.75 is the distance needed to get to the note
         new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
@@ -148,9 +153,10 @@ public final class Autos {
    */
   public static SequentialCommandGroup rightSpeaker2pc(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
+      new InitializeNavX(drivetrain, -60),
       new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
       new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_DIAGONAL_DISTANCE), // 0.33m gets center robot in line with note
-      new RotationCommand(drivetrain, 60), // turns robot to face note
+      new RotationCommand(drivetrain, 0), // turns robot to face note
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.CLOSE_HORIZONTAL_DISTANCE),
         new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
@@ -175,8 +181,10 @@ public final class Autos {
    */
   public static SequentialCommandGroup farIntakeLeftRed(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
+      new InitializeNavX(drivetrain, 60),
+      new AutoSpeakerShootCommand(indexer, shooter),
       new DistanceDriveCommand(drivetrain, AutoConstants.FAR_DIAGONAL_DISTANCE), // drive a little 
-      new RotationCommand(drivetrain, -60), // rotate
+      new RotationCommand(drivetrain, 0), // rotate
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.FAR_HORIZONTAL_DISTANCE),
         new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.FAR_INTAKE_TIMEOUT)
@@ -201,8 +209,9 @@ public final class Autos {
    */
   public static SequentialCommandGroup farIntakeRightBlue(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
     return new SequentialCommandGroup(
+      new InitializeNavX(drivetrain, -60),
       new DistanceDriveCommand(drivetrain, AutoConstants.FAR_DIAGONAL_DISTANCE), // drive a little 
-      new RotationCommand(drivetrain, 60), // rotate
+      new RotationCommand(drivetrain, 0), // rotate
       new ParallelCommandGroup( // drives towards note while intaking for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.FAR_HORIZONTAL_DISTANCE),
         new IntakeIndexCommand(indexer, intake).withTimeout(AutoConstants.FAR_INTAKE_TIMEOUT)
