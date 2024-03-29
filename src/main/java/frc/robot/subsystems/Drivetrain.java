@@ -135,7 +135,12 @@ public class Drivetrain extends SubsystemBase {
 
     // returns current robot rotation in degrees relative to the field, from -180 to 180
     public double getRotation() {
-        return MathUtil.inputModulus(m_gyro.getRotation2d().getDegrees(), -180, 180);
+        return MathUtil.inputModulus(m_gyro.getAngle(), -180, 180);
+    }
+
+    // offsets getAngle degrees by given amount, between -180 and 180
+    public void rotationOffset(double degrees) {
+        m_gyro.setAngleAdjustment(MathUtil.inputModulus(degrees, -180, 180));
     }
 
     // resets robot pose to given pose
