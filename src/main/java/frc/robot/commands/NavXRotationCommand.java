@@ -5,6 +5,8 @@ import frc.robot.Constants.AutoConstants;
 import frc.robot.Constants.DrivetrainConstants;
 import frc.robot.subsystems.Drivetrain;
 
+import edu.wpi.first.math.controller.PIDController;
+
 import edu.wpi.first.math.MathUtil;
 
 public class NavXRotationCommand extends Command {
@@ -14,6 +16,7 @@ public class NavXRotationCommand extends Command {
     // private double m_leftEncoderStart;
     private double m_targetDegrees;
     private int m_direction;
+    private PIDController m_controller;
 
     /** 
      * A dead reckoning turn command.
@@ -23,6 +26,8 @@ public class NavXRotationCommand extends Command {
         // System.out.println("targetDistance: " + targetDegrees);
         m_drivetrain = drivetrain;
         m_targetDegrees = MathUtil.inputModulus(targetDegrees, -180, 180); // make sure angle is correct format
+
+        // m_controller = new PIDController(DrivetrainConstants.ROTATION_KP, DrivetrainConstants.ROTATION_KI, DrivetrainConstants.ROTATION_KD);
 
         addRequirements(drivetrain);
 
@@ -61,6 +66,6 @@ public class NavXRotationCommand extends Command {
     @Override
     public boolean isFinished() {
         // returns if the current degrees is within a certain range of target degrees
-        return (Math.abs(m_drivetrain.getRotation() - m_targetDegrees) < 0.5);
+        return (Math.abs(m_drivetrain.getRotation() - m_targetDegrees) < 5);
     }
 }

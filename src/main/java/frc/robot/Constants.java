@@ -47,6 +47,10 @@ public final class Constants {
     public static final double K_IZ = 0; // tune
     public static final double K_FF = 0; // tune
 
+    public static final double ROTATION_KP = 0;
+    public static final double ROTATION_KI = 0;
+    public static final double ROTATION_KD = 0;
+
   }
 
   public static class IntakeConstants {
