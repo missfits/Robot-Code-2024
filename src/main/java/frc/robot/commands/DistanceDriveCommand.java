@@ -82,12 +82,24 @@ public class DistanceDriveCommand extends Command {
     // m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
 
     // read PID coefficients from SmartDashboard
-    double p = SmartDashboard.getNumber("P Gain", 0);
-    double i = SmartDashboard.getNumber("I Gain", 0);
-    double d = SmartDashboard.getNumber("D Gain", 0);
-    double iz = SmartDashboard.getNumber("I Zone", 0);
-    double ff = SmartDashboard.getNumber("Feed Forward", 0);
+    // SmartDashboard.putNumber("P Gain", 0);
+    // SmartDashboard.putNumber("I Gain", 0);
+    // SmartDashboard.putNumber("D Gain", 0);
+    // SmartDashboard.putNumber("I Zone", 0);
+    // SmartDashboard.putNumber("Feed Forward", 0);
+
+    // // double p = SmartDashboard.getNumber("P Gain", 0);
+    // // double i = SmartDashboard.getNumber("I Gain", 0);
+    // double d = SmartDashboard.getNumber("D Gain", 0);
+    // double iz = SmartDashboard.getNumber("I Zone", 0);
+    // double ff = SmartDashboard.getNumber("Feed Forward", 0);
     
+    double p = 0.000003; //0.0003
+    double i = 0.000000001;
+    double d = 0;
+    double iz = 0;
+    double ff = 0;
+
     m_leftPIDController.setP(p);
     m_leftPIDController.setI(i);
     m_leftPIDController.setD(d);
@@ -110,11 +122,11 @@ public class DistanceDriveCommand extends Command {
     // double thrust = AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance); // drives in the direction of targetDistance
     // m_drivetrain.tankDrive(-thrust, -thrust);
 
-    // we are unsure if this actually sends power to the motors...?
     m_leftPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
     m_rightPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
 
-    System.out.println("Encoder velocities in RPM: " + m_drivetrain.getLeftEncoderVelocity() + ", " + m_drivetrain.getRightEncoderVelocity());
+    System.out.println("Encoder velocities in m/s: " + m_drivetrain.getLeftEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60) 
+        + ", " + m_drivetrain.getRightEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60));
 
   }
 

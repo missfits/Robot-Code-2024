@@ -120,7 +120,7 @@ public final class Constants {
     public static final double CLOSE_INTAKE_TIMEOUT = 5; // in seconds
     public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
 
-    public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
+    public static final double TAXI_DISTANCE = 1; // distance in meters to cross taxi line (untested for 2024)
     public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.30; // TO DO: test
     public static final double CLOSE_DIAGONAL_DISTANCE = 0.33; // distance in meters from speaker
         // side to align with close note (untested for 2024)
@@ -134,6 +134,6 @@ public final class Constants {
     public static final double TAXI_AUTO_SPEED = 0.5; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
 
-    public static final double DEFAULT_TARGET_VELOCITY = 100; // FIX THIS !!!!!! (in m/s)
+    public static final double DEFAULT_TARGET_VELOCITY = -6; // FIX THIS !!!!!! (in m/s)
   }
 }

@@ -78,6 +78,7 @@ public class Drivetrain extends SubsystemBase {
         m_odometry.update(m_gyro.getRotation2d(),
             DrivetrainConstants.ENCODER_TICKS_TO_METERS * getLeftEncoderPosition(),
             DrivetrainConstants.ENCODER_TICKS_TO_METERS * getRightEncoderPosition());
+        printRotation();
     }
 
     public void configDrivetrainMotors() {
@@ -136,6 +137,10 @@ public class Drivetrain extends SubsystemBase {
     // returns current robot rotation in degrees relative to the field, from -180 to 180
     public double getRotation() {
         return MathUtil.inputModulus(m_gyro.getAngle(), -180, 180);
+    }
+
+    public void printRotation() {
+        System.out.println(getRotation());
     }
 
     // offsets getAngle degrees by given amount, between -180 and 180
