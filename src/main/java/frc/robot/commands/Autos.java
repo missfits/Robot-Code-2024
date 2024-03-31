@@ -31,6 +31,13 @@ public final class Autos {
   }
 
   /**
+   * Shoot into speaker and do nothing
+   */
+  public static Command justShoot(Indexer indexer, Shooter shooter) {
+    return new AutoSpeakerShootCommand(indexer, shooter);
+  }
+
+  /**
    * @param drivetrain drivetrain subsystem of robot
    * @param indexer intake subsystem of robot
    * @param shooter shooter subsystem of robot
@@ -118,7 +125,7 @@ public final class Autos {
    * @return a sequential command group that shoots preloaded note into speaker (from the left edge when facing the speaker),
    *          picks up the note closest to amp, drives back to the shooter (left edge), and shoots the second note
    * 
-   * Start position: Against left edge of speaker, as far against the field wall as possible
+   * Start position: one foot away from the left edge of the speaker
    * 
    * UNTESTED
    */
@@ -133,8 +140,9 @@ public final class Autos {
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
       ),
       new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // back up same distance as before
+      new WaitCommand(1),
       new RotationCommand(drivetrain, 60), // turn the other way 60 degrees (facing speaker)
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot again
     );
   }
@@ -147,7 +155,7 @@ public final class Autos {
    * @return a sequential command group that shoots preloaded note into speaker (from the right edge when facing the speaker),
    *          picks up the note closest to center, drives back to the shooter (right edge), and shoots the second note
    * 
-   * Start position: Against the right edge of speaker, as far against the wall as possible
+   * Start position: one foot away from the right side of speaker
    * 
    * UNTESTED
    */
@@ -162,8 +170,9 @@ public final class Autos {
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
       ),
       new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // back up same distance as before
+      new WaitCommand(1),
       new RotationCommand(drivetrain, -60), // turn the other way 60 degrees (facing speaker)
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot again
     );
   }
@@ -220,6 +229,42 @@ public final class Autos {
       new RotationCommand(drivetrain, -60), // turn the other way 60 degrees (facing speaker)
       new DistanceDriveCommand(drivetrain, -AutoConstants.FAR_DIAGONAL_DISTANCE), // back into speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot again
+    );
+  }
+
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (left edge) and taxis out
+   * 
+   * Start position: against the left edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup elimsBlue(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new RotationCommand(drivetrain, -20), // rotate
+      new DistanceDriveCommand(drivetrain, AutoConstants.SFR_ELIMS_DISTANCE) // taxi forwards
+    );
+  }
+
+  /**
+   * @param drivetrain drivetrain subsystem of robot
+   * @param indexer intake subsystem of robot
+   * @param shooter shooter subsystem of robot
+   * @return a sequential command group that shoots preloaded note into speaker (left edge) and taxis out
+   * 
+   * Start position: against the left edge of the speaker
+   * 
+   * UNTESTED
+   */
+  public static SequentialCommandGroup elimsRed(Drivetrain drivetrain, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter),
+      new RotationCommand(drivetrain, 20), // rotate
+      new DistanceDriveCommand(drivetrain, AutoConstants.SFR_ELIMS_DISTANCE) // taxi forwards
     );
   }
 

@@ -50,7 +50,8 @@ import frc.robot.subsystems.Indexer;
 import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Hood;
-import frc.robot.subsystems.Climber;
+import frc.robot.subsystems.LeftClimber;
+import frc.robot.subsystems.RightClimber;
 import frc.robot.commands.Autos;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -63,6 +64,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+
+import java.util.function.BooleanSupplier;
 
 // ***NEED TO BE UPDATED FOR 2024 SEASON***
 
@@ -81,7 +85,8 @@ public class RobotContainer {
   private static final Intake m_intake = new Intake();
   private static final Shooter m_shooter = new Shooter();
   private static final Hood m_hood = new Hood();
-  private static final Climber m_climber = new Climber();
+  private static final LeftClimber m_leftClimber = new LeftClimber();
+  private static final RightClimber m_rightClimber = new RightClimber();
   private static final XboxController pilot = new XboxController(0);
   private static final XboxController copilot = new XboxController(1);
 
@@ -106,7 +111,15 @@ public class RobotContainer {
     // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
     m_chooser.addOption("Drive 3 meter (testing)", new DistanceDriveCommand(m_drivetrain, 3));
-    m_chooser.addOption("Rotate 90 degrees (testing)", new NavXRotationCommand(m_drivetrain, 90));
+    m_chooser.addOption("Rotate 90 degrees (new/navx rotation)", new NavXRotationCommand(m_drivetrain, 90));
+
+
+    m_chooser.addOption("SFR ELIMS BLUE", Autos.elimsBlue(m_drivetrain, m_indexer, m_shooter));
+    m_chooser.addOption("SFR ELIMS RED", Autos.elimsRed(m_drivetrain, m_indexer, m_shooter));
+    
+    m_chooser.addOption("Rotate 90 degrees (old rotation)", new RotationCommand(m_drivetrain, 90));
+
+    m_chooser.addOption("Just shoot", Autos.justShoot(m_indexer, m_shooter));
 
     m_chooser.addOption("Taxi forward", Autos.taxiAuto(m_drivetrain));
     m_chooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
@@ -121,6 +134,10 @@ public class RobotContainer {
 
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
+
+    ShuffleboardTab bbTab = Shuffleboard.getTab("Beam Break Tab");
+    BooleanSupplier bbSupplier = () -> m_indexer.getBeamBreakSignal();
+    bbTab.addBoolean("Beam break signal", bbSupplier).withWidget(BuiltInWidgets.kBooleanBox);
   }
 
   /**
@@ -151,13 +168,13 @@ public class RobotContainer {
   
     // OI.m_coPilotXbox.leftStick().whileTrue(new IntakeIndexCommandBackup(m_indexer, m_intake)); // backup intakeindex command in case beam break has issues
     // OI.m_coPilotXbox.leftStick().whileTrue(new ClimberUpCommand(m_climber)); // for testing only!
-    OI.m_coPilotXbox.leftStick().whileTrue(new ClimberDownRightCommand(m_climber)); 
-    OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownLeftCommand(m_climber));
+    OI.m_coPilotXbox.leftStick().whileTrue(new ClimberDownRightCommand(m_rightClimber)); 
+    OI.m_coPilotXbox.rightStick().whileTrue(new ClimberDownLeftCommand(m_leftClimber));
     // are the CAN IDs switched?? CHECK
 
     // for unwinding the climber after match
     // requires driver to first hold down b button, then x button
-    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_climber, OI.m_driverXbox)); 
+    OI.m_driverXbox.b().whileTrue(new ClimberUpCommand(m_leftClimber, m_rightClimber, OI.m_driverXbox)); 
     
   }
 
