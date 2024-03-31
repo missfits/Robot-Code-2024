@@ -3,8 +3,6 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.subsystems.Indexer;
 import frc.robot.Constants.IndexerConstants;
 import frc.robot.subsystems.Intake;
@@ -14,7 +12,7 @@ import frc.robot.Constants.IntakeConstants;
  * Runs the intake and indexer wheels upwards (moves note up towards shooter).
  * Ends when the note hits the beam breaker.
  */
-public class IntakeIndexCommand extends Command {
+public class AutoIntakeCommand extends Command {
     private Indexer m_indexer;
     private Intake m_intake;
     private boolean beam_break = false;
@@ -22,13 +20,13 @@ public class IntakeIndexCommand extends Command {
     private XboxController pilot;
     private XboxController copilot;
     
-    public IntakeIndexCommand(Indexer indexer, Intake intake, XboxController copilot, XboxController pilot){
+    public AutoIntakeCommand(Indexer indexer, Intake intake){
         m_indexer = indexer;
         m_intake = intake;
         addRequirements(indexer, intake);
         count = 0;
-        this.pilot = pilot;
-        this.copilot = copilot;
+        // this.pilot = pilot;
+        // this.copilot = copilot;
     }
 
     @Override
@@ -44,9 +42,11 @@ public class IntakeIndexCommand extends Command {
         if (!m_indexer.getBeamBreak() && !beam_break) {
             // System.out.println("beam break bool switched");
             
-            // make the controllers rumble
-            pilot.setRumble(RumbleType.kLeftRumble, 1.0);
-            copilot.setRumble(RumbleType.kRightRumble, 1.0);
+
+
+            // //RUMBLE HERE
+            // pilot.setRumble(RumbleType.kLeftRumble, 1.0);
+            // copilot.setRumble(RumbleType.kRightRumble, 1.0);
 
             beam_break = true;
             m_indexer.setEncoderPosition(0);
@@ -73,11 +73,8 @@ public class IntakeIndexCommand extends Command {
         m_intake.intakeOff();
         m_indexer.setEncoderPosition(0);
         beam_break = false;
-        
-        // stop the controller rumbling
-        pilot.setRumble(RumbleType.kBothRumble, 0.0);
-        copilot.setRumble(RumbleType.kBothRumble, 0.0);
-        
+        // pilot.setRumble(RumbleType.kLeftRumble, 0.0);
+        // copilot.setRumble(RumbleType.kRightRumble, 0.0);
         // System.out.println("Encoder: " + m_indexer.getEncoderPosition());
     }
 
