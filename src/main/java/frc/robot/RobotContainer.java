@@ -41,6 +41,8 @@ import frc.robot.commands.ShooterHoodBackward;
 // auto commands
 import frc.robot.commands.DistanceDriveCommand;
 import frc.robot.commands.RotationCommand;
+import frc.robot.commands.NavXRotationCommand;
+
 // subsystems
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -108,11 +110,14 @@ public class RobotContainer {
     // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
     // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
+    m_chooser.addOption("Drive 3 meter (testing)", new DistanceDriveCommand(m_drivetrain, 3));
+    m_chooser.addOption("Rotate 90 degrees (new/navx rotation)", new NavXRotationCommand(m_drivetrain, 90));
+
+
     m_chooser.addOption("SFR ELIMS BLUE", Autos.elimsBlue(m_drivetrain, m_indexer, m_shooter));
     m_chooser.addOption("SFR ELIMS RED", Autos.elimsRed(m_drivetrain, m_indexer, m_shooter));
     
-    m_chooser.addOption("Drive 2 meters (testing)", new DistanceDriveCommand(m_drivetrain, 2));
-    m_chooser.addOption("Rotate 90 degrees (testing)", new RotationCommand(m_drivetrain, 90));
+    m_chooser.addOption("Rotate 90 degrees (old rotation)", new RotationCommand(m_drivetrain, 90));
 
     m_chooser.addOption("Just shoot", Autos.justShoot(m_indexer, m_shooter));
 

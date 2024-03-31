@@ -38,7 +38,23 @@ public final class Constants {
 
     // 1 meter = 39.37 inches = 2.088 wheel rotations = 17.664 motor rotations (assuming gear ratio = 8.46)
     public static final double METERS_TO_ROTATIONS = 17.664;
-    public static final double DEGREES_TO_ROTATIONS = 0.065; // value accurate as of 3/9/24
+    public static final double DEGREES_TO_ROTATIONS = 0.1; // value accurate as of 2/13/24
+    public static final double ENCODER_TICKS_TO_METERS = 0.0013; // calculated based on METERS_TO_ROTATIONS and COUNTS_PER_REV
+
+    // PID testing: https://www.chiefdelphi.com/t/how-do-you-tune-your-pid-gains/367425/8
+    public static final double K_P = 0; // TO DO: TEST
+    public static final double K_I = 0; // TO DO: TEST
+    public static final double K_D = 0; // TO DO: TEST
+    public static final double K_MAX_OUTPUT = 1;
+    public static final double K_MIN_OUTPUT = -1;
+    public static final double MAX_RPM = 5676;
+    public static final double K_IZ = 0; // tune
+    public static final double K_FF = 0; // tune
+
+    public static final double ROTATION_KP = 0;
+    public static final double ROTATION_KI = 0;
+    public static final double ROTATION_KD = 0;
+
   }
 
   public static class IntakeConstants {
@@ -122,5 +138,7 @@ public final class Constants {
 
     public static final double TAXI_AUTO_SPEED = 0.6; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
+
+    public static final double DEFAULT_TARGET_VELOCITY = -6; // FIX THIS !!!!!! (in m/s)
   }
 }
