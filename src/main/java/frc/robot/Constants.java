@@ -138,6 +138,9 @@ public final class Constants {
 
     public static final double TAXI_AUTO_SPEED = 0.6; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
+    public static final double SLOW_WINDOW_DEGREES = 15; // fix this
+    public static final double SLOW_ROTATION_SPEED = 0.3; // fix this
+    public static final double STOP_WINDOW_DEGREES = 5;
 
     public static final double DEFAULT_TARGET_VELOCITY = -6; // FIX THIS !!!!!! (in m/s)
   }

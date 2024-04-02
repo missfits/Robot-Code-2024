@@ -32,20 +32,8 @@ public class NavXRotationCommand extends Command {
         addRequirements(drivetrain);
 
         // find direction of rotation
-        double currentDegrees = m_drivetrain.getRotation();
-        if (currentDegrees >= 0) {
-            if (currentDegrees > targetDegrees && targetDegrees >= currentDegrees - 180) {
-                m_direction = -1;
-            } else {
-                m_direction = 1;
-            }
-        } else {
-            if (targetDegrees > currentDegrees && targetDegrees <= currentDegrees + 180) {
-                m_direction = 1;
-            } else {
-                m_direction = -1;
-            }
-        }
+        // m_direction = 1 if clockwise, -1 if counterclockwise
+        m_direction = (int) Math.signum(degree_difference(m_drivetrain.getRotation(), m_targetDegrees));
     }
 
     @Override
@@ -55,7 +43,15 @@ public class NavXRotationCommand extends Command {
     @Override
     public void execute() {
         double thrust = AutoConstants.ROTATION_SPEED * m_direction; // takes the sign of targetDegrees
-        m_drivetrain.tankDrive(thrust, -thrust); // drives in two opposite directions so the robot spins
+        
+        // If less than SLOW_WINDOW_DEGREES degrees to go to target (will not run for the last STOP_WINDOW_DEGREES)
+        if (Math.abs(degree_difference(m_targetDegrees, m_drivetrain.getRotation())) < AutoConstants.SLOW_WINDOW_DEGREES) {
+            thrust = AutoConstants.SLOW_ROTATION_SPEED * m_direction; // takes the sign of targetDegrees
+        }
+        m_drivetrain.tankDrive(thrust, -thrust);
+        System.out.println();
+        System.out.println();
+        System.out.println(degree_difference(m_drivetrain.getRotation(), m_targetDegrees));
     }
 
     @Override
@@ -65,7 +61,12 @@ public class NavXRotationCommand extends Command {
 
     @Override
     public boolean isFinished() {
-        // returns if the current degrees is within a certain range of target degrees
-        return (Math.abs(m_drivetrain.getRotation() - m_targetDegrees) < 5);
+        return Math.abs(degree_difference(m_targetDegrees, m_drivetrain.getRotation())) < AutoConstants.STOP_WINDOW_DEGREES;
+    }
+
+    // Returns difference between starting and ending angles. If output is positive, then ideal
+    // turning direction is clockwise; if output is negative, then ideal turning direction is counterclockwise
+    private double degree_difference(double starting_angle, double ending_angle) {
+        return MathUtil.inputModulus(starting_angle - ending_angle, -180, 180);
     }
 }
