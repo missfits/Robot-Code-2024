@@ -44,7 +44,7 @@ public final class Constants {
   public static class IntakeConstants {
     public static final int INTAKE_MOTOR_PORT = 5;
 
-    public static final double INTAKE_MOTOR_SPEED_IN = -0.7; // finalized as of 3/3/24
+    public static final double INTAKE_MOTOR_SPEED_IN = -0.8; // finalized as of 04/02/24
     public static final double INTAKE_MOTOR_SPEED_OUT = 0.4;
 
     public static final int COUNTS_PER_REV = 42;
