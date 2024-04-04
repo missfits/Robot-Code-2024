@@ -46,6 +46,8 @@ public class IntakeIndexCommand extends Command {
             
             // make the controllers rumble
             pilot.setRumble(RumbleType.kLeftRumble, 1.0);
+            pilot.setRumble(RumbleType.kRightRumble, 1.0);
+            copilot.setRumble(RumbleType.kLeftRumble, 1.0);
             copilot.setRumble(RumbleType.kRightRumble, 1.0);
 
             beam_break = true;
@@ -75,8 +77,10 @@ public class IntakeIndexCommand extends Command {
         beam_break = false;
         
         // stop the controller rumbling
-        pilot.setRumble(RumbleType.kBothRumble, 0.0);
-        copilot.setRumble(RumbleType.kBothRumble, 0.0);
+        pilot.setRumble(RumbleType.kLeftRumble, 0.0);
+        pilot.setRumble(RumbleType.kRightRumble, 0.0);
+        copilot.setRumble(RumbleType.kLeftRumble, 0.0);
+        copilot.setRumble(RumbleType.kRightRumble, 0.0);
         
         // System.out.println("Encoder: " + m_indexer.getEncoderPosition());
     }
@@ -84,6 +88,6 @@ public class IntakeIndexCommand extends Command {
     @Override
     public boolean isFinished() {
         // if the beam is broken and if the backwards command has run for enough encoder rotations, end command
-        return (beam_break && (m_indexer.getEncoderPosition() > IndexerConstants.REVERSE_DISTANCE)); 
+        return (beam_break && (m_indexer.getEncoderPosition() < IndexerConstants.REVERSE_DISTANCE)); 
     }
 }

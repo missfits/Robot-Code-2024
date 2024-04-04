@@ -89,13 +89,7 @@ public class RobotContainer {
   private static final XboxController copilot = new XboxController(1);
 
   public SendableChooser<Command> m_chooser = new SendableChooser<>();
-  // public static SequentialCommandGroup m_driveTwice = new SequentialCommandGroup(
-  //       // new SuctionOnCommand(m_gripper),
-  //       // new ArmPlaceHighCommand(m_arm),
-  //       // new SuctionOffCommand(m_gripper),
-  //       new DistanceDriveCommand(m_drivetrain, 1),
-  //       new DistanceDriveCommand(m_drivetrain, 2)
-  // );
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -125,14 +119,11 @@ public class RobotContainer {
     m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
     m_chooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
 
-    // m_chooser.addOption("Double drive", m_driveTwice);
-
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
 
-    ShuffleboardTab bbTab = Shuffleboard.getTab("Beam Break Tab");
     BooleanSupplier bbSupplier = () -> m_indexer.getBeamBreakSignal();
-    bbTab.addBoolean("Beam break signal", bbSupplier).withWidget(BuiltInWidgets.kBooleanBox);
+    compTab.addBoolean("Beam break signal", bbSupplier).withWidget(BuiltInWidgets.kBooleanBox);
   }
 
   /**

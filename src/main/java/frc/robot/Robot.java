@@ -40,10 +40,10 @@ public class Robot extends TimedRobot {
 
     // Camera will start capturing frames and sending them to the dashboard
     m_camera_1 = CameraServer.startAutomaticCapture(0); 
-    m_camera_2 = CameraServer.startAutomaticCapture(1);
+    // m_camera_2 = CameraServer.startAutomaticCapture(1);
 
     m_camera_1.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
-    m_camera_2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    // m_camera_2.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     // VideoMode videoMode = new VideoMode(PixelFormat.kMJPEG, 640, 480, 30);
     // camera.setVideoMode(videoMode);
   }
