@@ -25,6 +25,10 @@ public class Shooter extends SubsystemBase {
     m_shooterMotor.set(speed);
   }
 
+  public void setShooterVoltage(double voltage) {
+    m_shooterMotor.setVoltage(voltage);
+  }
+
   // Sets intake motor speed to zero and stops motor
   public void shooterOff() {
     m_shooterMotor.set(0);

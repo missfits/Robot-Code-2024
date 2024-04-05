@@ -87,6 +87,8 @@ public final class Constants {
     public static final double SHOOTER_MOTOR_SPEED_SPEAKER = -0.5; // correct as of 3/9/24
     public static final double SHOOTER_MOTOR_SPEED_OUT = -0.5; // constant for testing
 
+    public static final double SHOOTER_MOTOR_VOLTAGE_SPEAKER = SHOOTER_MOTOR_SPEED_SPEAKER * 12.5;
+
     // FOR AUTO
     public static final double SHOOTER_TARGET_SPEED_SPEAKER = 2400;
 

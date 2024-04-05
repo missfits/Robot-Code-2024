@@ -33,7 +33,7 @@ public class ShooterSpeakerCommand extends Command {
         if (m_timer.get() < 1) {
             m_shooter.runShooterMotor(-1);
         } else {
-            m_shooter.runShooterMotor(ShooterConstants.SHOOTER_MOTOR_SPEED_SPEAKER);
+            m_shooter.setShooterVoltage(ShooterConstants.SHOOTER_MOTOR_VOLTAGE_SPEAKER);
         }
     }
 
