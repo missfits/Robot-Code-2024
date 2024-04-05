@@ -48,6 +48,20 @@ public class NavXRotationCommand extends Command {
         }
     }
 
+    public NavXRotationCommand(Drivetrain drivetrain, double targetDegrees, int direction) {
+        // System.out.println("targetDistance: " + targetDegrees);
+        m_drivetrain = drivetrain;
+        m_targetDegrees = MathUtil.inputModulus(targetDegrees, -180, 180); // make sure angle is correct format
+
+        // m_controller = new PIDController(DrivetrainConstants.ROTATION_KP, DrivetrainConstants.ROTATION_KI, DrivetrainConstants.ROTATION_KD);
+
+        addRequirements(drivetrain);
+
+        // set direction of rotation
+        m_direction = direction;
+    }
+
+
     @Override
     public void initialize() {
     }
