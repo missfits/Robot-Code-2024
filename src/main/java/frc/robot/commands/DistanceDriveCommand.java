@@ -44,7 +44,7 @@ public class DistanceDriveCommand extends Command {
     m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
     m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
 
-    m_timer = new Timer();
+    // m_timer = new Timer();
 
     addRequirements(drivetrain);
   }
@@ -72,8 +72,8 @@ public class DistanceDriveCommand extends Command {
     m_drivetrain.setRightEncoder(0);
     m_drivetrain.setleftEncoder(0);
 
-    m_timer.reset();
-    m_timer.start();
+    // m_timer.reset();
+    // m_timer.start();
 
     // // configure PID controllers (with constants)
     // m_leftPIDController.setP(DrivetrainConstants.K_P);
@@ -121,22 +121,17 @@ public class DistanceDriveCommand extends Command {
     m_rightPIDController.setD(d);
     m_rightPIDController.setIZone(iz);
     m_rightPIDController.setFF(ff);
-   m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
+    m_rightPIDController.setOutputRange(DrivetrainConstants.K_MIN_OUTPUT, DrivetrainConstants.K_MAX_OUTPUT);
 
   }
 
   @Override
   public void execute() {
-    if (m_timer.get() < 0.5) {
-      double thrust = AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance); // drives in the direction of targetDistance
-      m_drivetrain.tankDrive(-thrust, -thrust*1.17);
-    } else {
       m_leftPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
       m_rightPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
 
       System.out.println("Encoder velocities in m/s: " + m_drivetrain.getLeftEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60) 
           + ", " + m_drivetrain.getRightEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60));
-    }
   }
 
   @Override
@@ -144,8 +139,8 @@ public class DistanceDriveCommand extends Command {
     m_drivetrain.stopMotors();
     m_drivetrain.setRightEncoder(0);
     m_drivetrain.setleftEncoder(0);
-    m_timer.stop();
-    m_timer.reset();
+    // m_timer.stop();
+    // m_timer.reset();
   }
 
   @Override
