@@ -15,7 +15,7 @@ public class NavXRotationCommand extends Command {
     // private double m_rightEncoderStart;
     // private double m_leftEncoderStart;
     private double m_targetDegrees;
-    private int m_direction;
+    private double m_direction;
     private PIDController m_controller;
 
     /** 
@@ -30,45 +30,21 @@ public class NavXRotationCommand extends Command {
         // m_controller = new PIDController(DrivetrainConstants.ROTATION_KP, DrivetrainConstants.ROTATION_KI, DrivetrainConstants.ROTATION_KD);
 
         addRequirements(drivetrain);
-
-        // find direction of rotation
-        double currentDegrees = m_drivetrain.getRotation();
-        if (currentDegrees >= 0) {
-            if (currentDegrees > targetDegrees && targetDegrees >= currentDegrees - 180) {
-                m_direction = -1;
-            } else {
-                m_direction = 1;
-            }
-        } else {
-            if (targetDegrees > currentDegrees && targetDegrees <= currentDegrees + 180) {
-                m_direction = 1;
-            } else {
-                m_direction = -1;
-            }
-        }
     }
-
-    public NavXRotationCommand(Drivetrain drivetrain, double targetDegrees, int direction) {
-        // System.out.println("targetDistance: " + targetDegrees);
-        m_drivetrain = drivetrain;
-        m_targetDegrees = MathUtil.inputModulus(targetDegrees, -180, 180); // make sure angle is correct format
-
-        // m_controller = new PIDController(DrivetrainConstants.ROTATION_KP, DrivetrainConstants.ROTATION_KI, DrivetrainConstants.ROTATION_KD);
-
-        addRequirements(drivetrain);
-
-        // set direction of rotation
-        m_direction = direction;
-    }
-
 
     @Override
     public void initialize() {
+        m_direction = Math.signum(getAngleDiff());
     }
 
     @Override
     public void execute() {
         double thrust = AutoConstants.ROTATION_SPEED * m_direction; // takes the sign of targetDegrees
+        
+        if (Math.abs(getAngleDiff()) < AutoConstants.SLOW_ANGLE_THRESHOLD) {
+            thrust = AutoConstants.SLOW_ROTATION_SPEED * m_direction;
+        }
+        
         m_drivetrain.tankDrive(thrust, -thrust); // drives in two opposite directions so the robot spins
     }
 
@@ -80,8 +56,23 @@ public class NavXRotationCommand extends Command {
     @Override
     public boolean isFinished() {
         // returns if the current degrees is within a certain range of target degrees
-        return (Math.abs(m_drivetrain.getRotation() - m_targetDegrees) < 10);
+        return (Math.abs(getAngleDiff()) <  AutoConstants.END_ANGLE_THRESHOLD);
     }
 
+    public double getAngleDiff() {
+        double difference = m_targetDegrees - m_drivetrain.getRotation();
+        boolean cross;
+        
+        if (Math.abs(difference) < 180) {
+            cross = false;
+        } else {
+            cross = true;
+        }
 
+        if (!cross) {
+            return difference;
+        } else {
+            return (360 - Math.abs(difference)) * (-Math.signum(difference));
+        }
+    }
 }
