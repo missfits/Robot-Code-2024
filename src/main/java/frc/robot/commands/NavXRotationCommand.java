@@ -66,6 +66,8 @@ public class NavXRotationCommand extends Command {
     @Override
     public boolean isFinished() {
         // returns if the current degrees is within a certain range of target degrees
-        return (Math.abs(m_drivetrain.getRotation() - m_targetDegrees) < 5);
+        return (Math.abs(m_drivetrain.getRotation() - m_targetDegrees) < 10);
     }
+
+
 }

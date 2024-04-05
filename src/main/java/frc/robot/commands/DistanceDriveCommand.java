@@ -12,6 +12,8 @@ import com.revrobotics.SparkPIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import edu.wpi.first.wpilibj.Timer;
+
 //import java.lang.Math.*;
 
 import edu.wpi.first.wpilibj2.command.Command;
@@ -26,6 +28,8 @@ public class DistanceDriveCommand extends Command {
   private SparkPIDController m_leftPIDController;
   private SparkPIDController m_rightPIDController;
 
+  private Timer m_timer;
+
   /** 
    * A dead reckoning drive command.
    * Takes in target distance in meters and drives straight that amount.
@@ -35,10 +39,12 @@ public class DistanceDriveCommand extends Command {
     m_drivetrain = drivetrain;
     m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
     // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
-    m_targetVelocity = AutoConstants.DEFAULT_TARGET_VELOCITY * DrivetrainConstants.METERS_TO_ROTATIONS * 60;
+    m_targetVelocity = AutoConstants.DEFAULT_TARGET_VELOCITY * DrivetrainConstants.METERS_TO_ROTATIONS * 60 * Math.signum(m_targetDistance);
 
     m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
     m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
+
+    m_timer = new Timer();
 
     addRequirements(drivetrain);
   }
@@ -46,13 +52,13 @@ public class DistanceDriveCommand extends Command {
   /** 
    * A dead reckoning drive command.
    * Takes in target distance in meters and drives straight that amount.
-   * Takes in target velocity in meters per second.
+   * Takes in target speed in meters per second (always positive).
    */ 
   public DistanceDriveCommand(Drivetrain drivetrain, double targetDistance, double targetVelocity) {
     m_drivetrain = drivetrain;
     m_targetDistance = targetDistance * DrivetrainConstants.METERS_TO_ROTATIONS; // convert meters to motor rotations
     // System.out.println("Target meters: " + targetDistance + ", target rotations: " + m_targetDistance);
-    m_targetVelocity = targetVelocity * DrivetrainConstants.METERS_TO_ROTATIONS * 60; // convert meters/sec to RPM
+    m_targetVelocity = targetVelocity * DrivetrainConstants.METERS_TO_ROTATIONS * 60 * Math.signum(m_targetDistance); // convert meters/sec to RPM
 
     m_leftPIDController = m_drivetrain.m_leftPrimary.getPIDController();
     m_rightPIDController = m_drivetrain.m_rightPrimary.getPIDController();
@@ -65,6 +71,9 @@ public class DistanceDriveCommand extends Command {
     // resets positions of encoders
     m_drivetrain.setRightEncoder(0);
     m_drivetrain.setleftEncoder(0);
+
+    m_timer.reset();
+    m_timer.start();
 
     // // configure PID controllers (with constants)
     // m_leftPIDController.setP(DrivetrainConstants.K_P);
@@ -94,8 +103,8 @@ public class DistanceDriveCommand extends Command {
     // double iz = SmartDashboard.getNumber("I Zone", 0);
     // double ff = SmartDashboard.getNumber("Feed Forward", 0);
     
-    double p = 0.000003; //0.0003
-    double i = 0.000000001;
+    double p = 0.0004; //0.0003
+    double i = 0;
     double d = 0;
     double iz = 0;
     double ff = 0;
@@ -118,16 +127,16 @@ public class DistanceDriveCommand extends Command {
 
   @Override
   public void execute() {
-    // OLD CODE
-    // double thrust = AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance); // drives in the direction of targetDistance
-    // m_drivetrain.tankDrive(-thrust, -thrust);
+    if (m_timer.get() < 0.5) {
+      double thrust = AutoConstants.TAXI_AUTO_SPEED*Math.signum(m_targetDistance); // drives in the direction of targetDistance
+      m_drivetrain.tankDrive(-thrust, -thrust*1.17);
+    } else {
+      m_leftPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
+      m_rightPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
 
-    m_leftPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
-    m_rightPIDController.setReference(m_targetVelocity, CANSparkMax.ControlType.kVelocity);
-
-    System.out.println("Encoder velocities in m/s: " + m_drivetrain.getLeftEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60) 
-        + ", " + m_drivetrain.getRightEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60));
-
+      System.out.println("Encoder velocities in m/s: " + m_drivetrain.getLeftEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60) 
+          + ", " + m_drivetrain.getRightEncoderVelocity() / (DrivetrainConstants.METERS_TO_ROTATIONS * 60));
+    }
   }
 
   @Override
@@ -135,12 +144,14 @@ public class DistanceDriveCommand extends Command {
     m_drivetrain.stopMotors();
     m_drivetrain.setRightEncoder(0);
     m_drivetrain.setleftEncoder(0);
+    m_timer.stop();
+    m_timer.reset();
   }
 
   @Override
   public boolean isFinished() {
     // calculates if either encoder has moved enough to reach the target distance
     return (Math.abs(m_drivetrain.getRightEncoderPosition()) > Math.abs(m_targetDistance)
-    || Math.abs(m_drivetrain.getLeftEncoderPosition()) > Math.abs(m_targetDistance)); 
+    || Math.abs(m_drivetrain.getLeftEncoderPosition()) > Math.abs(m_targetDistance));
   }
 }

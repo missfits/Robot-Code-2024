@@ -69,7 +69,7 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = -0.55; // TO DO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_DOWN = -0.3; // TO DO: replace with values from beam break branch
     public static final double INDEXER_MOTOR_SPEED_UP = 0.4; // TO DO: replace with values from beam break branch
 
     public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
@@ -120,7 +120,7 @@ public final class Constants {
 
   public static class AutoConstants {
     public static final double SPEAKER_SHOOT_TIMEOUT = 4; // unit: seconds
-    public static final double CLOSE_INTAKE_TIMEOUT = 5; // in seconds
+    public static final double CLOSE_INTAKE_TIMEOUT = 2; // in seconds
     public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
 
     public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
@@ -136,9 +136,9 @@ public final class Constants {
     public static final double SFR_ELIMS_DISTANCE = 5; // distance in meters to far note
         //  after alignment (untested for 2024)
 
-    public static final double TAXI_AUTO_SPEED = 0.6; // (temp) speed of robot during taxi auto
+    public static final double TAXI_AUTO_SPEED = 0.4; // (temp) speed of robot during taxi auto
     public static final double ROTATION_SPEED = 0.5;
 
-    public static final double DEFAULT_TARGET_VELOCITY = -6; // FIX THIS !!!!!! (in m/s)
+    public static final double DEFAULT_TARGET_VELOCITY = -2; // FIX THIS !!!!!! (in m/s)
   }
 }
