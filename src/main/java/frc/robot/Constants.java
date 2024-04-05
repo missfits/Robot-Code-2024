@@ -69,8 +69,8 @@ public final class Constants {
   public static class IndexerConstants {
     public static final int INDEXER_MOTOR_PORT = 6;
 
-    public static final double INDEXER_MOTOR_SPEED_DOWN = -0.2; // TO DO: replace with values from beam break branch
-    public static final double INDEXER_MOTOR_SPEED_UP = 0.4; // TO DO: replace with values from beam break branch
+    public static final double INDEXER_MOTOR_SPEED_DOWN = -0.2;
+    public static final double INDEXER_MOTOR_SPEED_UP = 0.4;
 
     public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
     public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
