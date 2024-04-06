@@ -112,6 +112,7 @@ public final class Autos {
       new ParallelCommandGroup( // drive towards note while intaking, intake for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)),
+      new IndexerDownCommand(indexer).withTimeout(0.07),
       new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE), // drive back towards speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot second note
     );
@@ -174,6 +175,52 @@ public final class Autos {
       new NavXRotationCommand(drivetrain, -60 + AutoConstants.TURN_ADJUSTMENT), // turn the other way 60 degrees (facing speaker)
       // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
       new AutoSpeakerShootCommand(indexer, shooter) // shoot again
+    );
+  }
+
+  public static SequentialCommandGroup frontSpeaker3pcBlue(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
+      new ParallelCommandGroup( // drive towards note while intaking, intake for 4 seconds
+        new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+        new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)),
+      new IndexerDownCommand(indexer).withTimeout(0.07),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE), // drive back towards speaker
+      new AutoSpeakerShootCommand(indexer, shooter), // shoot second note
+
+      new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+      new NavXRotationCommand(drivetrain, -90 + AutoConstants.TURN_ADJUSTMENT),
+      new ParallelCommandGroup( // drive towards amp side note while intaking, intake for 4 seconds
+        new DistanceDriveCommand(drivetrain, AutoConstants.DISTANCE_BETWEEN_NOTES),
+        new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.BETWEEN_NOTES_INTAKE_TIMEOUT)),
+      new IndexerDownCommand(indexer).withTimeout(0.07),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.DISTANCE_BETWEEN_NOTES), // drive back
+      new NavXRotationCommand(drivetrain, -AutoConstants.TURN_ADJUSTMENT),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+      new AutoSpeakerShootCommand(indexer, shooter)
+    );
+  }
+
+  public static SequentialCommandGroup frontSpeaker3pcRed(Drivetrain drivetrain, Intake intake, Indexer indexer, Shooter shooter) {
+    return new SequentialCommandGroup(
+      new AutoSpeakerShootCommand(indexer, shooter), // shoot preloaded
+      new ParallelCommandGroup( // drive towards note while intaking, intake for 4 seconds
+        new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+        new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)),
+      new IndexerDownCommand(indexer).withTimeout(0.07),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE), // drive back towards speaker
+      new AutoSpeakerShootCommand(indexer, shooter), // shoot second note
+
+      new DistanceDriveCommand(drivetrain, AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+      new NavXRotationCommand(drivetrain, 90 - AutoConstants.TURN_ADJUSTMENT),
+      new ParallelCommandGroup( // drive towards amp side note while intaking, intake for 4 seconds
+        new DistanceDriveCommand(drivetrain, AutoConstants.DISTANCE_BETWEEN_NOTES),
+        new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.BETWEEN_NOTES_INTAKE_TIMEOUT)),
+      new IndexerDownCommand(indexer).withTimeout(0.07),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.DISTANCE_BETWEEN_NOTES), // drive back
+      new NavXRotationCommand(drivetrain, AutoConstants.TURN_ADJUSTMENT),
+      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+      new AutoSpeakerShootCommand(indexer, shooter)
     );
   }
 

@@ -122,10 +122,14 @@ public final class Constants {
     public static final double SPEAKER_SHOOT_TIMEOUT = 4; // unit: seconds
     public static final double CLOSE_INTAKE_TIMEOUT = 2; // in seconds
     public static final double FAR_INTAKE_TIMEOUT = 10; // in seconds (untested for 2024) FIX!!!!!!
+    public static final double BETWEEN_NOTES_INTAKE_TIMEOUT = 2;
 
     public static final double TAXI_DISTANCE = 2; // distance in meters to cross taxi line (untested for 2024)
     public static final double FRONT_SPEAKER_TO_CENTER_NOTE = 1.33; // correct as of 3/9/24
     public static final double CLOSE_DIAGONAL_DISTANCE = 0.30; // distance in meters from speaker
+
+    public static final double DISTANCE_BETWEEN_NOTES = 1.45;
+
         // side to align with close note (untested for 2024)
     public static final double CLOSE_HORIZONTAL_DISTANCE = 1.8; // distance in meters to close
         //  note after alignment (untested for 2024)
