@@ -101,7 +101,7 @@ public class RobotContainer {
     // set default commands
     m_drivetrain.setDefaultCommand(new ArcadeDriveCommand(m_drivetrain, m_humanControl));
     // m_hood.setDefaultCommand(new PrintHoodEncoder(m_hood));
-    m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
+    // m_indexer.setDefaultCommand(new BeamBreakCommand(m_indexer)); // for testing
     // m_climber.setDefaultCommand(new PrintClimberEncoder(m_climber));
 
     m_chooser.addOption("Drive 1 meter (testing)", new DistanceDriveCommand(m_drivetrain, 1));
