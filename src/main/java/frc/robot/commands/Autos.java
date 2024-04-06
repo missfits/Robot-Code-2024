@@ -193,11 +193,11 @@ public final class Autos {
       new ParallelCommandGroup( // drive towards amp side note while intaking, intake for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.DISTANCE_BETWEEN_NOTES),
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.BETWEEN_NOTES_INTAKE_TIMEOUT)),
-      new IndexerDownCommand(indexer).withTimeout(0.07),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.DISTANCE_BETWEEN_NOTES), // drive back
-      new NavXRotationCommand(drivetrain, -AutoConstants.TURN_ADJUSTMENT),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
-      new AutoSpeakerShootCommand(indexer, shooter)
+      new IndexerDownCommand(indexer).withTimeout(0.07)
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.DISTANCE_BETWEEN_NOTES + 0.2), // drive back
+      // new NavXRotationCommand(drivetrain, -AutoConstants.TURN_ADJUSTMENT + 5),
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+      // new AutoSpeakerShootCommand(indexer, shooter)
     );
   }
 
@@ -216,11 +216,11 @@ public final class Autos {
       new ParallelCommandGroup( // drive towards amp side note while intaking, intake for 4 seconds
         new DistanceDriveCommand(drivetrain, AutoConstants.DISTANCE_BETWEEN_NOTES),
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.BETWEEN_NOTES_INTAKE_TIMEOUT)),
-      new IndexerDownCommand(indexer).withTimeout(0.07),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.DISTANCE_BETWEEN_NOTES), // drive back
-      new NavXRotationCommand(drivetrain, AutoConstants.TURN_ADJUSTMENT),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
-      new AutoSpeakerShootCommand(indexer, shooter)
+      new IndexerDownCommand(indexer).withTimeout(0.07)
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.DISTANCE_BETWEEN_NOTES+0.2), // drive back
+      // new NavXRotationCommand(drivetrain, AutoConstants.TURN_ADJUSTMENT - 5),
+      // new DistanceDriveCommand(drivetrain, -AutoConstants.FRONT_SPEAKER_TO_CENTER_NOTE),
+      // new AutoSpeakerShootCommand(indexer, shooter)
     );
   }
 

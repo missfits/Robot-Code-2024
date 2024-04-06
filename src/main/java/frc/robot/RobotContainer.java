@@ -115,15 +115,18 @@ public class RobotContainer {
 
     m_chooser.addOption("Just shoot", Autos.justShoot(m_indexer, m_shooter));
 
+    m_chooser.addOption("2pc auto from front", Autos.frontSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_chooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
+
+    m_chooser.addOption("3pc auto RED", Autos.frontSpeaker3pcRed(m_drivetrain, m_intake, m_indexer, m_shooter));
+    m_chooser.addOption("3pc auto BLUE", Autos.frontSpeaker3pcBlue(m_drivetrain, m_intake, m_indexer, m_shooter));
+
     m_chooser.addOption("Taxi forward", Autos.taxiAuto(m_drivetrain));
     m_chooser.addOption("Shoot and taxi from front", Autos.shootTaxiFront(m_drivetrain, m_indexer, m_shooter));
     m_chooser.addOption("Shoot and taxi from left", Autos.shootTaxiLeft(m_drivetrain, m_indexer, m_shooter));
     m_chooser.addOption("Shoot and taxi from right", Autos.shootTaxiRight(m_drivetrain, m_indexer, m_shooter));
     
-    m_chooser.addOption("2pc auto from front", Autos.frontSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
-    m_chooser.addOption("2pc auto from left", Autos.leftSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
-    m_chooser.addOption("2pc auto from right", Autos.rightSpeaker2pc(m_drivetrain, m_intake, m_indexer, m_shooter));
-
     ShuffleboardTab compTab = Shuffleboard.getTab("Comp HUD");
     compTab.add("Auto Chooser", m_chooser).withSize(6, 4);
 
