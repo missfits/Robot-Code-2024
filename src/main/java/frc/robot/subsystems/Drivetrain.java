@@ -145,7 +145,7 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void printRotation() {
-        if (m_timer.get() > 5) {
+        if (m_timer.get() > 1) {
             System.out.println(getRotation());
             m_timer.reset();
             m_timer.start();
