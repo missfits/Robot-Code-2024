@@ -139,7 +139,7 @@ public final class Autos {
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
       ),
       new IndexerDownCommand(indexer).withTimeout(0.07),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // back up same distance as before
+      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE + 0.05), // back up same distance as before
       new WaitCommand(1),
       new NavXRotationCommand(drivetrain, 60 - AutoConstants.TURN_ADJUSTMENT), // turn the other way 60 degrees (facing speaker)
       // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
@@ -169,7 +169,7 @@ public final class Autos {
         new AutoIntakeCommand(indexer, intake).withTimeout(AutoConstants.CLOSE_INTAKE_TIMEOUT)
       ),
       new IndexerDownCommand(indexer).withTimeout(0.07),
-      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE), // back up same distance as before
+      new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_HORIZONTAL_DISTANCE + 0.05), // back up same distance as before
       new WaitCommand(1),
       new NavXRotationCommand(drivetrain, -60 + AutoConstants.TURN_ADJUSTMENT), // turn the other way 60 degrees (facing speaker)
       // new DistanceDriveCommand(drivetrain, -AutoConstants.CLOSE_DIAGONAL_DISTANCE), // back into speaker
