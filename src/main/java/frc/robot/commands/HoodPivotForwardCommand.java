@@ -28,10 +28,10 @@ public class HoodPivotForwardCommand extends Command{
         // If hood pass 80% of pivot distance, it slows
         if(Math.abs(m_hood.getPivotEncoderPosition()) > 0.8*Math.abs(HoodConstants.PIVOT_DISTANCE)){
             m_hood.runPivotHoodMotor(-HoodConstants.SLOW_PIVOT_MOTOR_SPEED);
-        }else{
+        } else {
             m_hood.runPivotHoodMotor(-HoodConstants.PIVOT_MOTOR_SPEED);
         }
-        System.out.println(m_hood.getPivotEncoderPosition());
+        // System.out.println(m_hood.getPivotEncoderPosition()); // for testing
     }
 
     @Override

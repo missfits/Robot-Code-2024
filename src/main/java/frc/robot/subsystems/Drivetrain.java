@@ -17,6 +17,7 @@ import com.revrobotics.SparkRelativeEncoder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.Timer;
 
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
@@ -31,6 +32,7 @@ public class Drivetrain extends SubsystemBase {
     // instance variables
 
     private final OI m_humanControl;
+    private final Timer m_timer;
 
     // motors
     // sets up a CAN-enabled SPARK MAX motor controller for each motor (left primary, left secondary, right primary, and right secondary)
@@ -68,6 +70,9 @@ public class Drivetrain extends SubsystemBase {
     public Drivetrain(OI humanControl) {
       m_robotDrive = new DifferentialDrive(m_rightPrimary, m_leftPrimary);
       m_humanControl = humanControl;
+      m_timer = new Timer();
+      m_timer.reset();
+      m_timer.start();
 
       configDrivetrainMotors();
     }
@@ -140,7 +145,11 @@ public class Drivetrain extends SubsystemBase {
     }
 
     public void printRotation() {
-        System.out.println(getRotation());
+        if (m_timer.get() > 1) {
+            System.out.println(getRotation());
+            m_timer.reset();
+            m_timer.start();
+        }
     }
 
     // offsets getAngle degrees by given amount, between -180 and 180
