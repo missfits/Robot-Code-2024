@@ -75,7 +75,7 @@ public final class Constants {
     public static final double INDEXER_MOTOR_SPEED_DOWN_BACKUP = -0.2; // for testing/backup, finalized 02/23/2024
     public static final double INDEXER_MOTOR_SPEED_UP_BACKUP = 0.2; // for testing/backup, finalized 02/23/2024
 
-    public static final double INDEXER_MOTOR_REVERSE_SPEED = -0.2; // for running the note backwards a little after beam break
+    public static final double INDEXER_MOTOR_REVERSE_SPEED = -0.1; // for running the note backwards a little after beam break
     public static final double REVERSE_DISTANCE = -0.05; // TO DO: test
 
     public static final int COUNTS_PER_REV = 42;
@@ -142,6 +142,8 @@ public final class Constants {
 
     public static final double END_ANGLE_THRESHOLD = 10;
     public static final double SLOW_ANGLE_THRESHOLD = 20;
+
+    public static final double TURN_ADJUSTMENT = 9;
 
     public static final double DEFAULT_TARGET_VELOCITY = -2; // FIX THIS !!!!!! (in m/s)
   }
