@@ -22,7 +22,7 @@ public final class Constants {
 
     public static final double DRIVER_JOYSTICK_DEADBAND = 0.1;
 
-    public static final double DRIVE_SPEED_ADJUSTMENT = 0.5; // slowed speed for demo (OG: 1.0)
+    public static final double DRIVE_SPEED_ADJUSTMENT = 0.7; // slowed speed for demo (OG: 1.0)
     public static final double DRIVE_ROTATION_ADJUSTMENT = 0.5; // slowed speed for demo (OG: 0.8)
 
     public static final double SLEW_RATE_LIMIT = 1.9;
