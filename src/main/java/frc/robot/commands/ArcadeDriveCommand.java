@@ -7,7 +7,6 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.OI;
 import frc.robot.Constants.OperatorConstants;
 
-// import java.lang.Math.*;
 
 public class ArcadeDriveCommand extends Command {
     private final Drivetrain m_drivetrain;
@@ -27,7 +26,6 @@ public class ArcadeDriveCommand extends Command {
     // Called every time the scheduler runs while the command is scheduled.
     @Override
     public void execute() {
-        // double xJoy = filter.calculate(m_humanControl.getDriverXBoxLeftJoyY());
         double xJoy = m_humanControl.getDriverXBoxLeftJoyY();
 
         double yJoy = m_humanControl.getDriverXBoxRightJoyX();
